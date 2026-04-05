@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathQuest — Mrs. Ali's Classroom</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     LANDING SCREEN
+════════════════════════════════════════ -->
+<div id="landing" class="screen active">
+  <canvas id="land-canvas"></canvas>
+  <div class="land-inner">
+    <div class="land-eyebrow">Mrs. Ali's Classroom</div>
+    <div class="land-title">Math<span>Quest</span></div>
+    <div class="land-sub">An epic adventure through 6 mathematical realms. Level up, slay bosses, and master middle school math — one island at a time.</div>
+
+    <div class="land-btns">
+      <button class="land-btn land-btn-s" onclick="App.showStudent()">
+        <span class="land-btn-icon">🧙</span>
+        <span class="land-btn-label">Student</span>
+        <span class="land-btn-sub">Enter the world &amp; quest</span>
+      </button>
+      <button class="land-btn land-btn-t" onclick="App.showTeacher()">
+        <span class="land-btn-icon">📊</span>
+        <span class="land-btn-label">Teacher</span>
+        <span class="land-btn-sub">Dashboard &amp; insights</span>
+      </button>
+    </div>
+
+    <div class="land-pills">
+      <div class="land-pill">⚡ XP &amp; Levels</div>
+      <div class="land-pill">🐉 Boss Battles</div>
+      <div class="land-pill">⚔️ Live Duels</div>
+      <div class="land-pill">🗺️ 6 Realms</div>
+      <div class="land-pill">📊 Teacher Insights</div>
+      <div class="land-pill">🌍 Enrichment Missions</div>
+    </div>
+
+    <div class="coming-soon-banner">
+      🚀 <strong>Ratio Reef is LIVE!</strong> &nbsp;·&nbsp; Number Peaks, Equation Volcano &amp; more realms unlocking soon!
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     STUDENT WORLD MAP
+════════════════════════════════════════ -->
+<div id="student-world" class="screen">
+  <nav class="mq-nav">
+    <div>
+      <div class="mq-brand-sub">Mrs. Ali's Classroom</div>
+      <div class="mq-brand-main">Math<span>Quest</span></div>
+    </div>
+    <div class="mq-nav-right">
+      <span class="mq-pill fire hud-streak">🔥 5-day streak</span>
+      <span class="mq-pill gold hud-xp">⚡ 1,240 XP</span>
+      <span class="mq-pill">Lvl 12</span>
+      <div class="mq-av-btn">🧙</div>
+      <button class="mq-back-btn" onclick="App.showLanding()">← Exit</button>
+    </div>
+  </nav>
+
+  <div id="mq-world">
+    <canvas id="bgC"></canvas>
+    <canvas id="isC"></canvas>
+
+    <div class="mq-player" id="mq-player">
+      <div class="mq-player-emoji">🧙</div>
+      <div class="mq-player-name">You</div>
+    </div>
+
+    <!-- Island tooltip -->
+    <div class="mq-tooltip" id="mq-tt">
+      <div class="tt-realm" id="tt-realm"></div>
+      <div class="tt-name" id="tt-name"></div>
+      <div class="tt-desc" id="tt-desc"></div>
+      <div class="tt-lvs" id="tt-lvs"></div>
+      <div class="tt-bar-wrap"><div class="tt-bar-fill" id="tt-bar-fill"></div></div>
+      <div class="tt-xp-lbl" id="tt-xp-lbl"></div>
+      <button class="tt-enter-btn" id="tt-enter-btn">Enter Realm →</button>
+    </div>
+
+    <!-- Live Duel badge -->
+    <div class="duel-badge">
+      <div class="duel-lbl">⚔️ Live Duel</div>
+      <div class="duel-fighters">
+        <div class="duel-f"><div class="duel-em">🧙</div><div class="duel-n">Zara</div><div class="duel-sc">340</div></div>
+        <div class="duel-vs">VS</div>
+        <div class="duel-f"><div class="duel-em">🦊</div><div class="duel-n">Marcus</div><div class="duel-sc">295</div></div>
+      </div>
+      <button class="duel-join-btn" onclick="Modal.open('boss')">Join Battle!</button>
+    </div>
+
+    <!-- Boss bar -->
+    <div class="boss-bar">
+      <div class="boss-icon-lg">🐉</div>
+      <div class="boss-info">
+        <div class="boss-lbl">Chapter Boss — Ratio Reef</div>
+        <div class="boss-name">The Ratio Dragon</div>
+        <div class="boss-hp-wrap"><div class="boss-hp-fill boss-hp-animate" style="width:68%;"></div></div>
+      </div>
+      <button class="btn btn-red" onclick="Modal.open('boss')">⚔️ Challenge!</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     REALM INTERIOR (dynamic)
+════════════════════════════════════════ -->
+<div id="realm-screen" class="screen"></div>
+
+
+<!-- ════════════════════════════════════════
+     TEACHER DASHBOARD
+════════════════════════════════════════ -->
+<div id="teacher-screen" class="screen">
+  <nav class="mq-nav">
+    <div>
+      <div class="mq-brand-sub">Mrs. Ali's Classroom</div>
+      <div class="mq-brand-main">Math<span>Quest</span></div>
+    </div>
+    <div class="mq-nav-right">
+      <div class="td-tabs">
+        <button class="td-tab active" data-tab="overview" onclick="TeacherDash.render('overview')">Overview</button>
+        <button class="td-tab" data-tab="students" onclick="TeacherDash.render('students')">Students</button>
+        <button class="td-tab" data-tab="insights" onclick="TeacherDash.render('insights')">Insights</button>
+        <button class="td-tab" data-tab="leaderboard" onclick="TeacherDash.render('leaderboard')">Leaderboard</button>
+      </div>
+      <button class="mq-back-btn" onclick="App.showLanding()">← Exit</button>
+    </div>
+  </nav>
+
+  <div class="td-wrap">
+    <!-- Hero -->
+    <div class="td-hero">
+      <div class="td-hero-left">
+        <h2>📊 Good morning, Mrs. Ali!</h2>
+        <p>Period 3 · Grade 7 · MathQuest · Sunday, April 5, 2026</p>
+      </div>
+      <div class="td-hero-actions">
+        <button class="td-hero-btn" onclick="Modal.open('assign-boss')">⚔️ Assign Boss Battle</button>
+        <button class="td-hero-btn" onclick="Modal.open('create-duel')">⚡ Create Duel</button>
+        <button class="td-hero-btn gold">📥 Download Report</button>
+      </div>
+    </div>
+
+    <!-- OVERVIEW TAB -->
+    <div id="td-pane-overview" class="td-tab-pane active">
+      <div class="td-metrics">
+        <div class="td-metric"><span class="td-metric-val" style="color:#A78BFA;">28</span><span class="td-metric-lbl">Students</span></div>
+        <div class="td-metric"><span class="td-metric-val" style="color:#34D399;">23</span><span class="td-metric-lbl">Active Today</span></div>
+        <div class="td-metric"><span class="td-metric-val" style="color:#FCA5A5;">3</span><span class="td-metric-lbl">Need Help</span></div>
+        <div class="td-metric"><span class="td-metric-val" style="color:#C4B5FD;">5</span><span class="td-metric-lbl">Advanced</span></div>
+        <div class="td-metric"><span class="td-metric-val" style="color:#FCD34D;">1,430</span><span class="td-metric-lbl">Avg XP</span></div>
+        <div class="td-metric"><span class="td-metric-val" style="color:#6EE7B7;">82%</span><span class="td-metric-lbl">Mastery</span></div>
+      </div>
+
+      <div class="alert alert-danger"><div class="alert-icon">⚠️</div><div><div class="alert-title">3 students struggling with Ratio Reef</div><div class="alert-body">Marcus T., Priya R., and Lena K. have attempted Grade 6 ratios more than 5 times without mastery. Suggest small-group intervention or level reassignment.</div></div></div>
+      <div class="alert alert-success"><div class="alert-icon">🌟</div><div><div class="alert-title">5 students ready for Enrichment Isle</div><div class="alert-body">Aiden, Sofia, Rania, Omar, and Yasmine have completed all 3 levels in Number Peaks. Consider assigning the Stock Market Analyst mission.</div></div></div>
+      <div class="alert alert-warn"><div class="alert-icon">🔥</div><div><div class="alert-title">Equation Volcano — class-wide gap detected</div><div class="alert-body">18 of 28 students scored below 60% on Grade 7 multi-step equations. Consider a whole-class re-teach before the Chapter Boss unlocks.</div></div></div>
+
+      <div class="td-section-title">🗺️ Domain Mastery — Class Average</div>
+      <div class="insight-card mb-18">
+        <div class="chart-bar-row"><div class="chart-lbl">Ratio Reef</div><div class="chart-bw"><div class="chart-bf" style="width:62%;background:#0EA5E9;"></div></div><div class="chart-val">62%</div></div>
+        <div class="chart-bar-row"><div class="chart-lbl">Number Peaks</div><div class="chart-bw"><div class="chart-bf" style="width:78%;background:#A855F7;"></div></div><div class="chart-val">78%</div></div>
+        <div class="chart-bar-row"><div class="chart-lbl">Eqn Volcano</div><div class="chart-bw"><div class="chart-bf" style="width:41%;background:#EF4444;"></div></div><div class="chart-val">41%</div></div>
+        <div class="chart-bar-row"><div class="chart-lbl">Geo Grove</div><div class="chart-bw"><div class="chart-bf" style="width:55%;background:#22C55E;"></div></div><div class="chart-val">55%</div></div>
+        <div class="chart-bar-row"><div class="chart-lbl">Data Desert</div><div class="chart-bw"><div class="chart-bf" style="width:33%;background:#F59E0B;"></div></div><div class="chart-val">33%</div></div>
+      </div>
+
+      <div class="td-section-title">📅 Weekly Activity Heatmap</div>
+      <div class="insight-card mb-18">
+        <div class="hm-wrap" style="margin-bottom:4px;">
+          <div class="hm-day-label">Mon</div><div class="hm-day-label">Tue</div><div class="hm-day-label">Wed</div>
+          <div class="hm-day-label">Thu</div><div class="hm-day-label">Fri</div><div class="hm-day-label">Sat</div><div class="hm-day-label">Sun</div>
+        </div>
+        <div class="hm-wrap" id="heatmap-grid"></div>
+        <div style="display:flex;gap:6px;align-items:center;margin-top:10px;">
+          <span style="font-size:11px;color:rgba(255,255,255,0.4);">Less</span>
+          <div style="width:12px;height:12px;border-radius:3px;background:rgba(255,255,255,0.07);"></div>
+          <div style="width:12px;height:12px;border-radius:3px;background:rgba(14,165,233,0.3);"></div>
+          <div style="width:12px;height:12px;border-radius:3px;background:rgba(14,165,233,0.65);"></div>
+          <div style="width:12px;height:12px;border-radius:3px;background:rgba(14,165,233,1);"></div>
+          <span style="font-size:11px;color:rgba(255,255,255,0.4);">More</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STUDENTS TAB -->
+    <div id="td-pane-students" class="td-tab-pane">
+      <div class="td-section-title">👥 Student Progress <span class="chip chip-gold" style="font-size:12px;margin-left:4px;">28 students</span></div>
+      <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+        <input class="search-input" placeholder="🔍 Search students..." style="flex:1;min-width:140px;" oninput="State.studentSearch=this.value;TeacherDash.renderStudents()">
+        <select class="filter-select" onchange="State.studentFilter=this.value;TeacherDash.renderStudents()">
+          <option value="all">All students</option>
+          <option value="help">Needs help</option>
+          <option value="track">On track</option>
+          <option value="adv">Advanced</option>
+        </select>
+      </div>
+      <div class="td-student-grid" id="student-grid"></div>
+    </div>
+
+    <!-- INSIGHTS TAB -->
+    <div id="td-pane-insights" class="td-tab-pane">
+      <div class="td-section-title">💡 Differentiation Insights</div>
+      <div class="insight-grid" id="insights-grid"></div>
+    </div>
+
+    <!-- LEADERBOARD TAB -->
+    <div id="td-pane-leaderboard" class="td-tab-pane">
+      <div class="td-section-title">🏆 Class Leaderboard</div>
+      <div class="lb-wrap"><div class="lb-head">Top Adventurers — Mrs. Ali's Class</div><div id="lb-list"></div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     GLOBAL MODAL
+════════════════════════════════════════ -->
+<div class="modal-overlay hidden" id="modal-overlay">
+  <div class="modal-box" id="modal-box"></div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════ -->
+<script src="js/data.js"></script>
+<script src="js/world.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
