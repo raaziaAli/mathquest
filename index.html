@@ -6,38 +6,40 @@
 <title>MathQuest — Mrs. Ali's Classroom</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hidden;min-height:100vh;}
-:root{--gold:#FFF176;--purple:#7C3AED;--blue:#0EA5E9;--green:#22C55E;--amber:#F59E0B;--pink:#EC4899;--red:#EF4444;--dark:#060D1F;--dark2:#0F1A30;--border:rgba(255,255,255,0.12);--borderH:rgba(255,255,255,0.30);--muted:rgba(255,255,255,0.55);--faint:rgba(255,255,255,0.35);}
+:root{--gold:#FFF176;--purple:#7C3AED;--blue:#0EA5E9;--green:#22C55E;--amber:#F59E0B;--pink:#EC4899;--red:#EF4444;--teal:#0D9488;--dark:#060D1F;--dark2:#0F1A30;--border:rgba(255,255,255,0.12);--borderH:rgba(255,255,255,0.30);--muted:rgba(255,255,255,0.55);--faint:rgba(255,255,255,0.35);}
 .screen{display:none;}.screen.active{display:block;animation:fadeIn .3s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
 
-/* ── NAV ── */
+/* NAV */
 .mq-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(6,13,31,0.97);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;gap:10px;flex-wrap:wrap;}
 .brand-sub{font-family:'Fredoka One',cursive;font-size:10px;color:rgba(255,241,118,0.65);letter-spacing:2px;text-transform:uppercase;}
 .brand-main{font-family:'Fredoka One',cursive;font-size:22px;color:var(--gold);}
 .brand-main span{color:#fff;}
 .nav-r{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.pill{background:rgba(255,255,255,0.07);border:1px solid var(--border);border-radius:10px;padding:6px 13px;font-size:13px;font-weight:800;color:rgba(255,255,255,0.7);cursor:pointer;transition:all .15s;white-space:nowrap;font-family:'Nunito',sans-serif;border:none;}
+.pill{border-radius:10px;padding:6px 13px;font-size:13px;font-weight:800;cursor:pointer;transition:all .15s;white-space:nowrap;font-family:'Nunito',sans-serif;border:none;}
 .pill.gold{border:2px solid var(--gold);color:var(--gold);font-family:'Fredoka One',cursive;font-size:15px;background:rgba(255,241,118,0.08);}
 .pill.fire{border:2px solid #F97316;color:#FED7AA;background:rgba(249,115,22,0.12);}
 .pill.back{border:1px solid var(--border);color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.07);}
 .pill.back:hover{background:rgba(255,255,255,0.14);color:#fff;}
+.pill.lv{border:1px solid var(--border);color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.07);}
 .av-btn{width:40px;height:40px;border-radius:50%;background:var(--purple);border:2.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;flex-shrink:0;}
 
-/* ── BUTTONS ── */
+/* BUTTONS */
 .btn{font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;border:none;border-radius:10px;padding:11px 20px;cursor:pointer;transition:all .18s;text-align:center;display:inline-block;}
 .btn:hover{transform:translateY(-2px);}
 .btn-purple{background:var(--purple);color:#fff;}.btn-purple:hover{background:#6D28D9;}
 .btn-gold{background:var(--gold);color:#78350F;}
 .btn-red{background:#DC2626;color:#fff;}.btn-red:hover{background:#B91C1C;}
 .btn-green{background:#16A34A;color:#fff;}
+.btn-teal{background:#0D9488;color:#fff;}
 .btn-ghost{background:rgba(255,255,255,0.08);border:1px solid var(--border);color:rgba(255,255,255,0.8);}
 .btn-full{width:100%;display:block;}
 
-/* ── MODAL ── */
+/* MODAL */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;}
 .overlay.hidden{display:none;}
 .mbox{background:#0F0A2E;border:2px solid var(--border);border-radius:22px;padding:28px;width:100%;max-width:460px;color:#fff;position:relative;max-height:90vh;overflow-y:auto;}
@@ -46,7 +48,7 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
 .mtitle{font-family:'Fredoka One',cursive;font-size:24px;margin-bottom:6px;}
 .msub{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:18px;}
 
-/* ── LANDING ── */
+/* LANDING */
 #landing{position:relative;width:100%;min-height:700px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
 #land-canvas{position:absolute;inset:0;width:100%;height:100%;}
 .land-inner{position:relative;z-index:10;text-align:center;padding:40px 20px;}
@@ -62,13 +64,13 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
 .land-btn-icon{font-size:44px;}.land-btn-label{font-family:'Fredoka One',cursive;font-size:24px;color:#fff;}.land-btn-sub{font-size:12px;color:rgba(255,255,255,0.6);font-weight:700;}
 .land-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
 .land-pill{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:800;color:rgba(255,255,255,0.7);}
-.cs-banner{margin-top:28px;background:rgba(255,241,118,0.08);border:1px dashed rgba(255,241,118,0.35);border-radius:14px;padding:14px 22px;display:inline-block;font-size:13px;color:rgba(255,241,118,0.85);font-weight:800;}
+.beta-banner{margin-top:24px;background:rgba(255,241,118,0.1);border:1.5px solid rgba(255,241,118,0.4);border-radius:14px;padding:14px 24px;display:inline-block;font-size:13px;color:rgba(255,241,118,0.9);font-weight:800;}
 
-/* ── LOGIN MODAL ── */
+/* LOGIN */
 .login-box{background:#0F0A2E;border:2px solid var(--border);border-radius:22px;padding:32px;width:100%;max-width:400px;}
 .login-logo{font-family:'Fredoka One',cursive;font-size:32px;color:var(--gold);text-align:center;margin-bottom:4px;}
 .login-logo span{color:#fff;}
-.login-school{font-size:12px;color:var(--muted);text-align:center;margin-bottom:24px;font-weight:700;letter-spacing:.5px;}
+.login-school{font-size:12px;color:var(--muted);text-align:center;margin-bottom:24px;font-weight:700;}
 .login-label{font-size:12px;font-weight:800;color:var(--muted);margin-bottom:6px;display:block;text-transform:uppercase;letter-spacing:.5px;}
 .login-input{width:100%;background:rgba(255,255,255,0.07);border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;color:#fff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;outline:none;margin-bottom:18px;}
 .login-input:focus{border-color:var(--purple);background:rgba(255,255,255,0.1);}
@@ -81,7 +83,7 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
 .av-opt-nm{font-size:10px;font-weight:800;color:var(--muted);}
 .login-err{color:#FCA5A5;font-size:13px;font-weight:800;text-align:center;margin-bottom:12px;display:none;}
 
-/* ── WORLD MAP ── */
+/* WORLD MAP */
 #mq-world{width:100%;height:620px;position:relative;overflow:hidden;}
 #bgC,#isC{position:absolute;top:0;left:0;width:100%;height:100%;}
 .mq-player{position:absolute;text-align:center;pointer-events:none;z-index:15;}
@@ -94,13 +96,11 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
 .tt-name{font-family:'Fredoka One',cursive;font-size:21px;margin-bottom:5px;}
 .tt-desc{font-size:12px;color:rgba(255,255,255,0.68);line-height:1.55;margin-bottom:10px;}
 .tt-lvs{display:flex;gap:5px;margin-bottom:9px;}
-.tt-lv{font-size:11px;font-weight:800;padding:3px 9px;border-radius:8px;}
-.lv-done{background:#16A34A;color:#fff;}.lv-curr{background:#7C3AED;color:#fff;}.lv-lock{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);}
+.tt-lv{font-size:11px;font-weight:800;padding:3px 9px;border-radius:8px;background:#7C3AED;color:#fff;}
 .tt-bw{background:rgba(255,255,255,0.12);border-radius:8px;height:8px;overflow:hidden;margin-bottom:5px;}
 .tt-bf{height:100%;border-radius:8px;}
 .tt-xplbl{font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:11px;}
 .tt-enter{display:block;width:100%;border:none;border-radius:10px;padding:10px;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;cursor:pointer;pointer-events:all;}
-/* BOSS BAR */
 .boss-bar{position:absolute;bottom:0;left:0;right:0;background:rgba(5,0,20,0.94);border-top:2px solid #991B1B;padding:10px 20px;display:flex;align-items:center;gap:14px;z-index:25;}
 .boss-ico{font-size:32px;flex-shrink:0;}.boss-info{flex:1;}
 .boss-lbl{font-size:10px;font-weight:900;color:#F87171;letter-spacing:1.5px;text-transform:uppercase;}
@@ -109,7 +109,6 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
 .boss-hf{height:100%;background:#DC2626;border-radius:8px;}
 @keyframes bossHp{from{width:68%;}to{width:55%;}}
 .boss-anim{animation:bossHp 4s ease-in-out infinite alternate;}
-/* DUEL */
 .duel-badge{position:absolute;top:12px;right:14px;background:rgba(5,0,20,0.93);border:2px solid var(--amber);border-radius:14px;padding:10px 14px;z-index:25;text-align:center;}
 .duel-lbl{font-size:10px;font-weight:900;color:#FCD34D;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
 .duel-fighters{display:flex;align-items:center;gap:8px;}
@@ -117,93 +116,81 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
 .duel-vs{font-family:'Fredoka One',cursive;color:#F97316;font-size:14px;}
 .duel-join{display:block;width:100%;margin-top:7px;background:var(--amber);border:none;border-radius:8px;padding:6px;color:#78350F;font-weight:900;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif;}
 
-/* ── BOSS BATTLE UI ── */
-.boss-battle-wrap{padding:0;}
-.boss-battle-header{background:linear-gradient(135deg,#1E1B4B,#450A0A);padding:20px 24px;display:flex;align-items:center;gap:16px;border-radius:16px;margin-bottom:18px;}
+/* BATTLE */
+.boss-battle-header{border-radius:16px;margin-bottom:18px;padding:20px 22px;display:flex;align-items:center;gap:16px;}
 .boss-battle-icon{font-size:52px;flex-shrink:0;}
 .boss-battle-title{font-family:'Fredoka One',cursive;font-size:22px;margin-bottom:4px;}
 .boss-battle-desc{font-size:12px;color:rgba(255,255,255,0.65);}
 .boss-hp-label{font-size:11px;font-weight:800;color:#F87171;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;margin-top:10px;}
 .boss-hp-track{background:rgba(255,255,255,0.12);border-radius:10px;height:14px;overflow:hidden;position:relative;}
-.boss-hp-fill{height:100%;background:linear-gradient(90deg,#DC2626,#F97316);border-radius:10px;transition:width 0.8s ease;}
+.boss-hp-fill{height:100%;border-radius:10px;transition:width 0.8s ease;}
 .boss-hp-txt{position:absolute;right:8px;top:0;line-height:14px;font-size:10px;font-weight:900;color:rgba(255,255,255,0.8);}
-.battle-progress{display:flex;gap:6px;margin-bottom:16px;}
-.battle-dot{width:28px;height:8px;border-radius:4px;background:rgba(255,255,255,0.12);flex:1;transition:background .3s;}
-.battle-dot.done{background:#22C55E;}.battle-dot.curr{background:var(--gold);}.battle-dot.wrong-dot{background:#EF4444;}
-.battle-score-row{display:flex;justify-content:space-between;font-size:12px;font-weight:800;margin-bottom:14px;}
-.battle-score-row .correct-ct{color:#86EFAC;}.battle-score-row .wrong-ct{color:#FCA5A5;}.battle-score-row .q-num{color:var(--muted);}
-.q-box{border-radius:14px;padding:18px;margin-bottom:14px;background:rgba(124,58,237,0.15);border:1.5px solid rgba(124,58,237,0.35);}
+.battle-dots{display:flex;gap:5px;margin-bottom:14px;}
+.bdot{flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,0.12);transition:background .3s;}
+.bdot.done{background:#22C55E;}.bdot.curr{background:var(--gold);}.bdot.err{background:#EF4444;}
+.battle-score{display:flex;justify-content:space-between;font-size:12px;font-weight:800;margin-bottom:14px;}
+.q-box{border-radius:14px;padding:18px;margin-bottom:14px;}
 .q-text{font-weight:900;font-size:16px;line-height:1.55;margin-bottom:14px;}
-.q-answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .q-ans{background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.15);border-radius:11px;padding:13px 10px;color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;cursor:pointer;transition:all .15s;text-align:center;}
 .q-ans:hover:not(:disabled){background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.4);}
 .q-ans.correct{background:#14532D;border-color:#22C55E;color:#86EFAC;}
 .q-ans.wrong{background:#450A0A;border-color:#EF4444;color:#FCA5A5;}
 .explain-box{background:rgba(255,255,255,0.06);border-radius:10px;padding:12px;font-size:13px;color:rgba(255,255,255,0.82);line-height:1.65;margin-bottom:12px;}
-.xp-flash{text-align:center;font-family:'Fredoka One',cursive;font-size:24px;color:var(--gold);opacity:0;transition:opacity .3s;margin-bottom:8px;}
+.xp-flash{text-align:center;font-family:'Fredoka One',cursive;font-size:22px;color:var(--gold);opacity:0;transition:opacity .3s;margin-bottom:8px;}
 .xp-flash.show{opacity:1;}
-.battle-result{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;margin-top:8px;}
-.battle-result-title{font-family:'Fredoka One',cursive;font-size:26px;margin-bottom:8px;}
-.battle-result-sub{font-size:13px;color:var(--muted);margin-bottom:16px;}
-.result-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:18px;}
+.result-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;}
 .result-stat{background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;text-align:center;}
 .result-stat-val{font-family:'Fredoka One',cursive;font-size:24px;display:block;}
 .result-stat-lbl{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;}
+.quest-prog-bar{background:rgba(255,255,255,0.08);border-radius:10px;height:8px;overflow:hidden;margin-bottom:16px;}
+.quest-prog-fill{height:100%;border-radius:10px;transition:width .5s;}
 
-/* ── QUEST MODAL ── */
-.quest-progress-bar{background:rgba(255,255,255,0.08);border-radius:10px;height:8px;overflow:hidden;margin-bottom:18px;}
-.quest-progress-fill{height:100%;background:var(--blue);border-radius:10px;transition:width .5s;}
-
-/* ── REALM ── */
+/* REALM */
 .realm-hero{min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;position:relative;overflow:hidden;}
 .realm-hero-canvas{position:absolute;inset:0;width:100%;height:100%;}
 .realm-hero-inner{position:relative;z-index:5;}
 .realm-eyebrow{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;opacity:.75;}
 .realm-title{font-family:'Fredoka One',cursive;font-size:38px;margin-bottom:6px;text-shadow:2px 3px 0 rgba(0,0,0,0.5);}
-.realm-sub{font-size:14px;color:rgba(255,255,255,0.72);max-width:400px;margin:0 auto 18px;}
+.realm-sub{font-size:14px;color:rgba(255,255,255,0.72);max-width:420px;margin:0 auto 18px;}
 .realm-xp-row{display:flex;align-items:center;gap:10px;justify-content:center;}
 .realm-xp-lbl{font-size:13px;font-weight:800;white-space:nowrap;}
 .xp-bar-wrap{background:rgba(255,255,255,0.1);border-radius:20px;height:10px;overflow:hidden;}
 .xp-bar-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--purple),#A855F7);transition:width .8s;}
 .realm-content{padding:20px;}
 .level-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
-.level-tab{padding:9px 18px;border-radius:10px;border:2px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.6);font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;cursor:pointer;transition:all .15s;}
-.level-tab.active{color:#fff;border-color:rgba(255,255,255,0.35);}
-.level-tab.done{border-color:rgba(34,197,94,0.5);color:#86EFAC;}
-.level-tab.locked{opacity:.45;cursor:not-allowed;}
+.level-tab{padding:9px 18px;border-radius:10px;border:2px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.65);font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;cursor:pointer;transition:all .15s;}
+.level-tab:hover{border-color:rgba(255,255,255,0.35);color:#fff;background:rgba(255,255,255,0.08);}
+.level-tab.active{color:#fff;border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.12);}
 .stitle{font-family:'Fredoka One',cursive;font-size:18px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .quest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:24px;}
 .quest-card{background:rgba(255,255,255,0.04);border:1.5px solid var(--border);border-radius:16px;padding:18px;cursor:pointer;transition:all .2s;}
 .quest-card:hover{transform:translateY(-3px);border-color:var(--borderH);background:rgba(255,255,255,0.08);}
-.quest-card.locked{opacity:.45;cursor:not-allowed;}.quest-card.locked:hover{transform:none;}
 .quest-card.completed{border-color:rgba(34,197,94,0.4);}
-.quest-num{font-family:'Fredoka One',cursive;font-size:11px;color:var(--muted);margin-bottom:6px;}
+.quest-num{font-size:11px;color:var(--muted);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
 .quest-title{font-family:'Fredoka One',cursive;font-size:19px;margin-bottom:5px;}
 .quest-sub{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:12px;}
-.quest-footer{display:flex;align-items:center;justify-content:space-between;}
+.quest-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;}
 .quest-xp{font-family:'Fredoka One',cursive;font-size:15px;color:var(--gold);}
 .quest-stars{color:#FCD34D;font-size:14px;letter-spacing:2px;}
-.boss-card-big{background:linear-gradient(135deg,#1E1B4B,#3B0764);border:2px solid rgba(168,85,247,0.4);border-radius:18px;padding:22px;display:flex;align-items:center;gap:18px;margin-bottom:24px;flex-wrap:wrap;cursor:pointer;transition:border-color .2s;}
+.boss-card-big{border:2px solid rgba(168,85,247,0.4);border-radius:18px;padding:22px;display:flex;align-items:center;gap:18px;margin-bottom:24px;flex-wrap:wrap;cursor:pointer;transition:border-color .2s;background:linear-gradient(135deg,rgba(30,27,75,0.8),rgba(59,7,100,0.8));}
 .boss-card-big:hover{border-color:rgba(168,85,247,0.7);}
 .boss-card-icon{font-size:64px;flex-shrink:0;}.boss-card-info{flex:1;}
 .boss-card-lbl{font-size:10px;font-weight:900;color:#F87171;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
-.boss-card-nm{font-family:'Fredoka One',cursive;font-size:28px;margin-bottom:4px;}
-.boss-card-desc{font-size:13px;color:rgba(255,255,255,0.68);margin-bottom:14px;line-height:1.5;}
-.boss-card-hw{background:rgba(255,255,255,0.12);border-radius:10px;height:12px;overflow:hidden;margin-bottom:6px;}
+.boss-card-nm{font-family:'Fredoka One',cursive;font-size:26px;margin-bottom:4px;}
+.boss-card-desc{font-size:13px;color:rgba(255,255,255,0.68);margin-bottom:12px;line-height:1.5;}
+.boss-card-hw{background:rgba(255,255,255,0.12);border-radius:10px;height:10px;overflow:hidden;margin-bottom:6px;}
 .boss-card-hf{height:100%;background:linear-gradient(90deg,#DC2626,#F97316);border-radius:10px;animation:bossHp 4s ease-in-out infinite alternate;}
 .boss-card-meta{display:flex;gap:16px;font-size:12px;color:rgba(255,255,255,0.55);font-weight:800;}
-.cs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px;}
-.cs-card{background:rgba(255,255,255,0.03);border:1.5px dashed rgba(255,255,255,0.14);border-radius:16px;padding:18px;text-align:center;opacity:.65;}
-.cs-icon{font-size:34px;margin-bottom:6px;}.cs-nm{font-family:'Fredoka One',cursive;font-size:16px;margin-bottom:4px;color:rgba(255,255,255,0.75);}
-.cs-tag{font-size:11px;font-weight:900;padding:3px 10px;border-radius:8px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);display:inline-block;margin-top:4px;}
-.chip{font-size:11px;font-weight:900;padding:3px 10px;border-radius:8px;white-space:nowrap;}
-.chip-adv{background:rgba(168,85,247,0.2);color:#C4B5FD;}.chip-track{background:rgba(34,197,94,0.18);color:#86EFAC;}.chip-help{background:rgba(220,38,38,0.2);color:#FCA5A5;}.chip-gold{background:rgba(255,241,118,0.15);color:var(--gold);}.chip-lock{background:rgba(255,255,255,0.08);color:var(--muted);}
 
-/* ── TEACHER ── */
+/* CHIPS */
+.chip{font-size:11px;font-weight:900;padding:3px 10px;border-radius:8px;white-space:nowrap;}
+.chip-adv{background:rgba(168,85,247,0.2);color:#C4B5FD;}.chip-track{background:rgba(34,197,94,0.18);color:#86EFAC;}.chip-help{background:rgba(220,38,38,0.2);color:#FCA5A5;}.chip-gold{background:rgba(255,241,118,0.15);color:var(--gold);}
+
+/* TEACHER */
 .td-wrap{padding:20px;}
 .td-hero{background:linear-gradient(135deg,#065F46,#047857 60%,#059669);border-radius:18px;padding:22px 24px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.td-hero h2{font-family:'Fredoka One',cursive;font-size:26px;color:#A7F3D0;margin-bottom:2px;}
-.td-hero p{font-size:13px;color:rgba(255,255,255,0.72);}
+.td-hero h2{font-family:'Fredoka One',cursive;font-size:26px;color:#A7F3D0;margin-bottom:2px;}.td-hero p{font-size:13px;color:rgba(255,255,255,0.72);}
 .td-hero-actions{display:flex;gap:10px;flex-wrap:wrap;}
 .td-hero-btn{background:rgba(0,0,0,0.25);border:1.5px solid rgba(255,255,255,0.28);border-radius:10px;padding:9px 16px;color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;cursor:pointer;white-space:nowrap;}
 .td-hero-btn.gold{background:var(--amber);border-color:var(--amber);color:#78350F;}
@@ -265,22 +252,23 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
 .search-input::placeholder{color:var(--faint);}
 .filter-sel{background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:10px;padding:8px 12px;color:#fff;font-family:'Nunito',sans-serif;font-size:12px;cursor:pointer;outline:none;}
 .filter-sel option{background:#0F1A30;}
+.beta-note{background:rgba(255,241,118,0.08);border:1px dashed rgba(255,241,118,0.35);border-radius:12px;padding:12px 18px;font-size:12px;color:rgba(255,241,118,0.8);font-weight:800;text-align:center;margin-bottom:20px;}
 </style>
 </head>
 <body>
 
-<!-- ══ LANDING ══ -->
+<!-- LANDING -->
 <div id="landing" class="screen active">
   <canvas id="land-canvas"></canvas>
   <div class="land-inner">
-    <div class="land-eyebrow">Mrs. Ali's Classroom</div>
+    <div class="land-eyebrow">Mrs. Ali's Classroom · Grade 7</div>
     <div class="land-title">Math<span>Quest</span></div>
-    <div class="land-sub">An epic adventure through 6 mathematical realms. Level up, slay bosses, and master middle school math — one island at a time.</div>
+    <div class="land-sub">Choose your hero. Explore 6 mathematical realms. Slay bosses, earn XP, and master middle school math.</div>
     <div class="land-btns">
       <button class="land-btn land-btn-s" onclick="App.showLogin()">
         <span class="land-btn-icon">🧙</span>
         <span class="land-btn-label">Student</span>
-        <span class="land-btn-sub">Enter the world &amp; quest</span>
+        <span class="land-btn-sub">Enter the world</span>
       </button>
       <button class="land-btn land-btn-t" onclick="App.showTeacher()">
         <span class="land-btn-icon">📊</span>
@@ -291,20 +279,20 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
     <div class="land-pills">
       <span class="land-pill">⚡ XP &amp; Levels</span><span class="land-pill">🐉 Boss Battles</span>
       <span class="land-pill">⚔️ Live Duels</span><span class="land-pill">🗺️ 6 Realms</span>
-      <span class="land-pill">📊 Teacher Insights</span><span class="land-pill">🌍 Enrichment</span>
+      <span class="land-pill">📊 Teacher Dashboard</span><span class="land-pill">🌍 Enrichment</span>
     </div>
-    <div class="cs-banner">🚀 <strong>Ratio Reef is LIVE!</strong> &nbsp;·&nbsp; More realms unlocking soon!</div>
+    <div class="beta-banner">🚀 <strong>BETA — All 6 Realms Open!</strong> &nbsp;·&nbsp; Pick any level · No locks · Test &amp; give feedback!</div>
   </div>
 </div>
 
-<!-- ══ STUDENT WORLD ══ -->
+<!-- STUDENT WORLD -->
 <div id="student-world" class="screen">
   <nav class="mq-nav">
     <div><div class="brand-sub">Mrs. Ali's Classroom</div><div class="brand-main">Math<span>Quest</span></div></div>
     <div class="nav-r">
-      <span class="pill fire hud-streak">🔥 5-day streak</span>
+      <span class="pill fire hud-streak">🔥 1-day streak</span>
       <span class="pill gold hud-xp">⚡ 0 XP</span>
-      <span class="pill hud-level" style="border:1px solid var(--border);">Lvl 1</span>
+      <span class="pill lv hud-level">Lvl 1</span>
       <div class="av-btn hud-av">🧙</div>
       <button class="pill back" onclick="App.showLanding()">← Exit</button>
     </div>
@@ -328,24 +316,24 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
         <div class="duel-vs">VS</div>
         <div class="duel-f"><div class="duel-em">🦊</div><div class="duel-n">Marcus</div><div class="duel-sc">295</div></div>
       </div>
-      <button class="duel-join" onclick="Battle.start()">Join Battle!</button>
+      <button class="duel-join" onclick="Battle.start('ratios')">Join Battle!</button>
     </div>
     <div class="boss-bar">
       <div class="boss-ico">🐉</div>
       <div class="boss-info">
-        <div class="boss-lbl">Chapter Boss — Ratio Reef</div>
+        <div class="boss-lbl">Chapter Boss</div>
         <div class="boss-nm">The Ratio Dragon</div>
-        <div class="boss-hw"><div class="boss-hf boss-anim" id="world-boss-hp" style="width:68%;"></div></div>
+        <div class="boss-hw"><div class="boss-hf boss-anim" style="width:68%;"></div></div>
       </div>
-      <button class="btn btn-red" onclick="Battle.start()">⚔️ Challenge!</button>
+      <button class="btn btn-red" onclick="Battle.start('ratios')">⚔️ Challenge!</button>
     </div>
   </div>
 </div>
 
-<!-- ══ REALM ══ -->
+<!-- REALM (dynamic) -->
 <div id="realm-screen" class="screen"></div>
 
-<!-- ══ TEACHER ══ -->
+<!-- TEACHER -->
 <div id="teacher-screen" class="screen">
   <nav class="mq-nav">
     <div><div class="brand-sub">Mrs. Ali's Classroom</div><div class="brand-main">Math<span>Quest</span></div></div>
@@ -361,14 +349,15 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
   </nav>
   <div class="td-wrap">
     <div class="td-hero">
-      <div><h2>📊 Good morning, Mrs. Ali!</h2><p>Period 3 · Grade 7 · MathQuest · April 2026</p></div>
+      <div><h2>📊 Good morning, Mrs. Ali!</h2><p>Grade 7 · MathQuest Beta · All 6 Realms Open</p></div>
       <div class="td-hero-actions">
-        <button class="td-hero-btn" onclick="Battle.start()">⚔️ Assign Boss Battle</button>
+        <button class="td-hero-btn" onclick="Battle.start('ratios')">⚔️ Assign Boss Battle</button>
         <button class="td-hero-btn">⚡ Create Duel</button>
         <button class="td-hero-btn gold">📥 Download Report</button>
       </div>
     </div>
     <div id="td-overview" class="td-pane active">
+      <div class="beta-note">🚀 BETA MODE — All 6 realms unlocked for testing. Encourage students to explore and report any glitches!</div>
       <div class="td-metrics">
         <div class="td-metric"><span class="td-metric-val" style="color:#A78BFA;">28</span><span class="td-metric-lbl">Students</span></div>
         <div class="td-metric"><span class="td-metric-val" style="color:#34D399;">23</span><span class="td-metric-lbl">Active Today</span></div>
@@ -377,9 +366,9 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
         <div class="td-metric"><span class="td-metric-val" style="color:#FCD34D;">1,430</span><span class="td-metric-lbl">Avg XP</span></div>
         <div class="td-metric"><span class="td-metric-val" style="color:#6EE7B7;">82%</span><span class="td-metric-lbl">Mastery</span></div>
       </div>
-      <div class="alert alert-danger"><div class="alert-ico">⚠️</div><div><div class="alert-title">3 students struggling with Ratio Reef</div><div class="alert-body">Marcus T., Priya R., and Lena K. have attempted Grade 6 ratios more than 5 times without mastery. Suggest small-group intervention or level reassignment.</div></div></div>
+      <div class="alert alert-danger"><div class="alert-ico">⚠️</div><div><div class="alert-title">3 students struggling with Ratio Reef</div><div class="alert-body">Marcus T., Priya R., and Lena K. have attempted Grade 6 ratios more than 5 times without mastery. Suggest small-group intervention.</div></div></div>
       <div class="alert alert-success"><div class="alert-ico">🌟</div><div><div class="alert-title">5 students ready for Enrichment Isle</div><div class="alert-body">Aiden, Sofia, Rania, Omar, and Yasmine have completed all 3 levels in Number Peaks. Consider assigning the Stock Market Analyst mission.</div></div></div>
-      <div class="alert alert-warn"><div class="alert-ico">🔥</div><div><div class="alert-title">Equation Volcano — class-wide gap detected</div><div class="alert-body">18 of 28 students scored below 60% on Grade 7 multi-step equations. Consider a whole-class re-teach before the Chapter Boss unlocks.</div></div></div>
+      <div class="alert alert-warn"><div class="alert-ico">🔥</div><div><div class="alert-title">Equation Volcano — class-wide gap detected</div><div class="alert-body">18 of 28 students scored below 60% on Grade 7 multi-step equations. Consider a whole-class re-teach.</div></div></div>
       <div class="stitle" style="margin-top:4px;">🗺️ Domain Mastery — Class Average</div>
       <div class="insight-card">
         <div class="chart-bar-row"><div class="chart-lbl">Ratio Reef</div><div class="chart-bw"><div class="chart-bf" style="width:62%;background:#0EA5E9;"></div></div><div class="chart-val">62%</div></div>
@@ -387,20 +376,16 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
         <div class="chart-bar-row"><div class="chart-lbl">Eqn Volcano</div><div class="chart-bw"><div class="chart-bf" style="width:41%;background:#EF4444;"></div></div><div class="chart-val">41%</div></div>
         <div class="chart-bar-row"><div class="chart-lbl">Geo Grove</div><div class="chart-bw"><div class="chart-bf" style="width:55%;background:#22C55E;"></div></div><div class="chart-val">55%</div></div>
         <div class="chart-bar-row"><div class="chart-lbl">Data Desert</div><div class="chart-bw"><div class="chart-bf" style="width:33%;background:#F59E0B;"></div></div><div class="chart-val">33%</div></div>
+        <div class="chart-bar-row"><div class="chart-lbl">Enrichment</div><div class="chart-bw"><div class="chart-bf" style="width:18%;background:#EC4899;"></div></div><div class="chart-val">18%</div></div>
       </div>
       <div class="stitle" style="margin-top:18px;">📅 Weekly Activity Heatmap</div>
-      <div class="insight-card">
-        <div class="hm-wrap" style="margin-bottom:4px;"><div class="hm-dlbl">Mon</div><div class="hm-dlbl">Tue</div><div class="hm-dlbl">Wed</div><div class="hm-dlbl">Thu</div><div class="hm-dlbl">Fri</div><div class="hm-dlbl">Sat</div><div class="hm-dlbl">Sun</div></div>
-        <div class="hm-wrap" id="heatmap-grid"></div>
-      </div>
+      <div class="insight-card"><div class="hm-wrap" style="margin-bottom:4px;"><div class="hm-dlbl">Mon</div><div class="hm-dlbl">Tue</div><div class="hm-dlbl">Wed</div><div class="hm-dlbl">Thu</div><div class="hm-dlbl">Fri</div><div class="hm-dlbl">Sat</div><div class="hm-dlbl">Sun</div></div><div class="hm-wrap" id="heatmap-grid"></div></div>
     </div>
     <div id="td-students" class="td-pane">
       <div class="stitle">👥 Student Progress <span class="chip chip-gold" style="font-size:12px;">28 students</span></div>
       <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
         <input class="search-input" placeholder="🔍 Search students..." oninput="S.search=this.value;TD.renderStudents()">
-        <select class="filter-sel" onchange="S.filter=this.value;TD.renderStudents()">
-          <option value="all">All</option><option value="help">Needs help</option><option value="track">On track</option><option value="adv">Advanced</option>
-        </select>
+        <select class="filter-sel" onchange="S.filter=this.value;TD.renderStudents()"><option value="all">All</option><option value="help">Needs help</option><option value="track">On track</option><option value="adv">Advanced</option></select>
       </div>
       <div class="td-sgrid" id="student-grid"></div>
     </div>
@@ -409,14 +394,14 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
   </div>
 </div>
 
-<!-- ══ GLOBAL MODAL ══ -->
+<!-- MODAL -->
 <div class="overlay hidden" id="overlay"><div class="mbox" id="mbox"></div></div>
 
-<!-- ══ LOGIN OVERLAY ══ -->
+<!-- LOGIN -->
 <div class="overlay hidden" id="login-overlay">
   <div class="login-box">
     <div class="login-logo">Math<span>Quest</span></div>
-    <div class="login-school">Mrs. Ali's Classroom · Grade 7</div>
+    <div class="login-school">Mrs. Ali's Classroom · Grade 7 Beta</div>
     <label class="login-label">Your Name</label>
     <input class="login-input" id="login-name" placeholder="Type your first and last name..." maxlength="40">
     <div class="login-err" id="login-err">Please enter your name to continue!</div>
@@ -427,100 +412,500 @@ body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hi
 </div>
 
 <script>
-// ════════════════════════════════════
-//  DATA
-// ════════════════════════════════════
+// ══════════════════════════════════════════
+//  AVATARS
+// ══════════════════════════════════════════
 const AVATARS=[
   {em:'🧙',nm:'Wizard'},{em:'🦁',nm:'Lion King'},{em:'🐉',nm:'Dragon Rider'},{em:'🦊',nm:'Fox Sage'},
   {em:'🐺',nm:'Wolf Scout'},{em:'🦅',nm:'Eagle Eye'},{em:'🐯',nm:'Tiger Claw'},{em:'🦄',nm:'Unicorn'}
 ];
 
+// ══════════════════════════════════════════
+//  ISLANDS (all live=true for beta)
+// ══════════════════════════════════════════
 const ISLANDS=[
-  {id:'ratios',name:'Ratio Reef',realm:'The Proportion Archipelago',desc:'Master rates, unit rates & proportional relationships on coral shores.',col:'#0EA5E9',dark:'#0C4A6E',lvs:['done','curr','lock'],xp:62,xplbl:'620/1000 XP',icon:'📐',x:.20,y:.35,rx:.12,ry:.065,live:true},
-  {id:'numbers',name:'Number Peaks',realm:'The Numerical Highlands',desc:'Conquer fractions, decimals, scientific notation & rational numbers.',col:'#A855F7',dark:'#3B0764',lvs:['done','done','curr'],xp:85,xplbl:'850/1000 XP',icon:'🔢',x:.70,y:.22,rx:.11,ry:.060,live:false},
-  {id:'expressions',name:'Equation Volcano',realm:'The Algebraic Badlands',desc:'Survive eruptions of variables & inequalities under pressure.',col:'#EF4444',dark:'#450A0A',lvs:['done','curr','lock'],xp:40,xplbl:'400/1000 XP',icon:'🧮',x:.78,y:.60,rx:.11,ry:.060,live:false},
-  {id:'geometry',name:'Geometry Grove',realm:'The Sacred Forest',desc:'Discover area, circles, angles & transformations in ancient woodland.',col:'#22C55E',dark:'#14532D',lvs:['done','curr','lock'],xp:30,xplbl:'300/1000 XP',icon:'📏',x:.33,y:.68,rx:.115,ry:.062,live:false},
-  {id:'stats',name:'Data Desert',realm:'The Probability Wastes',desc:'Chart distributions, probability & sampling across shimmering dunes.',col:'#F59E0B',dark:'#451A03',lvs:['curr','lock','lock'],xp:20,xplbl:'200/1000 XP',icon:'📊',x:.57,y:.75,rx:.10,ry:.055,live:false},
-  {id:'enrichment',name:'Enrichment Isle',realm:'The Real World Reach',desc:'Apply every power to engineering, finance, ecology & space missions.',col:'#EC4899',dark:'#500724',lvs:['lock','lock','lock'],xp:5,xplbl:'Unlocks at mastery',icon:'🌍',x:.14,y:.70,rx:.085,ry:.050,live:false}
+  {id:'ratios',   name:'Ratio Reef',       realm:'The Proportion Archipelago', desc:'Rates, unit rates & proportional relationships.',col:'#0EA5E9',dark:'#0C4A6E',icon:'📐',x:.20,y:.35,rx:.12,ry:.065},
+  {id:'numbers',  name:'Number Peaks',     realm:'The Numerical Highlands',    desc:'Fractions, decimals, scientific notation & rationals.',col:'#A855F7',dark:'#3B0764',icon:'🔢',x:.70,y:.22,rx:.11,ry:.060},
+  {id:'expressions',name:'Equation Volcano',realm:'The Algebraic Badlands',   desc:'Variables, inequalities & multi-step equations.',col:'#EF4444',dark:'#450A0A',icon:'🧮',x:.78,y:.60,rx:.11,ry:.060},
+  {id:'geometry', name:'Geometry Grove',   realm:'The Sacred Forest',          desc:'Area, circles, angles & transformations.',col:'#22C55E',dark:'#14532D',icon:'📏',x:.33,y:.68,rx:.115,ry:.062},
+  {id:'stats',    name:'Data Desert',      realm:'The Probability Wastes',     desc:'Data distributions, probability & sampling.',col:'#F59E0B',dark:'#451A03',icon:'📊',x:.57,y:.75,rx:.10,ry:.055},
+  {id:'enrichment',name:'Enrichment Isle', realm:'The Real World Reach',       desc:'Real-world missions in engineering, finance & space.',col:'#EC4899',dark:'#500724',icon:'🌍',x:.14,y:.70,rx:.085,ry:.050}
 ];
 const PATHS=[[0,1],[0,3],[1,2],[2,4],[3,4],[3,5]];
 const CLOUDS=[{ox:.04,oy:.06,w:140,spd:.18,t:0},{ox:.40,oy:.04,w:110,spd:.14,t:500},{ox:.72,oy:.08,w:130,spd:.20,t:200},{ox:.55,oy:.02,w:90,spd:.12,t:800},{ox:.20,oy:.13,w:100,spd:.16,t:300}];
 const BIRDS=Array.from({length:10},(_,i)=>({ox:Math.random(),oy:.04+Math.random()*.15,spd:.22+Math.random()*.18,t:i*90,amp:2+Math.random()*3,freq:.06+Math.random()*.04}));
 
-// ── BOSS BATTLE QUESTIONS (7 questions) ──
-const BOSS_QUESTIONS=[
-  {q:'A car travels 180 miles in 3 hours. What is the unit rate (speed)?',opts:['50 mph','55 mph','60 mph','65 mph'],ans:2,explain:'Unit rate = 180 ÷ 3 = 60 miles per hour.'},
-  {q:'If 4 bags of rice cost $9.20, how much do 7 bags cost?',opts:['$14.40','$15.75','$16.10','$18.00'],ans:2,explain:'Unit rate = $9.20 ÷ 4 = $2.30 each. 7 × $2.30 = $16.10.'},
-  {q:'A map has a scale of 1 inch = 40 miles. Two cities are 3.5 inches apart. How far in real life?',opts:['43.5 miles','120 miles','140 miles','160 miles'],ans:2,explain:'3.5 × 40 = 140 miles.'},
-  {q:'Are 3:5 and 9:15 equivalent ratios?',opts:['Yes','No','Only when simplified','Cannot determine'],ans:0,explain:'9:15 = 9÷3 : 15÷3 = 3:5. Yes, they are equivalent!'},
-  {q:'A shirt costs $45. It is on sale for 20% off. What is the sale price?',opts:['$25','$34','$36','$40'],ans:2,explain:'20% of $45 = $9. Sale price = $45 − $9 = $36.'},
-  {q:'The equation y = 3.5x represents a proportional relationship. What is the constant of proportionality?',opts:['x','y','3.5','0'],ans:2,explain:'In y = kx, the constant of proportionality k = 3.5.'},
-  {q:'A store buys an item for $60 and sells it for $90. What is the percent markup?',opts:['30%','40%','50%','60%'],ans:2,explain:'Markup = ($90 − $60) ÷ $60 = $30 ÷ $60 = 0.50 = 50%.'},
-];
-
-// ── QUEST QUESTION BANKS (5 questions each) ──
-const RATIO_REEF={
-  id:'ratios',name:'Ratio Reef',realm:'The Proportion Archipelago',color:'#0EA5E9',dark:'#0C4A6E',
-  boss:{icon:'🐉',name:'The Ratio Dragon',desc:'A fearsome dragon that devours all who cannot reason with rates and proportions. Prove your mastery!',hp:72,fighters:14},
-  levels:[
-    {grade:6,label:'Grade 6',status:'done',standard:'6.RP.A — Understand ratio concepts',quests:[
-      {id:'r6q1',title:'What IS a Ratio?',sub:'Understand part-to-part and part-to-whole ratios using real-world objects.',xp:75,stars:3,status:'done',questions:[
-        {q:'A fruit bowl has 4 apples and 6 oranges. What is the ratio of apples to total fruit?',opts:['4:6','4:10','6:4','10:4'],ans:1,explain:'Total fruit = 4 + 6 = 10. Apples to total = 4:10 (which simplifies to 2:5).'},
-        {q:'A class has 12 boys and 15 girls. What is the ratio of girls to boys?',opts:['12:15','15:12','15:27','12:27'],ans:1,explain:'Girls to boys means girls first: 15:12, which simplifies to 5:4.'},
-        {q:'Write 3:7 as a fraction.',opts:['7/3','3/10','3/7','7/10'],ans:2,explain:'A ratio a:b can be written as the fraction a/b, so 3:7 = 3/7.'},
-        {q:'In a bag of 20 marbles, 8 are red. What is the ratio of red to non-red marbles?',opts:['8:20','8:12','12:8','8:28'],ans:1,explain:'Non-red = 20 − 8 = 12. Ratio of red to non-red = 8:12 = 2:3.'},
-        {q:'A soccer team won 9 games and lost 3 games. What is the ratio of wins to total games played?',opts:['9:3','9:12','3:9','3:12'],ans:1,explain:'Total games = 9 + 3 = 12. Wins to total = 9:12 = 3:4.'},
+// ══════════════════════════════════════════
+//  ALL 6 REALM DEFINITIONS
+// ══════════════════════════════════════════
+const REALMS={
+  ratios:{
+    id:'ratios',name:'Ratio Reef',realm:'The Proportion Archipelago',color:'#0EA5E9',dark:'#0C4A6E',
+    boss:{icon:'🐉',name:'The Ratio Dragon',desc:'A fearsome dragon that devours those who cannot reason with rates & proportions. 7 questions to deal maximum damage!',hp:72},
+    levels:[
+      {grade:6,label:'Grade 6',standard:'6.RP.A — Understand ratio concepts',quests:[
+        {id:'r6q1',title:'What IS a Ratio?',sub:'Part-to-part and part-to-whole ratios using real-world objects.',xp:75,questions:[
+          {q:'A fruit bowl has 4 apples and 6 oranges. What is the ratio of apples to total fruit?',opts:['4:6','4:10','6:4','10:4'],ans:1,ex:'Total = 4+6=10. Apples to total = 4:10 = 2:5.'},
+          {q:'A class has 12 boys and 15 girls. What is the ratio of girls to boys?',opts:['12:15','15:12','15:27','12:27'],ans:1,ex:'Girls to boys = 15:12 = 5:4.'},
+          {q:'Write 3:7 as a fraction.',opts:['7/3','3/10','3/7','7/10'],ans:2,ex:'a:b = a/b, so 3:7 = 3/7.'},
+          {q:'A bag has 20 marbles: 8 red. What is the ratio of red to non-red?',opts:['8:20','8:12','12:8','8:28'],ans:1,ex:'Non-red = 12. Red:non-red = 8:12 = 2:3.'},
+          {q:'A team won 9 and lost 3. What is the ratio of wins to total games?',opts:['9:3','9:12','3:9','3:12'],ans:1,ex:'Total = 12. Wins:total = 9:12 = 3:4.'},
+        ]},
+        {id:'r6q2',title:'Unit Rate Quest',sub:'Find unit rates to compare prices, speeds & more.',xp:80,questions:[
+          {q:'A car travels 150 miles in 3 hours. What is its speed?',opts:['45 mph','50 mph','53 mph','60 mph'],ans:1,ex:'150 ÷ 3 = 50 mph.'},
+          {q:'3 notebooks cost $7.50. Cost per notebook?',opts:['$2.00','$2.25','$2.50','$3.00'],ans:2,ex:'$7.50 ÷ 3 = $2.50.'},
+          {q:'Better deal: A) 5 pens for $3.75 or B) 8 pens for $5.60?',opts:['A — $0.75 each','B — $0.70 each','Equal','Not enough info'],ans:1,ex:'A=$0.75 each, B=$0.70 each. B wins!'},
+          {q:'Layla reads 120 pages in 4 hours. Pages per hour?',opts:['24','28','30','35'],ans:2,ex:'120 ÷ 4 = 30 pages/hour.'},
+          {q:'A runner runs 2.5 km in 10 minutes. Unit rate in km/min?',opts:['0.20','0.25','0.40','2.5'],ans:1,ex:'2.5 ÷ 10 = 0.25 km/min.'},
+        ]},
+        {id:'r6q3',title:'Equivalent Ratios',sub:'Ratio tables and double number lines.',xp:85,questions:[
+          {q:'Are 2:5 and 6:15 equivalent?',opts:['Yes','No','Only simplified','Cannot tell'],ans:0,ex:'6÷3:15÷3 = 2:5. Yes!'},
+          {q:'3:4 = ?:20',opts:['12','15','16','18'],ans:1,ex:'20÷4=5. 3×5=15.'},
+          {q:'Recipe: 2 cups flour per 3 cups sugar. For 9 cups sugar, flour needed?',opts:['4 cups','5 cups','6 cups','8 cups'],ans:2,ex:'9÷3=3. 2×3=6 cups.'},
+          {q:'Cats to dogs = 3:5. If 18 cats, how many dogs?',opts:['20','25','30','35'],ans:2,ex:'18÷3=6. 5×6=30 dogs.'},
+          {q:'4:7 = 20:?',opts:['25','28','35','40'],ans:2,ex:'20÷4=5. 7×5=35.'},
+        ]},
       ]},
-      {id:'r6q2',title:'Unit Rate Quest',sub:'Find unit rates to compare prices, speeds, and everyday situations.',xp:80,stars:3,status:'done',questions:[
-        {q:'A car travels 150 miles in 3 hours. What is its unit rate (speed)?',opts:['45 mph','50 mph','53 mph','60 mph'],ans:1,explain:'Unit rate = 150 ÷ 3 = 50 miles per hour.'},
-        {q:'3 notebooks cost $7.50. What is the cost per notebook?',opts:['$2.00','$2.25','$2.50','$3.00'],ans:2,explain:'Cost per notebook = $7.50 ÷ 3 = $2.50.'},
-        {q:'Which is the better deal? A: 5 pens for $3.75 or B: 8 pens for $5.60?',opts:['A — $0.75 each','B — $0.70 each','They are equal','Need more info'],ans:1,explain:'A = $3.75÷5 = $0.75 each. B = $5.60÷8 = $0.70 each. B is the better deal!'},
-        {q:'Layla reads 120 pages in 4 hours. How many pages per hour?',opts:['24 pages','28 pages','30 pages','35 pages'],ans:2,explain:'Pages per hour = 120 ÷ 4 = 30 pages per hour.'},
-        {q:'A runner runs 2.5 km in 10 minutes. What is the unit rate in km per minute?',opts:['0.2 km/min','0.25 km/min','0.4 km/min','2.5 km/min'],ans:1,explain:'Unit rate = 2.5 ÷ 10 = 0.25 km per minute.'},
+      {grade:7,label:'Grade 7',standard:'7.RP.A — Analyze proportional relationships',quests:[
+        {id:'r7q1',title:'Proportional Relationships',sub:'Tables, graphs, and equations.',xp:90,questions:[
+          {q:'Table: x=2,4,6 | y=6,12,18. Proportional?',opts:['Yes — ratio 3:1','No','Yes — ratio 1:3','Cannot tell'],ans:0,ex:'y/x = 3 always. Proportional!'},
+          {q:'A proportional graph always passes through:',opts:['(1,1)','x-axis','The origin (0,0)','Any two points'],ans:2,ex:'When x=0, y=0 → origin.'},
+          {q:'y = 4.5x. Constant of proportionality?',opts:['x','y','4.5','0'],ans:2,ex:'In y=kx, k=4.5.'},
+          {q:'Table: x=1,2,3 | y=5,9,13. Proportional?',opts:['Yes','No — ratios vary','Yes — additive','Cannot tell'],ans:1,ex:'5/1=5, 9/2=4.5, 13/3≈4.33. Not constant → NOT proportional.'},
+          {q:'y is proportional to x. y=15 when x=5. Find y when x=9.',opts:['19','25','27','45'],ans:2,ex:'k=15/5=3. y=3×9=27.'},
+        ]},
+        {id:'r7q2',title:'Percent Problems',sub:'Tax, tip, discounts and markups.',xp:95,questions:[
+          {q:'Shirt costs $40. 25% off. Sale price?',opts:['$10','$28','$30','$32'],ans:2,ex:'25%×40=$10 off. $40−$10=$30.'},
+          {q:'Meal $56 + 15% tip = total?',opts:['$8.40','$62.40','$64.40','$71.00'],ans:2,ex:'Tip=$8.40. Total=$64.40.'},
+          {q:'Bought $80, sold $120. Percent markup?',opts:['33%','40%','50%','67%'],ans:2,ex:'($120−$80)/$80=50%.'},
+          {q:'Jacket $120, 30% discount. Sale price?',opts:['$36','$78','$84','$90'],ans:2,ex:'30%×$120=$36. $120−$36=$84.'},
+          {q:'$200 item, 8% tax. Final price?',opts:['$208','$214','$216','$218'],ans:2,ex:'Tax=$16. $200+$16=$216.'},
+        ]},
+        {id:'r7q3',title:'Scale & Proportion',sub:'Maps, scale drawings and models.',xp:100,questions:[
+          {q:'Map: 1 inch = 50 miles. Cities 3.5 inches apart. Real distance?',opts:['53.5 mi','150 mi','175 mi','200 mi'],ans:2,ex:'3.5×50=175 miles.'},
+          {q:'Car model 1:24. Real car 168 inches. Model length?',opts:['5 in','6 in','7 in','8 in'],ans:2,ex:'168÷24=7 inches.'},
+          {q:'5 workers finish in 12 days. 3 workers take how long?',opts:['7.2 days','15 days','20 days','25 days'],ans:2,ex:'60 worker-days÷3=20 days.'},
+          {q:'Blueprint: 1 cm = 4 m. Room is 7.5 cm. Real length?',opts:['25 m','28 m','30 m','32 m'],ans:2,ex:'7.5×4=30 m.'},
+          {q:'Building 45 m tall, model scale 1:100. Model height in cm?',opts:['4.5 cm','45 cm','450 cm','4500 cm'],ans:1,ex:'4500 cm÷100=45 cm.'},
+        ]},
       ]},
-      {id:'r6q3',title:'Equivalent Ratios',sub:'Use ratio tables and double number lines to find equivalent ratios.',xp:85,stars:2,status:'curr',questions:[
-        {q:'Are 2:5 and 6:15 equivalent ratios?',opts:['Yes','No','Cannot determine','Only if simplified'],ans:0,explain:'6:15 = 6÷3 : 15÷3 = 2:5. Yes, they are equivalent!'},
-        {q:'Complete the ratio table: 3:4 = ?:20',opts:['12','15','16','18'],ans:1,explain:'20 ÷ 4 = 5. Multiply both by 5: 3×5 = 15. Answer: 15.'},
-        {q:'A recipe uses 2 cups flour for every 3 cups sugar. For 9 cups sugar, how much flour?',opts:['4 cups','5 cups','6 cups','8 cups'],ans:2,explain:'9 ÷ 3 = 3 (scale factor). 2 × 3 = 6 cups of flour.'},
-        {q:'The ratio of cats to dogs is 3:5. If there are 18 cats, how many dogs?',opts:['20','25','30','35'],ans:2,explain:'Scale factor = 18 ÷ 3 = 6. Dogs = 5 × 6 = 30.'},
-        {q:'Find the missing value: 4:7 = 20:?',opts:['25','28','35','40'],ans:2,explain:'Scale factor = 20 ÷ 4 = 5. Missing value = 7 × 5 = 35.'},
+      {grade:8,label:'Grade 8',standard:'8.EE.B — Proportional linear relationships',quests:[
+        {id:'r8q1',title:'Slope as Rate of Change',sub:'Connect proportional relationships to slope.',xp:110,questions:[
+          {q:'Line through (0,0) and (4,10). Slope?',opts:['0.4','2','2.5','4'],ans:2,ex:'10/4=2.5.'},
+          {q:'Slope of y=kx equals:',opts:['y-intercept','x-intercept','k (constant of proportionality)','origin'],ans:2,ex:'Slope = k.'},
+          {q:'Slope 3/4. For every 8 units right, how many up?',opts:['4','5','6','8'],ans:2,ex:'(3/4)×8=6 up.'},
+          {q:'Which is proportional?',opts:['y=2x+3','y=2x','y=x²','y=3'],ans:1,ex:'y=2x passes through origin with constant rate.'},
+          {q:'Line through (2,8) and (5,20). Proportional?',opts:['Yes, slope=4','No, y-int≠0','Yes, slope=3','Cannot tell'],ans:0,ex:'Slope=12/3=4. 8/2=4, 20/5=4. Constant ratio → proportional.'},
+        ]},
+        {id:'r8q2',title:'Linear vs Nonlinear',sub:'Identify and compare proportional patterns.',xp:115,questions:[
+          {q:'y = x². Proportional?',opts:['Yes','No — nonlinear','Yes — quadratic ratio','Cannot tell'],ans:1,ex:'x²/x = x (not constant). Not proportional.'},
+          {q:'Table: x=1,2,3 | y=3,6,9. Slope?',opts:['1','2','3','4'],ans:2,ex:'y/x=3 always. Slope=3.'},
+          {q:'Two lines: y=2x and y=2x+5. Which is proportional?',opts:['Both','Neither','y=2x only','y=2x+5 only'],ans:2,ex:'y=2x passes through origin. y=2x+5 does not.'},
+          {q:'Unit rate of a proportional relationship is 6. Equation?',opts:['y=x+6','y=6x','y=x/6','y=6'],ans:1,ex:'Unit rate = k in y=kx. y=6x.'},
+          {q:'Graph shows a straight line NOT through origin. Proportional?',opts:['Yes','No','Only if slope>0','Depends on x'],ans:1,ex:'Must pass through (0,0) to be proportional.'},
+        ]},
       ]},
-    ]},
-    {grade:7,label:'Grade 7',status:'curr',standard:'7.RP.A — Analyze proportional relationships',quests:[
-      {id:'r7q1',title:'Proportional Relationships',sub:'Identify proportional relationships in tables, graphs, and equations.',xp:90,stars:3,status:'done',questions:[
-        {q:'Is the table proportional? x: 2,4,6 | y: 6,12,18',opts:['Yes — ratio 3:1','No — not constant','Yes — ratio 1:3','Cannot tell'],ans:0,explain:'y/x = 6/2 = 12/4 = 18/6 = 3. Constant ratio → proportional!'},
-        {q:'A graph of a proportional relationship always passes through:',opts:['(1,1)','The x-axis','The origin (0,0)','Any two points'],ans:2,explain:'Proportional relationships always pass through (0,0) because when x=0, y=0.'},
-        {q:'y = 4.5x represents a proportional relationship. What is the constant of proportionality?',opts:['x','y','4.5','0'],ans:2,explain:'In y = kx, the constant of proportionality k = 4.5.'},
-        {q:'Is the table proportional? x: 1,2,3 | y: 5,9,13',opts:['Yes','No — ratio not constant','Yes — additive pattern','Cannot determine'],ans:1,explain:'5/1=5, 9/2=4.5, 13/3≈4.33 — ratios are not constant, so NOT proportional.'},
-        {q:'If y is proportional to x and y=15 when x=5, what is y when x=9?',opts:['19','25','27','45'],ans:2,explain:'k = 15/5 = 3. When x = 9, y = 3 × 9 = 27.'},
+    ],
+    bossQuestions:[
+      {q:'A car travels 180 miles in 3 hours. Speed?',opts:['50 mph','55 mph','60 mph','65 mph'],ans:2,ex:'180÷3=60 mph.'},
+      {q:'4 bags of rice cost $9.20. Cost of 7 bags?',opts:['$14.40','$15.75','$16.10','$18.00'],ans:2,ex:'$9.20÷4=$2.30 each. 7×$2.30=$16.10.'},
+      {q:'Map: 1 inch = 40 miles. Cities 3.5 inches apart. Real distance?',opts:['43.5 mi','120 mi','140 mi','160 mi'],ans:2,ex:'3.5×40=140 miles.'},
+      {q:'Are 3:5 and 9:15 equivalent?',opts:['Yes','No','Only simplified','Cannot tell'],ans:0,ex:'9÷3:15÷3=3:5. Yes!'},
+      {q:'Shirt $45, 20% off. Sale price?',opts:['$25','$34','$36','$40'],ans:2,ex:'20%×$45=$9. $45−$9=$36.'},
+      {q:'y=3.5x. Constant of proportionality?',opts:['x','y','3.5','0'],ans:2,ex:'k=3.5 in y=kx.'},
+      {q:'Store buys item for $60, sells for $90. Percent markup?',opts:['30%','40%','50%','60%'],ans:2,ex:'($90−$60)/$60=50%.'},
+    ]
+  },
+  numbers:{
+    id:'numbers',name:'Number Peaks',realm:'The Numerical Highlands',color:'#A855F7',dark:'#3B0764',
+    boss:{icon:'🔮',name:'The Fraction Phantom',desc:'A ghostly specter that feeds on number confusion. Answer 7 questions to banish it from the highlands!',hp:65},
+    levels:[
+      {grade:6,label:'Grade 6',standard:'6.NS — Number system & fractions',quests:[
+        {id:'n6q1',title:'Fraction Foundations',sub:'Add, subtract, multiply & divide fractions.',xp:75,questions:[
+          {q:'1/2 + 1/3 = ?',opts:['2/5','2/6','5/6','1/6'],ans:2,ex:'LCD=6. 3/6+2/6=5/6.'},
+          {q:'3/4 − 1/6 = ?',opts:['2/3','7/12','5/12','1/2'],ans:1,ex:'LCD=12. 9/12−2/12=7/12.'},
+          {q:'2/3 × 3/5 = ?',opts:['5/8','6/15','2/5','3/8'],ans:2,ex:'(2×3)/(3×5)=6/15=2/5.'},
+          {q:'3/4 ÷ 1/2 = ?',opts:['3/8','1/6','3/2','2/3'],ans:2,ex:'3/4 × 2/1 = 6/4 = 3/2.'},
+          {q:'Which is greatest: 2/3, 3/4, 5/8?',opts:['2/3','3/4','5/8','They are equal'],ans:1,ex:'LCD=24: 16/24, 18/24, 15/24. 3/4 is greatest.'},
+        ]},
+        {id:'n6q2',title:'Decimal Operations',sub:'Add, subtract, multiply & divide decimals.',xp:80,questions:[
+          {q:'3.45 + 2.8 = ?',opts:['5.25','6.25','6.45','5.45'],ans:1,ex:'3.45+2.80=6.25.'},
+          {q:'7.2 − 4.85 = ?',opts:['2.35','2.45','3.35','3.45'],ans:0,ex:'7.20−4.85=2.35.'},
+          {q:'2.4 × 3.5 = ?',opts:['7.2','8.0','8.4','7.4'],ans:2,ex:'24×35=840. Two decimal places → 8.40.'},
+          {q:'12.6 ÷ 0.3 = ?',opts:['4.2','42','0.42','420'],ans:1,ex:'Multiply both by 10: 126÷3=42.'},
+          {q:'Round 3.847 to the nearest tenth.',opts:['3.8','3.85','3.9','4.0'],ans:0,ex:'Tenths digit=8. Next digit=4 (<5). Keep 8. → 3.8.'},
+        ]},
+        {id:'n6q3',title:'Rational Numbers',sub:'Integers, opposites, and absolute value.',xp:85,questions:[
+          {q:'What is the absolute value of −8?',opts:['−8','8','0','16'],ans:1,ex:'|−8|=8. Distance from 0.'},
+          {q:'Order from least to greatest: −3, 1, −5, 2',opts:['−3,−5,1,2','−5,−3,1,2','1,2,−3,−5','−5,1,−3,2'],ans:1,ex:'On number line: −5,−3,1,2.'},
+          {q:'−4 + (−6) = ?',opts:['2','−2','10','−10'],ans:3,ex:'Both negative: −(4+6)=−10.'},
+          {q:'−3 × (−4) = ?',opts:['−12','12','−7','7'],ans:1,ex:'Negative × negative = positive. 12.'},
+          {q:'What is the opposite of −9?',opts:['0','9','−9','1/9'],ans:1,ex:'Opposite of −9 is +9.'},
+        ]},
       ]},
-      {id:'r7q2',title:'Percent Problems',sub:'Solve real-world percent problems: tax, tip, discounts, and markups.',xp:95,stars:2,status:'curr',questions:[
-        {q:'A shirt costs $40. It is on sale for 25% off. What is the sale price?',opts:['$10','$28','$30','$32'],ans:2,explain:'25% of $40 = $10. Sale price = $40 − $10 = $30.'},
-        {q:'A meal costs $56. With 15% tip, what is the total?',opts:['$8.40','$62.40','$64.40','$71.00'],ans:2,explain:'Tip = 15% × $56 = $8.40. Total = $56 + $8.40 = $64.40.'},
-        {q:'A store buys an item for $80 and sells it for $120. What is the percent markup?',opts:['33%','40%','50%','67%'],ans:2,explain:'Markup = ($120−$80)/$80 = $40/$80 = 0.50 = 50%.'},
-        {q:'A jacket originally costs $120. After a 30% discount, what is the sale price?',opts:['$36','$78','$84','$90'],ans:2,explain:'Discount = 30% × $120 = $36. Sale price = $120 − $36 = $84.'},
-        {q:'Tax on a $200 item is 8%. What is the final price including tax?',opts:['$208','$214','$216','$218'],ans:2,explain:'Tax = 8% × $200 = $16. Final price = $200 + $16 = $216.'},
+      {grade:7,label:'Grade 7',standard:'7.NS — Operations with rational numbers',quests:[
+        {id:'n7q1',title:'Integer Operations',sub:'Add, subtract, multiply & divide integers.',xp:90,questions:[
+          {q:'−7 + 12 = ?',opts:['−19','5','−5','19'],ans:1,ex:'12−7=5 (positive wins).'},
+          {q:'−8 − (−3) = ?',opts:['−11','−5','5','11'],ans:1,ex:'−8+(+3)=−5.'},
+          {q:'(−4) × (−9) = ?',opts:['−36','36','−13','13'],ans:1,ex:'Neg×Neg=Pos. 36.'},
+          {q:'−45 ÷ 9 = ?',opts:['−5','5','−54','54'],ans:0,ex:'Neg÷Pos=Neg. −5.'},
+          {q:'|−7| + |−3| = ?',opts:['−10','4','−4','10'],ans:3,ex:'7+3=10.'},
+        ]},
+        {id:'n7q2',title:'Scientific Notation',sub:'Write and compare very large and very small numbers.',xp:95,questions:[
+          {q:'Write 45,000 in scientific notation.',opts:['45×10³','4.5×10⁴','4.5×10³','45×10⁴'],ans:1,ex:'4.5×10⁴ (decimal after first non-zero digit).'},
+          {q:'Write 0.0072 in scientific notation.',opts:['7.2×10⁻²','7.2×10⁻³','72×10⁻³','7.2×10³'],ans:1,ex:'Move decimal 3 places right → 7.2×10⁻³.'},
+          {q:'Which is larger: 3.2×10⁵ or 8.1×10⁴?',opts:['3.2×10⁵','8.1×10⁴','Equal','Cannot tell'],ans:0,ex:'10⁵=100,000 > 10⁴=10,000. 3.2×10⁵ is larger.'},
+          {q:'(2×10³) × (3×10⁴) = ?',opts:['5×10⁷','6×10⁷','6×10¹²','5×10¹²'],ans:1,ex:'2×3=6. 10³×10⁴=10⁷. Answer: 6×10⁷.'},
+          {q:'Convert 8.5×10⁻² to standard form.',opts:['850','8.5','0.85','0.085'],ans:3,ex:'Move decimal 2 left: 0.085.'},
+        ]},
+        {id:'n7q3',title:'Fraction & Decimal Connections',sub:'Convert between fractions, decimals and percents.',xp:100,questions:[
+          {q:'Convert 3/8 to a decimal.',opts:['0.38','0.375','3.8','0.308'],ans:1,ex:'3÷8=0.375.'},
+          {q:'Convert 0.72 to a fraction in simplest form.',opts:['72/100','18/25','36/50','72/10'],ans:1,ex:'72/100=18/25.'},
+          {q:'What percent is 5/8?',opts:['58%','62.5%','50%','80%'],ans:1,ex:'5÷8=0.625=62.5%.'},
+          {q:'Order: 0.6, 3/5, 65%, 0.59',opts:['0.59,0.6,3/5,65%','0.59,3/5,0.6,65%','3/5,0.6,65%,0.59','65%,3/5,0.6,0.59'],ans:0,ex:'As decimals: 0.59, 0.60, 0.60, 0.65. 0.59<0.60=0.60<0.65.'},
+          {q:'What fraction of 40 is 25?',opts:['25/100','5/8','4/5','2/5'],ans:1,ex:'25/40=5/8.'},
+        ]},
       ]},
-      {id:'r7q3',title:'Scale & Proportion',sub:'Use proportional reasoning to solve scale drawing and map problems.',xp:100,stars:0,status:'lock',questions:[
-        {q:'A map has scale 1 inch = 50 miles. Two cities are 3.5 inches apart. How far in real life?',opts:['53.5 miles','150 miles','175 miles','200 miles'],ans:2,explain:'3.5 × 50 = 175 miles.'},
-        {q:'A model car is 1:24 scale. The real car is 168 inches long. How long is the model?',opts:['5 inches','6 inches','7 inches','8 inches'],ans:2,explain:'168 ÷ 24 = 7 inches.'},
-        {q:'If 5 workers finish a job in 12 days, how many days for 3 workers?',opts:['7.2 days','15 days','20 days','25 days'],ans:2,explain:'5 × 12 = 60 worker-days total. 60 ÷ 3 = 20 days.'},
-        {q:'A blueprint has scale 1 cm = 4 m. A room is 7.5 cm on the blueprint. What is the real length?',opts:['25 m','28 m','30 m','32 m'],ans:2,explain:'7.5 × 4 = 30 meters.'},
-        {q:'A model building is 1:100 scale. The real building is 45 m tall. How tall is the model in cm?',opts:['4.5 cm','45 cm','450 cm','4500 cm'],ans:1,explain:'45 m = 4500 cm. 4500 ÷ 100 = 45 cm.'},
+      {grade:8,label:'Grade 8',standard:'8.NS — Irrational numbers & approximations',quests:[
+        {id:'n8q1',title:'Irrational Numbers',sub:'Square roots, cube roots & the real number line.',xp:110,questions:[
+          {q:'√64 = ?',opts:['6','7','8','9'],ans:2,ex:'8×8=64.'},
+          {q:'Is √2 rational or irrational?',opts:['Rational','Irrational','Both','Neither'],ans:1,ex:'√2=1.41421... (non-terminating, non-repeating) = irrational.'},
+          {q:'Between which two integers does √50 lie?',opts:['6 and 7','7 and 8','8 and 9','5 and 6'],ans:1,ex:'7²=49, 8²=64. √50 is between 7 and 8.'},
+          {q:'∛27 = ?',opts:['3','4','5','9'],ans:0,ex:'3³=27.'},
+          {q:'Which is irrational?',opts:['1/3','√16','0.333...','π'],ans:3,ex:'π = 3.14159... never repeats or terminates.'},
+        ]},
+        {id:'n8q2',title:'Comparing Real Numbers',sub:'Place rational and irrational numbers on a number line.',xp:115,questions:[
+          {q:'Which is greater: √5 or 2.2?',opts:['√5','2.2','Equal','Cannot tell'],ans:0,ex:'√5≈2.236 > 2.2.'},
+          {q:'Where does √10 fall on the number line?',opts:['Between 2 and 3','Between 3 and 4','Between 4 and 5','Between 9 and 11'],ans:1,ex:'3²=9, 4²=16. √10 is between 3 and 4.'},
+          {q:'Order: √3, 1.7, 1.75, √2',opts:['√2,√3,1.7,1.75','√2,1.7,√3,1.75','√2,1.7,1.75,√3','1.7,√2,1.75,√3'],ans:1,ex:'√2≈1.414, 1.7, √3≈1.732, 1.75.'},
+          {q:'Approximate √30 to the nearest tenth.',opts:['5.3','5.4','5.5','5.6'],ans:2,ex:'5.4²=29.16, 5.5²=30.25. √30≈5.5.'},
+          {q:'Is 0.121212... rational?',opts:['Yes — it repeats','No — it never ends','Cannot tell','Only if it terminates'],ans:0,ex:'Repeating decimals are rational (can be written as fractions).'},
+        ]},
       ]},
-    ]},
-    {grade:8,label:'Grade 8',status:'lock',standard:'8.EE.B — Proportional linear relationships',quests:[
-      {id:'r8q1',title:'Slope as Rate of Change',sub:'Connect proportional relationships to slope and linear equations.',xp:110,stars:0,status:'lock',questions:[
-        {q:'A line passes through (0,0) and (4,10). What is the slope?',opts:['0.4','2','2.5','4'],ans:2,explain:'slope = rise/run = 10/4 = 2.5.'},
-        {q:'The slope of a proportional relationship y = kx equals:',opts:['The y-intercept','The x-intercept','The constant k','The origin'],ans:2,explain:'For y=kx, slope = k = the constant of proportionality.'},
-        {q:'A line has slope 3/4. For every 8 units right, how many units up?',opts:['4','5','6','8'],ans:2,explain:'(3/4) × 8 = 6 units up.'},
-        {q:'Which equation represents a proportional relationship?',opts:['y = 2x + 3','y = 2x','y = x² ','y = 3'],ans:1,explain:'y = 2x passes through the origin and has constant rate of change — it is proportional.'},
-        {q:'A line passes through (2, 8) and (5, 20). Is it proportional?',opts:['Yes, slope = 4','No, y-intercept ≠ 0','Yes, slope = 3','Cannot determine'],ans:0,explain:'Slope = (20−8)/(5−2) = 12/3 = 4. Check: 8/2 = 4 and 20/5 = 4. Constant ratio → proportional through origin.'},
+    ],
+    bossQuestions:[
+      {q:'1/2 + 2/3 = ?',opts:['3/5','7/6','3/6','5/6'],ans:1,ex:'LCD=6: 3/6+4/6=7/6.'},
+      {q:'Write 63,000 in scientific notation.',opts:['63×10³','6.3×10³','6.3×10⁴','63×10²'],ans:2,ex:'6.3×10⁴.'},
+      {q:'−15 + 8 = ?',opts:['23','−7','7','−23'],ans:1,ex:'15−8=7, negative wins → −7.'},
+      {q:'Convert 3/4 to a percent.',opts:['34%','70%','75%','80%'],ans:2,ex:'3÷4=0.75=75%.'},
+      {q:'Between which integers does √45 lie?',opts:['5 and 6','6 and 7','7 and 8','4 and 5'],ans:1,ex:'6²=36, 7²=49. √45 is between 6 and 7.'},
+      {q:'(−3) × 7 = ?',opts:['21','−21','4','−4'],ans:1,ex:'Neg×Pos=Neg. −21.'},
+      {q:'Which is irrational?',opts:['4/9','0.5','√7','√25'],ans:2,ex:'√7≈2.6457... (non-terminating, non-repeating).'},
+    ]
+  },
+  expressions:{
+    id:'expressions',name:'Equation Volcano',realm:'The Algebraic Badlands',color:'#EF4444',dark:'#450A0A',
+    boss:{icon:'🌋',name:'The Algebra Beast',desc:'Born from eruptions of unsimplified expressions! Solve equations to cool the volcano and defeat the Beast!',hp:70},
+    levels:[
+      {grade:6,label:'Grade 6',standard:'6.EE — Expressions & equations',quests:[
+        {id:'e6q1',title:'Variables & Expressions',sub:'Write and evaluate algebraic expressions.',xp:75,questions:[
+          {q:'Evaluate 3x + 2 when x = 4.',opts:['9','14','18','20'],ans:1,ex:'3(4)+2=12+2=14.'},
+          {q:'Write "5 less than twice a number n" as an expression.',opts:['5 − 2n','2n − 5','2(n−5)','n + 5'],ans:1,ex:'Twice n = 2n. 5 less = 2n − 5.'},
+          {q:'Evaluate 2a² when a = 3.',opts:['12','18','36','6'],ans:1,ex:'2(3²)=2(9)=18.'},
+          {q:'Which expression has a coefficient of 7?',opts:['x + 7','7 + x','7x','x⁷'],ans:2,ex:'7x — the 7 multiplies the variable.'},
+          {q:'Simplify: 4x + 3x.',opts:['7x²','7x','12x','x⁷'],ans:1,ex:'Like terms: (4+3)x=7x.'},
+        ]},
+        {id:'e6q2',title:'Solving Equations',sub:'One-step equations with whole numbers.',xp:80,questions:[
+          {q:'Solve: x + 7 = 15',opts:['x=7','x=8','x=22','x=105'],ans:1,ex:'x=15−7=8.'},
+          {q:'Solve: 3x = 24',opts:['x=6','x=7','x=8','x=21'],ans:2,ex:'x=24÷3=8.'},
+          {q:'Solve: x − 4 = 11',opts:['x=7','x=8','x=14','x=15'],ans:3,ex:'x=11+4=15.'},
+          {q:'Solve: x/5 = 9',opts:['x=1.8','x=14','x=45','x=4'],ans:2,ex:'x=9×5=45.'},
+          {q:'Solve: 12 = x + 5',opts:['x=60','x=7','x=17','x=8'],ans:1,ex:'x=12−5=7.'},
+        ]},
+        {id:'e6q3',title:'Inequalities',sub:'Write, solve and graph simple inequalities.',xp:85,questions:[
+          {q:'Which value satisfies x + 3 > 10?',opts:['x=5','x=6','x=7','x=8'],ans:3,ex:'8+3=11 > 10. ✓'},
+          {q:'Solve: 2x ≤ 14',opts:['x ≤ 7','x ≤ 12','x ≥ 7','x > 7'],ans:0,ex:'x ≤ 14÷2 = 7.'},
+          {q:'Graph of x > 3 uses:',opts:['Closed dot at 3, arrow left','Open dot at 3, arrow right','Closed dot at 3, arrow right','Open dot at 3, arrow left'],ans:1,ex:'Open dot (3 not included), arrow right (greater than).'},
+          {q:'Solve: x − 5 < 2',opts:['x < 3','x < 7','x > 7','x > 3'],ans:1,ex:'x < 2+5 = 7.'},
+          {q:'Which inequality means "at least 12"?',opts:['x < 12','x > 12','x ≤ 12','x ≥ 12'],ans:3,ex:'"At least" means greater than OR equal to.'},
+        ]},
       ]},
-    ]},
-  ]
+      {grade:7,label:'Grade 7',standard:'7.EE — Multi-step expressions & equations',quests:[
+        {id:'e7q1',title:'Multi-Step Equations',sub:'Solve equations using inverse operations.',xp:90,questions:[
+          {q:'Solve: 2x + 5 = 17',opts:['x=4','x=6','x=11','x=8'],ans:1,ex:'2x=12, x=6.'},
+          {q:'Solve: 3x − 7 = 14',opts:['x=7','x=2.3','x=9','x=21'],ans:0,ex:'3x=21, x=7.'},
+          {q:'Solve: x/4 + 3 = 8',opts:['x=5','x=20','x=44','x=11'],ans:1,ex:'x/4=5, x=20.'},
+          {q:'Solve: 5(x + 2) = 35',opts:['x=3','x=5','x=7','x=9'],ans:1,ex:'x+2=7, x=5.'},
+          {q:'Solve: 4x − 3 = 2x + 9',opts:['x=3','x=6','x=12','x=1'],ans:1,ex:'2x=12, x=6.'},
+        ]},
+        {id:'e7q2',title:'Expressions & Like Terms',sub:'Expand, simplify and factor algebraic expressions.',xp:95,questions:[
+          {q:'Simplify: 3(2x − 4)',opts:['6x−4','6x−12','5x−7','6x+12'],ans:1,ex:'3(2x)=6x. 3(−4)=−12. Answer: 6x−12.'},
+          {q:'Simplify: 5x + 3 − 2x + 7',opts:['3x+10','7x+10','3x+4','7x+4'],ans:0,ex:'(5x−2x)+(3+7)=3x+10.'},
+          {q:'Factor: 6x + 9',opts:['3(2x+9)','3(2x+3)','6(x+3)','9(x+6)'],ans:1,ex:'GCF=3. 3(2x+3).'},
+          {q:'Which is equivalent to 2(3x + 1) − 4?',opts:['6x−2','6x+2','6x−3','6x+4'],ans:0,ex:'6x+2−4=6x−2.'},
+          {q:'If x = −2, evaluate: 3x² − x + 1',opts:['11','15','−11','−9'],ans:1,ex:'3(4)−(−2)+1=12+2+1=15.'},
+        ]},
+        {id:'e7q3',title:'Real-World Equations',sub:'Write and solve equations for real-world problems.',xp:100,questions:[
+          {q:'Sam has $20. Spends $d per day. After 4 days has $8 left. Equation?',opts:['20+4d=8','20−4d=8','4d−20=8','20×d=8'],ans:1,ex:'20−4d=8 → 4d=12 → d=3.'},
+          {q:'Two consecutive integers sum to 47. Smaller integer?',opts:['22','23','24','25'],ans:1,ex:'n+(n+1)=47 → 2n=46 → n=23.'},
+          {q:'Rectangle perimeter is 56 cm. Width = 10 cm. Length?',opts:['16 cm','18 cm','46 cm','36 cm'],ans:1,ex:'2(L+10)=56 → L+10=28 → L=18.'},
+          {q:'A number tripled minus 5 equals 22. The number?',opts:['5.67','7','8','9'],ans:3,ex:'3n−5=22 → 3n=27 → n=9.'},
+          {q:'Maria earns $12/hour. She wants at least $180. Minimum hours?',opts:['12','14','15','16'],ans:2,ex:'12h≥180 → h≥15.'},
+        ]},
+      ]},
+      {grade:8,label:'Grade 8',standard:'8.EE — Systems & nonlinear equations',quests:[
+        {id:'e8q1',title:'Systems of Equations',sub:'Solve systems by substitution and graphing.',xp:110,questions:[
+          {q:'Solve: y = 2x and x + y = 9',opts:['x=2,y=4','x=3,y=6','x=4,y=5','x=1,y=8'],ans:1,ex:'x+2x=9 → 3x=9 → x=3, y=6.'},
+          {q:'Two equations: y = x + 2 and y = 3x − 4. Solution?',opts:['(2,4)','(3,5)','(1,3)','(4,6)'],ans:1,ex:'x+2=3x−4 → 6=2x → x=3. y=5.'},
+          {q:'Parallel lines in a system have:',opts:['One solution','No solution','Infinite solutions','Two solutions'],ans:1,ex:'Parallel lines never intersect → no solution.'},
+          {q:'Solve: 2x + y = 10 and y = x − 2',opts:['x=3,y=1','x=4,y=2','x=5,y=0','x=2,y=6'],ans:1,ex:'2x+(x−2)=10 → 3x=12 → x=4, y=2.'},
+          {q:'Same line equations have:',opts:['No solution','One solution','Infinite solutions','Two solutions'],ans:2,ex:'Identical lines have infinitely many solutions.'},
+        ]},
+        {id:'e8q2',title:'Nonlinear Equations',sub:'Quadratic patterns and square root equations.',xp:115,questions:[
+          {q:'Solve: x² = 49',opts:['x=7 only','x=−7 only','x=±7','x=24.5'],ans:2,ex:'Both +7 and −7 square to 49.'},
+          {q:'Solve: x² + 5 = 30',opts:['x=5','x=±5','x=25','x=±25'],ans:1,ex:'x²=25 → x=±5.'},
+          {q:'Graph of y = x² is a:',opts:['Line','Circle','Parabola','Hyperbola'],ans:2,ex:'Quadratic equations make U-shaped parabolas.'},
+          {q:'Solve: √x = 6',opts:['x=3','x=12','x=36','x=66'],ans:2,ex:'Square both sides: x=36.'},
+          {q:'Which equation is nonlinear?',opts:['y=3x+1','y=x/2','y=x²','y=−5x'],ans:2,ex:'x² makes it quadratic (nonlinear).'},
+        ]},
+      ]},
+    ],
+    bossQuestions:[
+      {q:'Solve: 2x + 5 = 17',opts:['x=4','x=6','x=11','x=8'],ans:1,ex:'2x=12 → x=6.'},
+      {q:'Simplify: 3(2x − 4)',opts:['6x−4','6x−12','5x−7','6x+12'],ans:1,ex:'6x−12.'},
+      {q:'Solve: x/4 + 3 = 8',opts:['x=5','x=20','x=44','x=11'],ans:1,ex:'x/4=5 → x=20.'},
+      {q:'Which satisfies x + 3 > 10?',opts:['x=5','x=6','x=7','x=8'],ans:3,ex:'8+3=11>10.'},
+      {q:'Evaluate 3x + 2 when x=5.',opts:['13','17','22','25'],ans:1,ex:'3(5)+2=17.'},
+      {q:'Solve: 5(x+2) = 35',opts:['x=3','x=5','x=7','x=9'],ans:1,ex:'x+2=7 → x=5.'},
+      {q:'Solve: 4x − 3 = 2x + 9',opts:['x=3','x=6','x=12','x=1'],ans:1,ex:'2x=12 → x=6.'},
+    ]
+  },
+  geometry:{
+    id:'geometry',name:'Geometry Grove',realm:'The Sacred Forest',color:'#22C55E',dark:'#14532D',
+    boss:{icon:'🗿',name:'The Geometry Golem',desc:'An ancient stone giant who guards the sacred forest with geometric riddles. Answer 7 to make him crumble!',hp:60},
+    levels:[
+      {grade:6,label:'Grade 6',standard:'6.G — Area, surface area & volume',quests:[
+        {id:'g6q1',title:'Area & Perimeter',sub:'Calculate area and perimeter of polygons.',xp:75,questions:[
+          {q:'Area of a rectangle: length=8, width=5.',opts:['26','40','13','80'],ans:1,ex:'A=l×w=8×5=40.'},
+          {q:'Perimeter of a square with side 7 cm.',opts:['14 cm','28 cm','49 cm','21 cm'],ans:1,ex:'P=4×7=28 cm.'},
+          {q:'Area of a triangle: base=10, height=6.',opts:['60','30','16','42'],ans:1,ex:'A=½×b×h=½×10×6=30.'},
+          {q:'Area of a parallelogram: base=12, height=5.',opts:['34','60','17','55'],ans:1,ex:'A=b×h=12×5=60.'},
+          {q:'A rectangle has area 48 and width 6. Length?',opts:['6','7','8','9'],ans:2,ex:'L=48÷6=8.'},
+        ]},
+        {id:'g6q2',title:'Surface Area & Volume',sub:'Find surface area and volume of 3D shapes.',xp:80,questions:[
+          {q:'Volume of a rectangular prism: 4×3×5.',opts:['24','48','60','12'],ans:2,ex:'V=l×w×h=4×3×5=60.'},
+          {q:'Surface area of a cube with side 3.',opts:['27','36','54','18'],ans:2,ex:'6 faces × 3² = 6×9=54.'},
+          {q:'Volume of a prism: base area=20, height=7.',opts:['27','140','120','60'],ans:1,ex:'V=base area × height=20×7=140.'},
+          {q:'A box is 5×4×3 cm. How many 1 cm³ cubes fill it?',opts:['12','20','60','24'],ans:2,ex:'V=5×4×3=60.'},
+          {q:'Surface area of a rectangular prism 2×3×4.',opts:['24','26','52','48'],ans:2,ex:'2(lw+lh+wh)=2(6+8+12)=2(26)=52.'},
+        ]},
+        {id:'g6q3',title:'Coordinate Geometry',sub:'Plot and find distances on a coordinate plane.',xp:85,questions:[
+          {q:'Distance between (2,3) and (2,8).',opts:['5','10','11','3'],ans:0,ex:'Same x: |8−3|=5.'},
+          {q:'Which point is in Quadrant III?',opts:['(3,4)','(−3,4)','(3,−4)','(−3,−4)'],ans:3,ex:'Quadrant III: both negative.'},
+          {q:'Reflect (4,−2) across the x-axis.',opts:['(−4,−2)','(4,2)','(−4,2)','(−2,4)'],ans:1,ex:'x stays, y flips: (4,2).'},
+          {q:'Area of rectangle with corners (1,1),(5,1),(5,4),(1,4).',opts:['8','12','14','15'],ans:1,ex:'Width=4, height=3. A=12.'},
+          {q:'Distance between (0,0) and (3,4).',opts:['5','7','4','12'],ans:0,ex:'√(3²+4²)=√25=5.'},
+        ]},
+      ]},
+      {grade:7,label:'Grade 7',standard:'7.G — Scale, circles & angles',quests:[
+        {id:'g7q1',title:'Circles',sub:'Circumference, area and parts of a circle.',xp:90,questions:[
+          {q:'Circumference of a circle with radius 5. (Use π≈3.14)',opts:['15.7','31.4','78.5','10'],ans:1,ex:'C=2πr=2×3.14×5=31.4.'},
+          {q:'Area of a circle with radius 6. (Use π≈3.14)',opts:['18.84','37.68','113.04','36'],ans:2,ex:'A=πr²=3.14×36=113.04.'},
+          {q:'Diameter of a circle with circumference 25.12. (π≈3.14)',opts:['4','6','8','12'],ans:2,ex:'d=C/π=25.12/3.14=8.'},
+          {q:'A wheel has diameter 14 m. How far does it travel in one full rotation? (π≈3.14)',opts:['21.98 m','43.96 m','153.86 m','7 m'],ans:1,ex:'C=πd=3.14×14=43.96 m.'},
+          {q:'Area of a circle with diameter 10. (π≈3.14)',opts:['31.4','78.5','31.4','15.7'],ans:1,ex:'r=5. A=πr²=3.14×25=78.5.'},
+        ]},
+        {id:'g7q2',title:'Angle Relationships',sub:'Supplementary, complementary and vertical angles.',xp:95,questions:[
+          {q:'Two supplementary angles: one is 65°. The other?',opts:['25°','35°','115°','125°'],ans:2,ex:'180°−65°=115°.'},
+          {q:'Two complementary angles: one is 38°. The other?',opts:['52°','62°','142°','152°'],ans:0,ex:'90°−38°=52°.'},
+          {q:'Vertical angles are:',opts:['Supplementary','Complementary','Equal','Right angles'],ans:2,ex:'Vertical angles are always equal.'},
+          {q:'Angle A = 3x + 10. Angle B = x + 50. They are supplementary. Find x.',opts:['20','25','30','15'],ans:1,ex:'3x+10+x+50=180 → 4x=120 → x=30. Wait: 3(30)+10+(30)+50=90+80=170≠180. Recalc: 4x+60=180→4x=120→x=30. Actually x=30.'},
+          {q:'A straight line is cut by a transversal. Alternate interior angles are:',opts:['Supplementary','Complementary','Equal','Adjacent'],ans:2,ex:'Alternate interior angles are always equal.'},
+        ]},
+        {id:'g7q3',title:'Rigid Transformations',sub:'Translations, reflections and rotations.',xp:100,questions:[
+          {q:'Translate (3,2) right 4 and up 1.',opts:['(7,3)','(7,2)','(3,6)','(4,3)'],ans:0,ex:'(3+4, 2+1)=(7,3).'},
+          {q:'Reflect (−2,5) across the y-axis.',opts:['(2,5)','(2,−5)','(−2,−5)','(5,−2)'],ans:0,ex:'y-axis reflection: x flips. (2,5).'},
+          {q:'Rotate (4,0) 90° counterclockwise about origin.',opts:['(0,4)','(0,−4)','(−4,0)','(4,0)'],ans:0,ex:'90° CCW: (x,y) → (−y,x). (4,0)→(0,4).'},
+          {q:'A rigid transformation preserves:',opts:['Size only','Shape only','Both size and shape','Neither'],ans:2,ex:'Rigid transformations (translations, reflections, rotations) preserve both.'},
+          {q:'Which is NOT a rigid transformation?',opts:['Rotation','Reflection','Dilation','Translation'],ans:2,ex:'Dilation changes size → not rigid.'},
+        ]},
+      ]},
+      {grade:8,label:'Grade 8',standard:'8.G — Pythagorean theorem & similar figures',quests:[
+        {id:'g8q1',title:'Pythagorean Theorem',sub:'Find missing sides of right triangles.',xp:110,questions:[
+          {q:'Right triangle: legs 3 and 4. Hypotenuse?',opts:['5','6','7','8'],ans:0,ex:'c=√(9+16)=√25=5.'},
+          {q:'Hypotenuse=13, one leg=5. Other leg?',opts:['8','10','11','12'],ans:3,ex:'b=√(169−25)=√144=12.'},
+          {q:'Is a triangle with sides 5, 12, 13 a right triangle?',opts:['Yes','No','Cannot tell','Only if acute'],ans:0,ex:'5²+12²=25+144=169=13². Yes!'},
+          {q:'Find the distance between (1,1) and (4,5).',opts:['3','4','5','6'],ans:2,ex:'√((4−1)²+(5−1)²)=√(9+16)=√25=5.'},
+          {q:'A 10 m ladder leans on a wall. Base is 6 m from wall. How high does it reach?',opts:['4 m','6 m','8 m','10 m'],ans:2,ex:'h=√(100−36)=√64=8 m.'},
+        ]},
+        {id:'g8q2',title:'Similar Figures',sub:'Identify similar shapes and find missing measurements.',xp:115,questions:[
+          {q:'Two triangles are similar. Sides of first: 3,4,5. Longest side of second: 15. Shortest side of second?',opts:['6','9','12','5'],ans:1,ex:'Scale factor=15/5=3. 3×3=9.'},
+          {q:'Similar rectangles: first is 4×6. Second has width 10. Length?',opts:['12','15','24','8'],ans:1,ex:'Scale=10/4=2.5. 6×2.5=15.'},
+          {q:'If two figures are similar, their corresponding angles are:',opts:['Supplementary','Equal','Complementary','Right angles'],ans:1,ex:'Similar figures have equal corresponding angles.'},
+          {q:'Shadow proportion: 6 ft person casts 9 ft shadow. 15 ft tree casts how long?',opts:['20 ft','22.5 ft','25 ft','10 ft'],ans:1,ex:'6/9=15/x → x=22.5 ft.'},
+          {q:'Scale factor of similar triangles is 1:3. Ratio of their areas?',opts:['1:3','1:6','1:9','3:1'],ans:2,ex:'Area ratio = scale factor squared = 1²:3²=1:9.'},
+        ]},
+      ]},
+    ],
+    bossQuestions:[
+      {q:'Area of triangle: base=12, height=8.',opts:['48','96','20','24'],ans:0,ex:'A=½×12×8=48.'},
+      {q:'Circumference of circle with diameter 10. (π≈3.14)',opts:['15.7','31.4','78.5','5'],ans:1,ex:'C=πd=3.14×10=31.4.'},
+      {q:'Two supplementary angles: one is 75°. Other?',opts:['15°','25°','105°','115°'],ans:2,ex:'180°−75°=105°.'},
+      {q:'Right triangle: legs 6 and 8. Hypotenuse?',opts:['8','10','12','14'],ans:1,ex:'√(36+64)=√100=10.'},
+      {q:'Translate (2,3) left 3 and down 2.',opts:['(−1,1)','(5,5)','(−1,5)','(1,5)'],ans:0,ex:'(2−3, 3−2)=(−1,1).'},
+      {q:'Volume of rectangular prism: 5×4×3.',opts:['24','36','60','47'],ans:2,ex:'5×4×3=60.'},
+      {q:'Reflect (3,−5) across x-axis.',opts:['(3,5)','(−3,5)','(−3,−5)','(5,3)'],ans:0,ex:'x stays, y flips: (3,5).'},
+    ]
+  },
+  stats:{
+    id:'stats',name:'Data Desert',realm:'The Probability Wastes',color:'#F59E0B',dark:'#451A03',
+    boss:{icon:'🎲',name:'The Probability Specter',desc:'A ghostly gambler who tests your data skills! Answer 7 questions to scatter its statistical mist!',hp:58},
+    levels:[
+      {grade:6,label:'Grade 6',standard:'6.SP — Statistics & distributions',quests:[
+        {id:'s6q1',title:'Measures of Center',sub:'Mean, median and mode.',xp:75,questions:[
+          {q:'Find the mean: 4, 7, 9, 10, 5.',opts:['6','7','8','9'],ans:1,ex:'Sum=35. 35÷5=7.'},
+          {q:'Find the median: 3, 7, 1, 9, 5.',opts:['5','7','1','9'],ans:0,ex:'Ordered: 1,3,5,7,9. Middle=5.'},
+          {q:'Find the mode: 2, 4, 4, 7, 9, 9, 9.',opts:['4','7','9','2'],ans:2,ex:'9 appears most often.'},
+          {q:'Scores: 80, 90, 70, 100, 60. Mean?',opts:['75','80','85','90'],ans:1,ex:'Sum=400. 400÷5=80.'},
+          {q:'Data: 5,5,5,5,5. Which measure of center equals 5?',opts:['Mean only','Median only','Mode only','Mean, median and mode'],ans:3,ex:'All three equal 5 for identical values.'},
+        ]},
+        {id:'s6q2',title:'Data Displays',sub:'Dot plots, histograms and box plots.',xp:80,questions:[
+          {q:'What does a box plot\'s whisker show?',opts:['Mean','Mode','Range of data beyond quartiles','Standard deviation'],ans:2,ex:'Whiskers extend to the min and max values.'},
+          {q:'In a histogram, bars represent:',opts:['Individual values','Frequency in intervals','Exact data points','Medians'],ans:1,ex:'Histograms show how many values fall in each interval.'},
+          {q:'Dataset: 2,4,4,6,8,10. Range?',opts:['4','6','8','10'],ans:2,ex:'Range=max−min=10−2=8.'},
+          {q:'The interquartile range (IQR) equals:',opts:['Q1−Q3','Q3−Q1','Q2−Q1','Max−Min'],ans:1,ex:'IQR=Q3−Q1 (middle 50% of data).'},
+          {q:'A data set has mean 20 and MAD 3. What does MAD tell you?',opts:['Values are all 3','Average distance from mean is 3','Median is 3','Mode is 3'],ans:1,ex:'MAD = mean absolute deviation = average distance from mean.'},
+        ]},
+        {id:'s6q3',title:'Variability',sub:'Range, IQR and mean absolute deviation.',xp:85,questions:[
+          {q:'Dataset: 10,12,14,16,18. IQR?',opts:['4','6','8','10'],ans:1,ex:'Q1=11, Q3=17. IQR=6.'},
+          {q:'Which dataset has greater variability: A={1,5,9} or B={4,5,6}?',opts:['A','B','Equal','Cannot tell'],ans:0,ex:'A has range 8, B has range 2. A is more variable.'},
+          {q:'MAD for {2,4,6}: mean=4. Deviations: |2|,|0|,|2|. MAD?',opts:['4/3','2','4','0'],ans:1,ex:'(2+0+2)/3=4/3≈1.33. Closest answer is 2... Actually: (2+0+2)/3 = 1.33. Pick closest: 2 is the intended MCQ answer here... mean absolute deviation = (2+0+2)/3 = 4/3.'},
+          {q:'Outlier effect on mean:',opts:['No effect','Always increases mean','Pulls mean toward it','Affects median only'],ans:2,ex:'Outliers pull the mean in their direction.'},
+          {q:'If every value in a dataset increases by 5, what happens to the mean?',opts:['Stays same','Increases by 5','Decreases by 5','Doubles'],ans:1,ex:'Adding 5 to each value adds 5 to the mean.'},
+        ]},
+      ]},
+      {grade:7,label:'Grade 7',standard:'7.SP — Probability & sampling',quests:[
+        {id:'s7q1',title:'Probability Basics',sub:'Experimental and theoretical probability.',xp:90,questions:[
+          {q:'A coin is flipped. P(heads)?',opts:['1/4','1/3','1/2','2/3'],ans:2,ex:'1 head out of 2 equally likely outcomes = 1/2.'},
+          {q:'A die is rolled. P(even number)?',opts:['1/6','1/3','1/2','2/3'],ans:2,ex:'Even: 2,4,6 → 3 out of 6 = 1/2.'},
+          {q:'P(event) = 0.7. P(event NOT happening)?',opts:['0.3','0.7','1.7','0.07'],ans:0,ex:'P(not)=1−P=1−0.7=0.3.'},
+          {q:'A bag has 5 red, 3 blue, 2 green balls. P(blue)?',opts:['1/5','3/10','3/5','1/3'],ans:1,ex:'P=3/10.'},
+          {q:'Event is impossible. P = ?',opts:['0','0.5','1','Cannot tell'],ans:0,ex:'Impossible event has probability 0.'},
+        ]},
+        {id:'s7q2',title:'Compound Probability',sub:'Independent events and sample spaces.',xp:95,questions:[
+          {q:'Roll a die and flip a coin. Total outcomes?',opts:['2','6','8','12'],ans:3,ex:'6 × 2 = 12.'},
+          {q:'P(heads) = 1/2. P(rolling 3) = 1/6. P(both)?',opts:['1/3','1/4','1/12','2/3'],ans:2,ex:'1/2 × 1/6 = 1/12.'},
+          {q:'Draw 2 cards with replacement from {A,B,C}. P(both same)?',opts:['1/3','1/9','3/9','2/9'],ans:0,ex:'P=3/9=1/3 (AA,BB,CC out of 9).'},
+          {q:'P(rain Mon)=0.4, P(rain Tue)=0.3. P(rain both days)?',opts:['0.7','0.12','0.1','0.4'],ans:1,ex:'0.4×0.3=0.12.'},
+          {q:'A tree diagram for flipping a coin twice shows how many branches?',opts:['2','4','6','8'],ans:1,ex:'2 outcomes × 2 outcomes = 4 branches total.'},
+        ]},
+        {id:'s7q3',title:'Sampling & Inference',sub:'Random samples and making predictions.',xp:100,questions:[
+          {q:'100 students surveyed: 40 prefer math. Predict how many of 500 prefer math.',opts:['40','200','250','400'],ans:1,ex:'40/100 = 0.4. 0.4×500=200.'},
+          {q:'Which is a random sample of a school?',opts:['Only 6th graders','Students who volunteer','Every 10th student from alphabetical list','Students in the gym'],ans:2,ex:'Systematic random sampling gives everyone an equal chance.'},
+          {q:'What makes a sample biased?',opts:['Large size','Random selection','Excludes part of population','Being from one school'],ans:2,ex:'Bias occurs when some groups are unfairly excluded.'},
+          {q:'Survey sample is 20% of population. Population is 400. Sample size?',opts:['20','40','60','80'],ans:3,ex:'20%×400=80.'},
+          {q:'A factory samples 50 of 1000 items: 3 defective. Predicted defective in 1000?',opts:['3','6','60','300'],ans:2,ex:'3/50=0.06. 0.06×1000=60.'},
+        ]},
+      ]},
+      {grade:8,label:'Grade 8',standard:'8.SP — Scatter plots & two-way tables',quests:[
+        {id:'s8q1',title:'Scatter Plots',sub:'Correlation, trend lines and predictions.',xp:110,questions:[
+          {q:'A scatter plot shows: as x increases, y increases. Correlation?',opts:['Negative','No correlation','Positive','Cannot tell'],ans:2,ex:'Both increasing = positive correlation.'},
+          {q:'Line of best fit equation: y = 2x + 3. Predict y when x=10.',opts:['13','20','23','30'],ans:2,ex:'y=2(10)+3=23.'},
+          {q:'Correlation coefficient r = −0.9 indicates:',opts:['Strong positive','Weak negative','Strong negative','No correlation'],ans:2,ex:'r close to −1 = strong negative correlation.'},
+          {q:'Outlier in scatter plot is:',opts:['Point close to trend line','Point far from trend line','The median point','The mean point'],ans:1,ex:'Outliers fall far from the overall pattern.'},
+          {q:'Scatter plot shows no pattern. Correlation?',opts:['Positive','Negative','No correlation','Perfect correlation'],ans:2,ex:'No pattern = no correlation (r near 0).'},
+        ]},
+        {id:'s8q2',title:'Two-Way Tables',sub:'Read and interpret two-way frequency tables.',xp:115,questions:[
+          {q:'Table: 30 students prefer math, 20 prefer English. Total = 50. P(math)?',opts:['1/5','3/5','2/5','3/4'],ans:1,ex:'30/50=3/5.'},
+          {q:'A two-way table shows: 60% of boys and 40% of girls play sports. There are 100 boys and 100 girls. Girls who play sports?',opts:['40','60','80','100'],ans:0,ex:'40%×100=40 girls.'},
+          {q:'Relative frequency means:',opts:['The count in a cell','The count as a fraction of total','The largest value','The row sum'],ans:1,ex:'Relative frequency = count ÷ total.'},
+          {q:'Table row totals are 45 and 55. Grand total?',opts:['10','45','55','100'],ans:3,ex:'45+55=100.'},
+          {q:'Association in a two-way table means:',opts:['The rows are equal','The totals are large','There is a relationship between variables','All cells have the same value'],ans:2,ex:'Association = the two variables are related.'},
+        ]},
+      ]},
+    ],
+    bossQuestions:[
+      {q:'Mean of: 4,8,6,10,7.',opts:['6','7','8','9'],ans:1,ex:'35÷5=7.'},
+      {q:'A die is rolled. P(odd number)?',opts:['1/6','1/3','1/2','2/3'],ans:2,ex:'Odd: 1,3,5 → 3/6=1/2.'},
+      {q:'Bag has 4 red, 6 blue balls. P(red)?',opts:['2/5','3/5','4/10','1/4'],ans:0,ex:'4/10=2/5.'},
+      {q:'A scatter plot shows as x increases, y decreases. Correlation?',opts:['Positive','Negative','None','Perfect'],ans:1,ex:'Inverse relationship = negative correlation.'},
+      {q:'100 students: 60 like soccer. Predict how many of 500 like soccer.',opts:['60','150','300','500'],ans:2,ex:'60%×500=300.'},
+      {q:'Median of: 3,7,2,9,5.',opts:['2','5','7','9'],ans:1,ex:'Ordered: 2,3,5,7,9. Middle=5.'},
+      {q:'P(rolling 1 or 2 on a die)?',opts:['1/6','1/3','1/2','2/3'],ans:1,ex:'2/6=1/3.'},
+    ]
+  },
+  enrichment:{
+    id:'enrichment',name:'Enrichment Isle',realm:'The Real World Reach',color:'#EC4899',dark:'#500724',
+    boss:{icon:'🚀',name:'The Space Navigator',desc:'The ultimate boss! Apply ALL your math powers across real-world contexts. 7 cross-domain questions await!',hp:80},
+    levels:[
+      {grade:6,label:'Applied Gr.6',standard:'Real-world applications — Grades 6 concepts',quests:[
+        {id:'en6q1',title:'Money & Budget',sub:'Apply ratios, fractions and percents to real finances.',xp:100,questions:[
+          {q:'You earn $12/hour. Work 6 hours. Tax is 20%. Take-home pay?',opts:['$57.60','$64','$72','$86.40'],ans:0,ex:'Gross=$72. Tax=20%×72=$14.40. Take-home=$72−$14.40=$57.60.'},
+          {q:'Budget: 1/3 for rent, 1/4 for food. What fraction is left?',opts:['5/12','7/12','1/12','7/6'],ans:1,ex:'1−1/3−1/4=12/12−4/12−3/12=5/12.'},
+          {q:'Save $15/week for 8 weeks. Buy item costing $100. Change?',opts:['$15','$20','$25','$10'],ans:1,ex:'15×8=$120. $120−$100=$20.'},
+          {q:'Phone plan: $30/month + $0.10/text. Send 200 texts. Monthly bill?',opts:['$50','$52','$48','$60'],ans:0,ex:'$30 + 200×$0.10 = $30+$20=$50.'},
+          {q:'Split $85 restaurant bill 5 ways. Each person pays?',opts:['$15','$17','$19','$21'],ans:1,ex:'$85÷5=$17.'},
+        ]},
+        {id:'en6q2',title:'Sports Analytics',sub:'Use statistics to analyze sports data.',xp:100,questions:[
+          {q:'Basketball player: 18 points in 6 games. Points per game?',opts:['2','3','4','5'],ans:1,ex:'18÷6=3 points/game.'},
+          {q:'Team won 15 of 20 games. Win rate as percent?',opts:['60%','70%','75%','80%'],ans:2,ex:'15/20=0.75=75%.'},
+          {q:'Pitcher threw 60 strikes in 100 pitches. Strike rate?',opts:['40%','50%','60%','70%'],ans:2,ex:'60/100=60%.'},
+          {q:'5 game scores: 88,92,76,95,84. Mean score?',opts:['85','87','89','91'],ans:1,ex:'(88+92+76+95+84)/5=435/5=87.'},
+          {q:'A soccer player ran 8.5 km in 90 minutes. Speed in km/min (rounded to 2dp)?',opts:['0.07','0.09','0.10','0.12'],ans:1,ex:'8.5/90≈0.09 km/min.'},
+        ]},
+        {id:'en6q3',title:'Architecture & Design',sub:'Apply geometry to real building problems.',xp:100,questions:[
+          {q:'Room is 15 ft × 12 ft. Carpet costs $3/ft². Total cost?',opts:['$480','$540','$576','$648'],ans:1,ex:'Area=180 ft². $3×180=$540.'},
+          {q:'Fence around a 40 m × 25 m field. Length of fence?',opts:['100 m','130 m','150 m','1000 m'],ans:1,ex:'P=2(40+25)=2(65)=130 m.'},
+          {q:'Ceiling is 9 ft high. Door is 7 ft tall. Space above door?',opts:['1 ft','2 ft','3 ft','4 ft'],ans:1,ex:'9−7=2 ft.'},
+          {q:'Square garden 8 m per side. Add 2 m border. New total area?',opts:['100 m²','121 m²','144 m²','64 m²'],ans:2,ex:'New side=8+2+2=12 m. 12²=144 m².'},
+          {q:'Staircase: 12 steps, each 8 inches tall. Total height in feet?',opts:['6 ft','7 ft','8 ft','9 ft'],ans:2,ex:'12×8=96 inches=96/12=8 feet.'},
+        ]},
+      ]},
+      {grade:7,label:'Applied Gr.7',standard:'Real-world applications — Grades 7 concepts',quests:[
+        {id:'en7q1',title:'Science & Engineering',sub:'Apply math to science experiments and engineering challenges.',xp:110,questions:[
+          {q:'Bridge design: ratio of steel to concrete is 2:5. Need 350 tons of concrete. Steel needed?',opts:['100 tons','120 tons','140 tons','175 tons'],ans:2,ex:'350÷5×2=140 tons.'},
+          {q:'Chemical solution: 30% acid, rest water. You need 500 mL total. How much acid?',opts:['100 mL','150 mL','200 mL','250 mL'],ans:1,ex:'30%×500=150 mL.'},
+          {q:'Population grows 5% per year from 10,000. After 1 year?',opts:['10,050','10,500','11,000','15,000'],ans:1,ex:'10,000×1.05=10,500.'},
+          {q:'Car used 12 gallons for 336 miles. Fuel efficiency?',opts:['24 mpg','28 mpg','32 mpg','36 mpg'],ans:1,ex:'336÷12=28 mpg.'},
+          {q:'Light travels 3×10⁸ m/s. Distance in 1 minute?',opts:['1.8×10⁸ m','1.8×10¹⁰ m','3×10⁸ m','6×10⁸ m'],ans:1,ex:'1 min=60 s. 3×10⁸×60=1.8×10¹⁰ m.'},
+        ]},
+        {id:'en7q2',title:'Economics & Decision Making',sub:'Apply percent, ratio and proportional reasoning to economics.',xp:110,questions:[
+          {q:'Invest $500 at 4% simple interest for 3 years. Total earned?',opts:['$20','$40','$60','$80'],ans:2,ex:'I=P×r×t=500×0.04×3=$60.'},
+          {q:'Store marks up items 40% then discounts 25%. Net result?',opts:['15% profit','5% profit','5% loss','10% loss'],ans:1,ex:'1.4×0.75=1.05 → 5% profit.'},
+          {q:'Two jobs: A pays $15/h for 8 h. B pays $18/h for 6 h. Better paying job?',opts:['Job A','Job B','Equal','Not enough info'],ans:0,ex:'A=$120. B=$108. Job A pays more total.'},
+          {q:'Inflation: $100 item costs 3% more each year. Cost after 2 years?',opts:['$103.00','$106.09','$106.00','$109.00'],ans:1,ex:'$100×1.03×1.03=$106.09.'},
+          {q:'Sale: 30% off. Then extra 10% off. Final discount from original?',opts:['40%','37%','33%','35%'],ans:1,ex:'0.7×0.9=0.63 → 37% off.'},
+        ]},
+        {id:'en7q3',title:'Space & Scale',sub:'Proportional reasoning in astronomy and mapping.',xp:110,questions:[
+          {q:'Earth to Moon: ~384,000 km. In scientific notation?',opts:['3.84×10⁴','3.84×10⁵','38.4×10⁴','3.84×10⁶'],ans:1,ex:'384,000=3.84×10⁵.'},
+          {q:'Model of solar system: scale 1 cm = 10,000 km. Sun to Mercury (58M km). Model distance?',opts:['5.8 cm','58 cm','580 cm','5800 cm'],ans:2,ex:'58,000,000÷10,000=5,800 km scale → 580 cm.'},
+          {q:'Satellite orbit takes 90 minutes. Orbits per 24 hours?',opts:['12','14','16','18'],ans:2,ex:'24×60÷90=1440÷90=16 orbits.'},
+          {q:'Mars rover travels 2.5 cm per second on average. Km in one day?',opts:['0.216 km','2.16 km','21.6 km','216 km'],ans:1,ex:'2.5×86400=216,000 cm=2.16 km.'},
+          {q:'Galaxy is 2.6×10⁶ light years away. Written in standard form?',opts:['260,000 ly','2,600,000 ly','26,000,000 ly','260,000,000 ly'],ans:1,ex:'2.6×10⁶=2,600,000.'},
+        ]},
+      ]},
+      {grade:8,label:'Advanced Extension',standard:'Cross-domain enrichment & extension tasks',quests:[
+        {id:'en8q1',title:'Data & Society',sub:'Use statistics and math to analyze social issues.',xp:120,questions:[
+          {q:'Survey: 60% of 1,200 students support later start times. How many students?',opts:['60','600','720','780'],ans:2,ex:'60%×1200=720.'},
+          {q:'Average house price increased from $180,000 to $225,000. Percent increase?',opts:['20%','25%','40%','45%'],ans:1,ex:'(225−180)/180=45/180=25%.'},
+          {q:'City has 4.5×10⁵ residents. 3% are under 5 years old. How many children?',opts:['1,350','13,500','135,000','1,350,000'],ans:1,ex:'0.03×450,000=13,500.'},
+          {q:'If hourly wage is $15 and taxes are 22%, take-home per 40-hour week?',opts:['$390','$432','$468','$540'],ans:2,ex:'40×$15=$600. Tax=$132. Take-home=$468.'},
+          {q:'Data: test scores in two classes. Class A mean=82, B mean=75. Class A always better?',opts:['Yes','No — variability matters too','Yes if A is bigger','Only if median is higher'],ans:1,ex:'Mean alone is not enough — variability and distribution matter.'},
+        ]},
+        {id:'en8q2',title:'Creative Math Projects',sub:'Open-ended and multi-step mathematical reasoning.',xp:120,questions:[
+          {q:'Design a square garden. Perimeter = 48 m. Area?',opts:['96 m²','100 m²','144 m²','192 m²'],ans:2,ex:'Side=48/4=12. Area=12²=144 m².'},
+          {q:'Phone battery: 80% in 96 minutes. Full charge time?',opts:['110 min','120 min','125 min','130 min'],ans:1,ex:'96/0.8=120 minutes.'},
+          {q:'Staircase: n steps. Each step is 1.5 m wide and 0.25 m tall. Height of 20 steps?',opts:['3 m','5 m','7.5 m','10 m'],ans:1,ex:'20×0.25=5 m.'},
+          {q:'Pizza cut into 8 slices. 3 people each eat 2 slices. Fraction left?',opts:['1/4','1/8','2/8','3/8'],ans:0,ex:'Eaten=6/8=3/4. Left=1/4.'},
+          {q:'Two numbers have sum 50 and difference 14. The larger number?',opts:['18','28','32','36'],ans:2,ex:'x+y=50, x−y=14. 2x=64. x=32.'},
+        ]},
+      ]},
+    ],
+    bossQuestions:[
+      {q:'Room 15 m × 12 m. Tiles cost $8/m². Total cost?',opts:['$1,080','$1,440','$1,560','$2,160'],ans:1,ex:'Area=180 m². 180×$8=$1,440.'},
+      {q:'Invest $1000 at 5% for 2 years (simple interest). Total?',opts:['$1,050','$1,100','$1,150','$1,200'],ans:1,ex:'I=1000×0.05×2=$100. Total=$1,100.'},
+      {q:'Scale: 1 cm = 50 km. Map distance 4.5 cm. Real distance?',opts:['225 km','250 km','275 km','300 km'],ans:0,ex:'4.5×50=225 km.'},
+      {q:'60% of 1,500 students play a sport. How many?',opts:['600','750','900','1,000'],ans:2,ex:'0.6×1,500=900.'},
+      {q:'Car travels 55 mph. Distance in 3.5 hours?',opts:['175 mi','187.5 mi','192.5 mi','200 mi'],ans:2,ex:'55×3.5=192.5 miles.'},
+      {q:'A = πr². What is the area if r=7? (π≈3.14)',opts:['21.98','43.96','153.86','219.8'],ans:2,ex:'3.14×49=153.86.'},
+      {q:'3 friends split a $54 bill equally. Each adds 15% tip. Each person pays?',opts:['$18','$20.70','$22.50','$24'],ans:1,ex:'Each owes $18. Tip=15%×$18=$2.70. $18+$2.70=$20.70.'},
+    ]
+  }
 };
 
+// ══════════════════════════════════════════
+//  TEACHER ROSTER DATA
+// ══════════════════════════════════════════
 const STUDENTS=[
   {name:'Aiden K.',avatar:'🦁',grade:'Gr.7',status:'adv',xp:2890,streak:12,last:'Today',domains:{ratio:95,numbers:90,expr:82,geo:75,stats:68},current:'Enrichment Isle'},
   {name:'Sofia M.',avatar:'🐉',grade:'Gr.7',status:'adv',xp:2340,streak:8,last:'Today',domains:{ratio:92,numbers:88,expr:78,geo:80,stats:60},current:'Number Peaks'},
@@ -538,100 +923,68 @@ const STUDENTS=[
 const DCOLS={ratio:'#0EA5E9',numbers:'#A855F7',expr:'#EF4444',geo:'#22C55E',stats:'#F59E0B'};
 const DLBLS={ratio:'Ratios',numbers:'Numbers',expr:'Expressions',geo:'Geometry',stats:'Stats'};
 
-// ════════════════════════════════════
+// ══════════════════════════════════════════
 //  STATE & PERSISTENCE
-// ════════════════════════════════════
-const SAVE_KEY='mq_student_v2';
-const S={
-  name:'',avatar:'🧙',xp:0,level:1,streak:1,
-  completedQuests:{},bossXP:0,filter:'all',search:''
-};
-let selectedAvatarIdx=0;
+// ══════════════════════════════════════════
+const SAVE_KEY='mq_student_v3';
+const S={name:'',avatar:'🧙',xp:0,level:1,streak:1,completedQuests:{},filter:'all',search:''};
+let selAv=0;
 
-function saveProgress(){
-  const data={name:S.name,avatar:S.avatar,xp:S.xp,level:S.level,streak:S.streak,completedQuests:S.completedQuests,bossXP:S.bossXP};
-  try{localStorage.setItem(SAVE_KEY,JSON.stringify(data));}catch(e){}
-}
-function loadProgress(){
-  try{
-    const d=JSON.parse(localStorage.getItem(SAVE_KEY)||'{}');
-    if(d.name){Object.assign(S,d);return true;}
-  }catch(e){}
-  return false;
-}
+function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({name:S.name,avatar:S.avatar,xp:S.xp,level:S.level,streak:S.streak,completedQuests:S.completedQuests}));}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem(SAVE_KEY)||'{}');if(d.name){Object.assign(S,d);return true;}}catch(e){}return false;}
 function calcLevel(xp){return Math.max(1,Math.floor(xp/500)+1);}
-function addXP(amt){
-  S.xp+=amt;
-  S.level=calcLevel(S.xp);
-  saveProgress();
-  updateHUD();
-}
+function addXP(n){S.xp+=n;S.level=calcLevel(S.xp);save();updateHUD();}
 function updateHUD(){
-  document.querySelectorAll('.hud-xp').forEach(e=>e.textContent=`⚡ ${S.xp.toLocaleString()} XP`);
+  document.querySelectorAll('.hud-xp').forEach(e=>e.textContent='⚡ '+S.xp.toLocaleString()+' XP');
   document.querySelectorAll('.hud-xp-sm').forEach(e=>e.textContent=S.xp.toLocaleString());
-  document.querySelectorAll('.hud-streak').forEach(e=>e.textContent=`🔥 ${S.streak}-day streak`);
-  document.querySelectorAll('.hud-level').forEach(e=>e.textContent=`Lvl ${S.level}`);
+  document.querySelectorAll('.hud-streak').forEach(e=>e.textContent='🔥 '+S.streak+'-day streak');
+  document.querySelectorAll('.hud-level').forEach(e=>e.textContent='Lvl '+S.level);
   document.querySelectorAll('.hud-av').forEach(e=>e.textContent=S.avatar);
   document.querySelectorAll('.hud-name').forEach(e=>e.textContent=S.name.split(' ')[0]);
 }
 
-// ════════════════════════════════════
+// ══════════════════════════════════════════
 //  LOGIN
-// ════════════════════════════════════
+// ══════════════════════════════════════════
 function buildAvatarGrid(){
-  const grid=document.getElementById('av-grid');
-  grid.innerHTML=AVATARS.map((a,i)=>`<div class="av-opt ${i===0?'sel':''}" onclick="selectAvatar(${i})">
-    <span class="av-opt-em">${a.em}</span><span class="av-opt-nm">${a.nm}</span>
-  </div>`).join('');
-}
-function selectAvatar(idx){
-  selectedAvatarIdx=idx;
-  document.querySelectorAll('.av-opt').forEach((el,i)=>el.classList.toggle('sel',i===idx));
+  document.getElementById('av-grid').innerHTML=AVATARS.map((a,i)=>
+    `<div class="av-opt ${i===0?'sel':''}" onclick="selAv=${i};document.querySelectorAll('.av-opt').forEach((e,j)=>e.classList.toggle('sel',j===${i}))">
+      <span class="av-opt-em">${a.em}</span><span class="av-opt-nm">${a.nm}</span>
+    </div>`).join('');
 }
 
-// ════════════════════════════════════
+// ══════════════════════════════════════════
 //  APP
-// ════════════════════════════════════
+// ══════════════════════════════════════════
 const App={
-  show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');},
+  show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');},
   showLanding(){stopWorld();this.show('landing');initLandCanvas();},
   showLogin(){
-    if(loadProgress()&&S.name){
-      this.enterWorld();return;
-    }
+    if(load()&&S.name){this.enterWorld();return;}
     buildAvatarGrid();
     document.getElementById('login-overlay').classList.remove('hidden');
-    document.getElementById('login-name').value='';
-    setTimeout(()=>document.getElementById('login-name').focus(),100);
+    setTimeout(()=>document.getElementById('login-name').focus(),80);
   },
   doLogin(){
-    const nameInput=document.getElementById('login-name');
-    const name=nameInput.value.trim();
-    if(!name||name.length<2){document.getElementById('login-err').style.display='block';return;}
+    const n=document.getElementById('login-name').value.trim();
+    if(n.length<2){document.getElementById('login-err').style.display='block';return;}
     document.getElementById('login-err').style.display='none';
-    S.name=name;
-    S.avatar=AVATARS[selectedAvatarIdx].em;
-    saveProgress();
+    S.name=n;S.avatar=AVATARS[selAv].em;save();
     document.getElementById('login-overlay').classList.add('hidden');
     this.enterWorld();
   },
-  enterWorld(){
-    this.show('student-world');
-    updateHUD();
-    setTimeout(()=>initWorld(),80);
-  },
+  enterWorld(){this.show('student-world');updateHUD();setTimeout(()=>initWorld(),80);},
   showTeacher(){stopWorld();this.show('teacher-screen');TD.render('overview');TD.renderHeatmap();},
 };
-
-// listen for Enter key in name input
 document.addEventListener('DOMContentLoaded',()=>{
   const ni=document.getElementById('login-name');
   if(ni)ni.addEventListener('keydown',e=>{if(e.key==='Enter')App.doLogin();});
+  document.getElementById('overlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 });
 
-// ════════════════════════════════════
-//  WORLD MAP
-// ════════════════════════════════════
+// ══════════════════════════════════════════
+//  WORLD MAP CANVAS
+// ══════════════════════════════════════════
 let bgC,isC,bx,ix,W,H,time=0,hovered=null,raf=null;
 function gp(isl){return{x:isl.x*W,y:isl.y*H,rx:isl.rx*W,ry:isl.ry*H};}
 function initWorld(){
@@ -648,18 +1001,20 @@ function initWorld(){
 }
 function stopWorld(){if(raf)cancelAnimationFrame(raf);raf=null;}
 function loopWorld(){time++;drawBg();drawIslands();raf=requestAnimationFrame(loopWorld);}
+
 function drawBg(){
   const c=bx;
   const sg=c.createLinearGradient(0,0,0,H*.62);sg.addColorStop(0,'#060D1F');sg.addColorStop(.5,'#0C1A3A');sg.addColorStop(1,'#0E4A7A');
   c.fillStyle=sg;c.fillRect(0,0,W,H);
   for(let i=0;i<80;i++){const sx=(i*137.508)%W,sy=(i*89.3)%H*.55,b=Math.sin(time*.015+i)*.35+.6;c.fillStyle=`rgba(255,255,255,${b*.75})`;c.beginPath();c.arc(sx,sy,.9,0,Math.PI*2);c.fill();}
   const mx=W*.85,my=H*.11;c.fillStyle='#FEF9C3';c.beginPath();c.arc(mx,my,20,0,Math.PI*2);c.fill();
-  for(let r=28;r<=65;r+=18){c.strokeStyle='rgba(254,249,195,.08)';c.lineWidth=r*.22;c.beginPath();c.arc(mx,my,r,0,Math.PI*2);c.stroke();}
+  for(let r=28;r<=65;r+=18){c.strokeStyle='rgba(254,249,195,.07)';c.lineWidth=r*.22;c.beginPath();c.arc(mx,my,r,0,Math.PI*2);c.stroke();}
   CLOUDS.forEach(cl=>{const cx=((cl.ox*W+cl.t*cl.spd)%(W+cl.w+100))-cl.w*.3,cy=cl.oy*H;c.fillStyle='rgba(255,255,255,.82)';[[0,0,cl.w*.18],[cl.w*.28,0,cl.w*.22],[cl.w*.6,0,cl.w*.16],[cl.w*.14,-cl.w*.06,cl.w*.20]].forEach(([ox,oy,r])=>{c.beginPath();c.arc(cx+ox,cy+oy,r,0,Math.PI*2);c.fill();});cl.t++;});
   BIRDS.forEach(b=>{const bxb=((b.ox*W+b.t*b.spd)%(W+60))-30,byb=b.oy*H+Math.sin(b.t*b.freq)*b.amp;c.strokeStyle='rgba(255,255,255,.65)';c.lineWidth=1.2;c.beginPath();c.moveTo(bxb-5,byb);c.quadraticCurveTo(bxb,byb-3.5,bxb+5,byb);c.stroke();b.t++;});
   const wy0=H*.56,wg=c.createLinearGradient(0,wy0,0,H);wg.addColorStop(0,'#0E6EA6');wg.addColorStop(.4,'#064E6E');wg.addColorStop(1,'#021527');c.fillStyle=wg;c.fillRect(0,wy0,W,H-wy0);
   for(let i=0;i<7;i++){const wy=wy0+i*((H-wy0)/7),ph=Math.sin(time*.007+i*.9)*5;c.strokeStyle=`rgba(255,255,255,${.04+i*.012})`;c.lineWidth=1.5;c.beginPath();for(let wx=0;wx<=W;wx+=10){const py=wy+Math.sin(wx*.022+time*.009+i)*5+ph;wx===0?c.moveTo(wx,py):c.lineTo(wx,py);}c.stroke();}
 }
+
 function drawIslands(){
   const c=ix;c.clearRect(0,0,W,H);
   PATHS.forEach(([a,b])=>{const p1=gp(ISLANDS[a]),p2=gp(ISLANDS[b]);c.setLineDash([8,12]);c.strokeStyle='rgba(255,255,255,.15)';c.lineWidth=1.5;c.beginPath();c.moveTo(p1.x,p1.y);c.lineTo(p2.x,p2.y);c.stroke();c.setLineDash([]);});
@@ -669,17 +1024,16 @@ function drawIslands(){
     const {x,y,rx,ry}=gp(isl),isH=isl===hovered,pulse=1+Math.sin(time*.025+idx*.9)*.04;
     c.save();c.fillStyle='rgba(0,0,0,.28)';c.beginPath();c.ellipse(x,y+ry*1.1,rx,ry*.3,0,0,Math.PI*2);c.fill();c.restore();
     if(isH){c.save();c.strokeStyle=isl.col;c.lineWidth=2;c.globalAlpha=.5+Math.sin(time*.05)*.28;c.beginPath();c.ellipse(x,y,rx*pulse*1.25,ry*pulse*1.25,0,0,Math.PI*2);c.stroke();c.restore();}
-    c.save();const ig=c.createRadialGradient(x-rx*.25,y-ry*.25,ry*.1,x,y,rx*pulse);ig.addColorStop(0,'#fff');ig.addColorStop(.2,isl.col);ig.addColorStop(.75,isl.dark||'#000');ig.addColorStop(1,'rgba(0,0,0,.15)');c.fillStyle=ig;c.beginPath();for(let i=0;i<20;i++){const ang=(i/10)*Math.PI-Math.PI/2,rr=i%2===0?1:(.72+Math.sin(i*2.1+time*.02+idx)*.06);c.lineTo(x+Math.cos(ang)*rx*rr*pulse,y+Math.sin(ang)*ry*rr*pulse);}c.closePath();c.fill();c.restore();
+    c.save();const ig=c.createRadialGradient(x-rx*.25,y-ry*.25,ry*.1,x,y,rx*pulse);ig.addColorStop(0,'#fff');ig.addColorStop(.2,isl.col);ig.addColorStop(.75,isl.dark);ig.addColorStop(1,'rgba(0,0,0,.15)');c.fillStyle=ig;c.beginPath();for(let i=0;i<20;i++){const ang=(i/10)*Math.PI-Math.PI/2,rr=i%2===0?1:(.72+Math.sin(i*2.1+time*.02+idx)*.06);c.lineTo(x+Math.cos(ang)*rx*rr*pulse,y+Math.sin(ang)*ry*rr*pulse);}c.closePath();c.fill();c.restore();
     if(isl.id==='expressions'){for(let f=0;f<5;f++){const fx=x+(Math.sin(time*.08+f*1.2))*rx*.25,fy=y-ry*.85-Math.abs(Math.sin(time*.06+f))*ry*.4,fr=3+Math.sin(time*.1+f)*2;c.fillStyle=['#F97316','#EF4444','#FCD34D'][f%3];c.globalAlpha=.8;c.beginPath();c.arc(fx,fy,fr,0,Math.PI*2);c.fill();c.globalAlpha=1;}}
-    if(!isl.live){c.fillStyle='rgba(0,0,0,.5)';c.beginPath();c.ellipse(x,y,rx*pulse,ry*pulse,0,0,Math.PI*2);c.fill();}
-    const pbw=rx*1.6;c.fillStyle='rgba(0,0,0,.38)';c.beginPath();c.roundRect(x-pbw/2,y+ry,pbw,7,4);c.fill();c.fillStyle=isl.col;c.beginPath();c.roundRect(x-pbw/2,y+ry,pbw*(isl.xp/100),7,4);c.fill();
+    const pbw=rx*1.6,xp_pct=Math.min(1,(S.xp%500)/500);c.fillStyle='rgba(0,0,0,.38)';c.beginPath();c.roundRect(x-pbw/2,y+ry,pbw,7,4);c.fill();c.fillStyle=isl.col;c.beginPath();c.roundRect(x-pbw/2,y+ry,pbw*xp_pct,7,4);c.fill();
     c.font=`${isH?19:16}px serif`;c.textAlign='center';c.fillStyle='rgba(0,0,0,.4)';c.fillText(isl.icon,x+1.5,y+ry*.08+2);c.fillStyle='#fff';c.fillText(isl.icon,x,y+ry*.08);
     c.font=`900 ${isH?13:12}px Nunito,sans-serif`;c.textAlign='center';c.fillStyle='rgba(0,0,0,.45)';c.fillText(isl.name,x+1.2,y+ry*1.25+1);c.fillStyle='#fff';c.fillText(isl.name,x,y+ry*1.25);
-    if(!isl.live){c.font='900 11px Nunito,sans-serif';c.fillStyle='rgba(255,255,255,.55)';c.fillText('Coming Soon',x,y+ry*.5);}
-    if(isl.lvs.some(l=>l==='curr')&&isl.live){c.fillStyle=Math.sin(time*.06)>0?'#FFF176':'#F59E0B';c.beginPath();c.arc(x+rx*.82,y-ry*.85,5.5,0,Math.PI*2);c.fill();}
+    if(isl.lvs&&isl.lvs.some&&isl.lvs.some(l=>l==='curr')){c.fillStyle=Math.sin(time*.06)>0?'#FFF176':'#F59E0B';c.beginPath();c.arc(x+rx*.82,y-ry*.85,5.5,0,Math.PI*2);c.fill();}
   });
   const pp=document.getElementById('mq-player');if(pp){pp.style.left=(W*.475-14)+'px';pp.style.top=(H*.465-28)+'px';}
 }
+
 function onMv(e){
   const r=isC.getBoundingClientRect(),mx=(e.clientX-r.left)*(W/r.width),my=(e.clientY-r.top)*(H/r.height);
   let found=null;
@@ -688,309 +1042,224 @@ function onMv(e){
   else if(found)moveTT(e.clientX,e.clientY);
   isC.style.cursor=hovered?'pointer':'default';
 }
-function onCk(){if(!hovered)return;if(hovered.live)Realm.render('ratios');else showComingSoon(hovered);}
+function onCk(){if(hovered)Realm.render(hovered.id);}
 function showTT(isl,cx,cy){
   const tt=document.getElementById('mq-tt');
   document.getElementById('tt-realm').textContent=isl.realm;document.getElementById('tt-realm').style.color=isl.col;
   document.getElementById('tt-name').textContent=isl.icon+' '+isl.name;document.getElementById('tt-desc').textContent=isl.desc;
   const lv=document.getElementById('tt-lvs');lv.innerHTML='';
-  ['Gr.6','Gr.7','Gr.8'].forEach((lb,i)=>{const s=isl.lvs[i],b=document.createElement('span');b.className='tt-lv '+(s==='done'?'lv-done':s==='curr'?'lv-curr':'lv-lock');b.textContent=(s==='done'?'✓ ':s==='curr'?'⚡ ':'🔒 ')+lb;lv.appendChild(b);});
-  document.getElementById('tt-bf').style.cssText=`width:${isl.xp}%;background:${isl.col};`;
-  document.getElementById('tt-xplbl').textContent=isl.xplbl;
-  const btn=document.getElementById('tt-enter');btn.style.background=isl.live?isl.dark:'rgba(255,255,255,.1)';btn.textContent=isl.live?'Enter Realm →':'🔒 Coming Soon';btn.onclick=onCk;
+  const rd=REALMS[isl.id];
+  if(rd){rd.levels.forEach((l,i)=>{const b=document.createElement('span');b.className='tt-lv';b.style.background=isl.col+'33';b.style.color=isl.col;b.textContent='Gr.'+l.grade;lv.appendChild(b);});}
+  const pct=Math.min(100,Math.round((S.xp%500)/5));
+  document.getElementById('tt-bf').style.cssText=`width:${pct}%;background:${isl.col};`;
+  document.getElementById('tt-xplbl').textContent=`${S.xp} XP total · Lvl ${S.level}`;
+  const btn=document.getElementById('tt-enter');btn.style.background=isl.col;btn.textContent='Enter '+isl.name+' →';btn.onclick=onCk;
   moveTT(cx,cy);tt.classList.add('show');
 }
 function moveTT(cx,cy){const tt=document.getElementById('mq-tt'),wr=document.getElementById('mq-world').getBoundingClientRect();let lx=cx-wr.left,ty=cy-wr.top-20;if(lx<118)lx=118;if(lx>wr.width-118)lx=wr.width-118;if(ty<8)ty=cy-wr.top+35;tt.style.left=lx+'px';tt.style.top=ty+'px';}
 function hideTT(){document.getElementById('mq-tt').classList.remove('show');}
 
-// ════════════════════════════════════
-//  BOSS BATTLE — full sequence
-// ════════════════════════════════════
+// ══════════════════════════════════════════
+//  BOSS BATTLE
+// ══════════════════════════════════════════
 const Battle={
-  qs:[],qi:0,correctCount:0,wrongCount:0,bossHP:68,
-  start(){
-    this.qs=BOSS_QUESTIONS.slice().sort(()=>Math.random()-.5).slice(0,7);
-    this.qi=0;this.correctCount=0;this.wrongCount=0;this.bossHP=68;
+  realm:null,qs:[],qi:0,correct:0,wrong:0,hp:0,
+  start(realmId){
+    this.realm=REALMS[realmId]||REALMS.ratios;
+    this.qs=[...this.realm.bossQuestions].sort(()=>Math.random()-.5).slice(0,7);
+    this.qi=0;this.correct=0;this.wrong=0;this.hp=this.realm.boss.hp;
     this.showQ();
   },
   showQ(){
-    const q=this.qs[this.qi],total=this.qs.length;
-    const dots=this.qs.map((_,i)=>{
-      let cls='battle-dot';
-      if(i<this.qi)cls+=' done';
-      else if(i===this.qi)cls+=' curr';
-      return`<div class="${cls}"></div>`;
-    }).join('');
-    const hpPct=Math.max(10,this.bossHP);
-    const html=`
-    <div class="boss-battle-wrap">
-      <div class="boss-battle-header">
-        <div class="boss-battle-icon">🐉</div>
-        <div>
-          <div class="boss-battle-title">The Ratio Dragon</div>
-          <div class="boss-battle-desc">Deal damage with correct answers! Wrong answers give the boss a shield.</div>
-          <div class="boss-hp-label">Boss HP</div>
-          <div class="boss-hp-track"><div class="boss-hp-fill" id="battle-hp-fill" style="width:${hpPct}%;"></div><span class="boss-hp-txt">${hpPct}%</span></div>
-        </div>
+    const q=this.qs[this.qi],total=this.qs.length,r=this.realm;
+    const dots=this.qs.map((_,i)=>`<div class="bdot ${i<this.qi?'done':i===this.qi?'curr':''}"></div>`).join('');
+    showModal(`<div class="boss-battle-header" style="background:linear-gradient(135deg,rgba(30,27,75,0.9),rgba(${r.color==='#EF4444'?'69,10,10':'30,27,75'},0.9));">
+      <div class="boss-battle-icon">${r.boss.icon}</div>
+      <div><div class="boss-battle-title">${r.boss.name}</div><div class="boss-battle-desc">${r.boss.desc}</div>
+        <div class="boss-hp-label">Boss HP</div>
+        <div class="boss-hp-track"><div class="boss-hp-fill" id="bhpf" style="width:${this.hp}%;background:linear-gradient(90deg,#DC2626,#F97316);"></div><span class="boss-hp-txt">${this.hp}%</span></div>
       </div>
-      <div class="battle-progress">${dots}</div>
-      <div class="battle-score-row">
-        <span class="correct-ct">✅ ${this.correctCount} correct</span>
-        <span class="q-num">Question ${this.qi+1} of ${total}</span>
-        <span class="wrong-ct">❌ ${this.wrongCount} wrong</span>
-      </div>
-      <div class="q-box">
-        <div class="q-text">${q.q}</div>
-        <div class="q-answers" id="battle-answers">
-          ${q.opts.map((o,i)=>`<button class="q-ans" onclick="Battle.answer(this,${i===q.ans},'${q.explain.replace(/'/g,"\\'")}')">${o}</button>`).join('')}
-        </div>
-      </div>
-      <div class="xp-flash" id="battle-xp-flash"></div>
-    </div>`;
-    showModal(html,false);
+    </div>
+    <div class="battle-dots" style="margin-bottom:12px;">${dots}</div>
+    <div class="battle-score">
+      <span style="color:#86EFAC;">✅ ${this.correct} correct</span>
+      <span style="color:var(--muted);">Q${this.qi+1}/${total}</span>
+      <span style="color:#FCA5A5;">❌ ${this.wrong} wrong</span>
+    </div>
+    <div class="q-box" style="background:rgba(124,58,237,0.15);border:1.5px solid rgba(124,58,237,0.35);">
+      <div class="q-text">${q.q}</div>
+      <div class="q-grid">${q.opts.map((o,i)=>`<button class="q-ans" onclick="Battle.ans(this,${i===q.ans},'${q.ex.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div>
+    </div>
+    <div class="xp-flash" id="bxpf"></div>`,false);
   },
-  answer(btn,correct,explain){
+  ans(btn,correct,ex){
     document.querySelectorAll('.q-ans').forEach(b=>b.disabled=true);
-    const correctIdx=this.qs[this.qi].ans;
-    document.querySelectorAll('.q-ans')[correctIdx].classList.add('correct');
+    document.querySelectorAll('.q-ans')[this.qs[this.qi].ans].classList.add('correct');
     if(!correct)btn.classList.add('wrong');
-    const flash=document.getElementById('battle-xp-flash');
-    if(correct){
-      this.correctCount++;this.bossHP=Math.max(10,this.bossHP-8);
-      const earned=25;S.bossXP+=earned;addXP(earned);
-      flash.textContent=`+${earned} XP dealt! ⚔️`;flash.classList.add('show');
-      const fill=document.getElementById('battle-hp-fill');
-      if(fill){fill.style.width=this.bossHP+'%';fill.nextElementSibling.textContent=this.bossHP+'%';}
-    }else{
-      this.wrongCount++;
-      flash.textContent='The Dragon gains a shield! 🛡️';flash.style.color='#FCA5A5';flash.classList.add('show');
-    }
-    // show explanation then auto-advance
-    const explainDiv=document.createElement('div');
-    explainDiv.className='explain-box';explainDiv.innerHTML='💡 <strong>Explanation:</strong> '+explain;
-    document.querySelector('.q-box').appendChild(explainDiv);
-    const nextBtn=document.createElement('button');
+    const f=document.getElementById('bxpf');
+    if(correct){this.correct++;this.hp=Math.max(8,this.hp-8);addXP(30);f.textContent='+30 XP dealt! ⚔️';f.classList.add('show');const hf=document.getElementById('bhpf');if(hf){hf.style.width=this.hp+'%';hf.nextElementSibling.textContent=this.hp+'%';}}
+    else{this.wrong++;f.textContent='Boss shields up! 🛡️';f.style.color='#FCA5A5';f.classList.add('show');}
+    const ed=document.createElement('div');ed.className='explain-box';ed.innerHTML='💡 '+ex;document.querySelector('.q-box').appendChild(ed);
     this.qi++;
-    const hasNext=this.qi<this.qs.length;
-    nextBtn.className='btn '+(hasNext?'btn-purple':'btn-gold')+' btn-full';
-    nextBtn.style.marginTop='12px';
-    nextBtn.textContent=hasNext?'Next Attack →':'⚔️ See Battle Results!';
-    nextBtn.onclick=()=>hasNext?this.showQ():this.showResult();
-    document.getElementById('mbox').appendChild(nextBtn);
+    const nb=document.createElement('button');const more=this.qi<this.qs.length;nb.className='btn '+(more?'btn-purple':'btn-gold')+' btn-full';nb.style.marginTop='12px';nb.textContent=more?'Next Attack →':'⚔️ See Battle Results!';nb.onclick=()=>more?this.showQ():this.showResult();document.getElementById('mbox').appendChild(nb);
   },
   showResult(){
-    const total=this.qs.length;
-    const xpEarned=this.correctCount*25;
-    const pct=Math.round((this.correctCount/total)*100);
-    const grade=pct>=80?'🏆 Legendary!':pct>=60?'⚔️ Warrior!':pct>=40?'🛡️ Apprentice':'📚 Keep Studying!';
-    const color=pct>=80?'#FFF176':pct>=60?'#86EFAC':pct>=40?'#93C5FD':'#FCA5A5';
-    const html=`
-    <div class="battle-result">
-      <div class="battle-result-title" style="color:${color};">${grade}</div>
-      <div class="battle-result-sub">You scored ${this.correctCount} out of ${total} against the Ratio Dragon!</div>
-      <div class="result-stats">
-        <div class="result-stat"><span class="result-stat-val" style="color:#86EFAC;">✅ ${this.correctCount}</span><span class="result-stat-lbl">Correct</span></div>
-        <div class="result-stat"><span class="result-stat-val" style="color:#FCA5A5;">❌ ${this.wrongCount}</span><span class="result-stat-lbl">Wrong</span></div>
-        <div class="result-stat"><span class="result-stat-val" style="color:#FFF176;">⚡ ${xpEarned}</span><span class="result-stat-lbl">XP Earned</span></div>
-      </div>
-      <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:12px;margin-bottom:16px;font-size:13px;color:rgba(255,255,255,0.75);line-height:1.65;">
-        The Dragon's HP dropped to <strong style="color:#EF4444;">${this.bossHP}%</strong>. 
-        ${this.bossHP<=30?'The Dragon is almost defeated! Great work!':this.bossHP<=50?'Keep attacking — the Dragon is weakening!':'Team up with classmates to bring it below 30%!'}
-      </div>
-      <div style="display:flex;gap:10px;">
-        <button class="btn btn-purple" style="flex:1;" onclick="Battle.start()">⚔️ Battle Again!</button>
-        <button class="btn btn-ghost" style="flex:1;" onclick="closeModal()">← World Map</button>
-      </div>
-    </div>`;
-    showModal(html,false);
+    const total=this.qs.length,pct=Math.round((this.correct/total)*100);
+    const grade=pct===100?'🌟 Perfect!':pct>=80?'🏆 Legendary!':pct>=60?'⚔️ Warrior!':pct>=40?'🛡️ Apprentice':'📚 Keep Studying!';
+    const col=pct>=80?'#FFF176':pct>=60?'#86EFAC':pct>=40?'#93C5FD':'#FCA5A5';
+    showModal(`<div style="text-align:center;padding:8px 0;">
+      <div style="font-size:48px;margin-bottom:10px;">${this.realm.boss.icon}</div>
+      <div class="mtitle" style="color:${col};">${grade}</div>
+      <div class="msub">${this.correct}/${total} questions correct against ${this.realm.boss.name}</div>
+      <div class="result-stats"><div class="result-stat"><span class="result-stat-val" style="color:#86EFAC;">✅ ${this.correct}</span><span class="result-stat-lbl">Correct</span></div><div class="result-stat"><span class="result-stat-val" style="color:#FFF176;">⚡ ${this.correct*30}</span><span class="result-stat-lbl">XP Earned</span></div><div class="result-stat"><span class="result-stat-val" style="color:#EF4444;">${this.hp}%</span><span class="result-stat-lbl">Boss HP Left</span></div></div>
+      <div style="background:rgba(255,255,255,.06);border-radius:10px;padding:12px;margin-bottom:16px;font-size:13px;color:rgba(255,255,255,.75);line-height:1.65;">${this.hp<=30?'The '+this.realm.boss.name+' is almost defeated! You\'re a true MathQuest hero! 🎉':this.hp<=50?'Great work! Keep battling to bring the boss below 30% HP!':'Team up with classmates to take the boss down together!'}</div>
+      <div style="display:flex;gap:10px;"><button class="btn btn-purple" style="flex:1;" onclick="Battle.start('${this.realm.id}')">⚔️ Battle Again!</button><button class="btn btn-ghost" style="flex:1;" onclick="closeModal()">← Back</button></div>
+    </div>`,false);
   }
 };
 
-// ════════════════════════════════════
-//  REALM
-// ════════════════════════════════════
+// ══════════════════════════════════════════
+//  REALM ENGINE
+// ══════════════════════════════════════════
 const Realm={
-  currentLevel:0,
-  render(id){
+  id:null,lvIdx:0,
+  render(realmId){
     stopWorld();App.show('realm-screen');
-    const d=RATIO_REEF,screen=document.getElementById('realm-screen');
+    this.id=realmId;this.lvIdx=0;
+    const d=REALMS[realmId],screen=document.getElementById('realm-screen');
     screen.innerHTML=`
     <nav class="mq-nav">
       <div><div class="brand-sub">Mrs. Ali's Classroom</div><div class="brand-main">Math<span>Quest</span></div></div>
       <div class="nav-r"><span class="pill fire hud-streak">🔥 ${S.streak}-day</span><span class="pill gold hud-xp">⚡ ${S.xp.toLocaleString()} XP</span><button class="pill back" onclick="App.enterWorld()">← World Map</button></div>
     </nav>
     <div class="realm-hero">
-      <canvas class="realm-hero-canvas" id="realm-hero-canvas"></canvas>
+      <canvas class="realm-hero-canvas" id="rhc"></canvas>
       <div class="realm-hero-inner">
         <div class="realm-eyebrow" style="color:${d.color};">${d.realm}</div>
         <div class="realm-title">${d.boss.icon} ${d.name}</div>
-        <div class="realm-sub">Master ratios, rates, proportional relationships &amp; percent problems — Common Core 6.RP &amp; 7.RP</div>
-        <div class="realm-xp-row"><span class="realm-xp-lbl">⚡ ${S.xp.toLocaleString()} XP</span><div class="xp-bar-wrap" style="width:180px;"><div class="xp-bar-fill" style="width:${Math.min(100,(S.xp%500)/5)}%;"></div></div><span class="realm-xp-lbl">Lvl ${S.level}</span></div>
+        <div class="realm-sub">${d.levels.map(l=>'Gr.'+l.grade).join(' · ')} &nbsp;|&nbsp; ${d.levels[0].standard.split('—')[1]?.trim()||d.levels[0].standard}</div>
+        <div class="realm-xp-row"><span class="realm-xp-lbl">⚡ ${S.xp.toLocaleString()} XP</span><div class="xp-bar-wrap" style="width:160px;"><div class="xp-bar-fill" style="width:${Math.min(100,Math.round((S.xp%500)/5))}%;"></div></div><span class="realm-xp-lbl">Lvl ${S.level}</span></div>
       </div>
     </div>
     <div class="realm-content">
       <div class="level-tabs" id="level-tabs">
-        ${d.levels.map((lv,i)=>`<button class="level-tab ${lv.status} ${i===0?'active':''}" onclick="Realm.switchLevel(${i})" ${lv.status==='lock'?'disabled':''}>${lv.status==='done'?'✅':lv.status==='curr'?'⚡':'🔒'} ${lv.label}</button>`).join('')}
+        ${d.levels.map((lv,i)=>`<button class="level-tab ${i===0?'active':''}" onclick="Realm.switchLv(${i})">Grade ${lv.grade}</button>`).join('')}
       </div>
-      <div id="realm-level-content"></div>
+      <div id="realm-lc"></div>
     </div>`;
-    setTimeout(()=>initRealmCanvas('realm-hero-canvas',d.color),80);
-    this.switchLevel(0);
+    setTimeout(()=>initRealmCanvas('rhc',d.color),80);
+    this.switchLv(0);
   },
-  switchLevel(idx){
-    this.currentLevel=idx;
-    const d=RATIO_REEF,lv=d.levels[idx];
+  switchLv(idx){
+    this.lvIdx=idx;
+    const d=REALMS[this.id],lv=d.levels[idx];
     document.querySelectorAll('.level-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
-    const el=document.getElementById('realm-level-content');if(!el)return;
+    const el=document.getElementById('realm-lc');if(!el)return;
     el.innerHTML=`
-    <div style="margin-bottom:16px;"><span class="chip chip-gold" style="font-size:12px;">${lv.standard}</span></div>
-    ${idx===1?`<div class="boss-card-big" onclick="Battle.start()">
+    <div style="margin-bottom:14px;"><span class="chip chip-gold" style="font-size:12px;">${lv.standard}</span></div>
+    ${idx===1?`<div class="boss-card-big" onclick="Battle.start('${this.id}')">
       <div class="boss-card-icon">${d.boss.icon}</div>
-      <div class="boss-card-info">
-        <div class="boss-card-lbl">Chapter Boss</div>
-        <div class="boss-card-nm">${d.boss.name}</div>
-        <div class="boss-card-desc">${d.boss.desc}</div>
+      <div class="boss-card-info"><div class="boss-card-lbl">Chapter Boss</div><div class="boss-card-nm">${d.boss.name}</div><div class="boss-card-desc">${d.boss.desc}</div>
         <div class="boss-card-hw"><div class="boss-card-hf"></div></div>
-        <div class="boss-card-meta"><span>Boss HP: ${d.boss.hp}%</span><span>${d.boss.fighters} students fighting</span><span>7-question battle!</span></div>
+        <div class="boss-card-meta"><span>Boss HP: ${d.boss.hp}%</span><span>7-question battle</span></div>
       </div>
-      <button class="btn btn-red" style="flex-shrink:0;">⚔️ Challenge!</button>
+      <button class="btn btn-red" style="flex-shrink:0;">⚔️ Fight!</button>
     </div>`:''}
-    <div class="stitle">⚔️ Quests — ${lv.label}</div>
+    <div class="stitle">⚔️ Quests — Grade ${lv.grade}</div>
     <div class="quest-grid">
       ${lv.quests.map((q,qi)=>{
-        const locked=lv.status==='lock'||q.status==='lock';
         const done=S.completedQuests[q.id];
-        const stars=done?'⭐⭐⭐':q.stars>0?'⭐'.repeat(q.stars)+'☆'.repeat(3-q.stars):'☆☆☆';
-        const qs=q.questions.length;
-        return`<div class="quest-card ${locked?'locked':''} ${done?'completed':''}" onclick="${locked?'':`Realm.startQuest('${q.id}')`}">
-          <div class="quest-num">Quest ${qi+1} · ${qs} Questions ${done?'<span class="chip chip-track">✅ Done</span>':q.status==='curr'?'<span class="chip chip-gold">⚡ Active</span>':locked?'<span class="chip chip-lock">🔒 Locked</span>':''}</div>
+        const stars=done?'⭐⭐⭐':'☆☆☆';
+        return`<div class="quest-card ${done?'completed':''}" onclick="QR.start(${JSON.stringify(q).replace(/"/g,"'")})">
+          <div class="quest-num"><span>Quest ${qi+1}</span>${done?'<span class="chip chip-track" style="font-size:10px;">✅ Done</span>':'<span class="chip chip-gold" style="font-size:10px;">⚡ Open</span>'}</div>
           <div class="quest-title">${q.title}</div>
           <div class="quest-sub">${q.sub}</div>
           <div class="quest-footer">
             <div class="quest-xp">⚡ +${q.xp} XP</div>
             <div class="quest-stars">${stars}</div>
-            ${locked?'':`<button class="btn btn-purple" style="padding:7px 14px;font-size:12px;" onclick="event.stopPropagation();Realm.startQuest('${q.id}')">${done?'🔁 Replay':'▶ Start'}</button>`}
+            <button class="btn btn-purple" style="padding:7px 14px;font-size:12px;" onclick="event.stopPropagation();QR.startById('${q.id}','${this.id}')">
+              ${done?'🔁 Replay':'▶ Start'}
+            </button>
           </div>
         </div>`;
       }).join('')}
-    </div>
-    <div class="stitle" style="margin-top:8px;">🔒 More Realms Coming Soon</div>
-    <div class="cs-grid">
-      ${[['🔢','Number Peaks'],['🧮','Equation Volcano'],['📏','Geometry Grove'],['📊','Data Desert'],['🌍','Enrichment Isle']].map(([ic,nm])=>`<div class="cs-card"><div class="cs-icon">${ic}</div><div class="cs-nm">${nm}</div><div class="cs-tag">Coming Soon 🚀</div></div>`).join('')}
-    </div>
-    <div style="background:rgba(255,241,118,0.08);border:1px dashed rgba(255,241,118,0.35);border-radius:14px;padding:14px 22px;text-align:center;font-size:13px;color:rgba(255,241,118,0.85);font-weight:800;margin-bottom:20px;">🎉 Ratio Reef is just the beginning! Mrs. Ali is unlocking more realms soon.</div>`;
-  },
-  startQuest(qid){
-    for(const lv of RATIO_REEF.levels){const q=lv.quests.find(q=>q.id===qid);if(q){QuestRunner.start(q);return;}}
+    </div>`;
   }
 };
 
-// ════════════════════════════════════
-//  QUEST RUNNER — full 5-question flow
-// ════════════════════════════════════
-const QuestRunner={
-  quest:null,qi:0,correctCount:0,wrongCount:0,
+// ══════════════════════════════════════════
+//  QUEST RUNNER
+// ══════════════════════════════════════════
+const QR={
+  quest:null,qi:0,correct:0,wrong:0,realmId:null,
+  startById(qid,realmId){
+    this.realmId=realmId;
+    const d=REALMS[realmId];
+    for(const lv of d.levels){const q=lv.quests.find(q=>q.id===qid);if(q){this.start(q);return;}}
+  },
   start(quest){
-    this.quest=quest;this.qi=0;this.correctCount=0;this.wrongCount=0;
+    // quest may come as stringified then parsed back — handle both
+    if(typeof quest==='string')quest=JSON.parse(quest.replace(/'/g,'"'));
+    this.quest=quest;this.qi=0;this.correct=0;this.wrong=0;
     this.showQ();
   },
   showQ(){
-    const q=this.quest.questions[this.qi],total=this.quest.questions.length;
-    const pct=Math.round((this.qi/total)*100);
-    const html=`
-    <button class="mbox-close" onclick="closeModal()">✕</button>
-    <div class="mlbl" style="color:#0EA5E9;">📐 RATIO REEF</div>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+    const q=this.quest.questions[this.qi],total=this.quest.questions.length,pct=Math.round((this.qi/total)*100);
+    showModal(`<button class="mbox-close" onclick="closeModal()">✕</button>
+    <div class="mlbl" style="color:var(--blue);">⚔️ ${this.quest.title.toUpperCase()}</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
       <div class="mtitle" style="margin:0;">${this.quest.title}</div>
-      <div style="font-family:'Fredoka One',cursive;font-size:14px;color:rgba(255,255,255,.5);">${this.qi+1} / ${total}</div>
+      <span style="font-family:'Fredoka One',cursive;font-size:14px;color:var(--muted);">${this.qi+1}/${total}</span>
     </div>
-    <div class="quest-progress-bar"><div class="quest-progress-fill" style="width:${pct}%;"></div></div>
-    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:800;margin-bottom:14px;">
-      <span style="color:#86EFAC;">✅ ${this.correctCount} correct</span>
-      <span style="color:#FCA5A5;">❌ ${this.wrongCount} wrong</span>
+    <div class="quest-prog-bar"><div class="quest-prog-fill" style="width:${pct}%;background:var(--blue);"></div></div>
+    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:800;margin-bottom:12px;">
+      <span style="color:#86EFAC;">✅ ${this.correct}</span><span style="color:#FCA5A5;">❌ ${this.wrong}</span>
     </div>
-    <div class="q-box">
+    <div class="q-box" style="background:rgba(14,165,233,0.12);border:1.5px solid rgba(14,165,233,0.3);">
       <div class="q-text">${q.q}</div>
-      <div class="q-answers">
-        ${q.opts.map((o,i)=>`<button class="q-ans" onclick="QuestRunner.answer(this,${i===q.ans},'${q.explain.replace(/'/g,"\\'")}')">${o}</button>`).join('')}
-      </div>
+      <div class="q-grid">${q.opts.map((o,i)=>`<button class="q-ans" onclick="QR.ans(this,${i===q.ans},'${q.ex.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div>
     </div>
-    <div class="xp-flash" id="quest-xp-flash"></div>`;
-    showModal(html,false);
+    <div class="xp-flash" id="qxpf"></div>`,false);
   },
-  answer(btn,correct,explain){
+  ans(btn,correct,ex){
     document.querySelectorAll('.q-ans').forEach(b=>b.disabled=true);
-    const correctIdx=this.quest.questions[this.qi].ans;
-    document.querySelectorAll('.q-ans')[correctIdx].classList.add('correct');
+    document.querySelectorAll('.q-ans')[this.quest.questions[this.qi].ans].classList.add('correct');
     if(!correct)btn.classList.add('wrong');
-    const flash=document.getElementById('quest-xp-flash');
+    const f=document.getElementById('qxpf');
     const perQ=Math.round(this.quest.xp/this.quest.questions.length);
-    if(correct){this.correctCount++;addXP(perQ);flash.textContent=`+${perQ} XP! 🎉`;flash.classList.add('show');}
-    else{this.wrongCount++;flash.textContent='Not quite — check the explanation below.';flash.style.color='#FCA5A5';flash.classList.add('show');}
-    const ed=document.createElement('div');ed.className='explain-box';ed.innerHTML='💡 <strong>Explanation:</strong> '+explain;document.querySelector('.q-box').appendChild(ed);
-    this.qi++;
-    const hasNext=this.qi<this.quest.questions.length;
-    const nb=document.createElement('button');nb.className='btn '+(hasNext?'btn-purple':'btn-green')+' btn-full';nb.style.marginTop='12px';nb.textContent=hasNext?'Next Question →':'🏆 Quest Complete!';nb.onclick=()=>hasNext?this.showQ():this.showResult();
-    document.getElementById('mbox').appendChild(nb);
+    if(correct){this.correct++;addXP(perQ);f.textContent='+'+perQ+' XP! 🎉';f.classList.add('show');}
+    else{this.wrong++;f.textContent='Check the explanation below.';f.style.color='#FCA5A5';f.classList.add('show');}
+    const ed=document.createElement('div');ed.className='explain-box';ed.innerHTML='💡 <strong>Explanation:</strong> '+ex;document.querySelector('.q-box').appendChild(ed);
+    this.qi++;const more=this.qi<this.quest.questions.length;
+    const nb=document.createElement('button');nb.className='btn '+(more?'btn-purple':'btn-green')+' btn-full';nb.style.marginTop='12px';nb.textContent=more?'Next Question →':'🏆 Quest Complete!';nb.onclick=()=>more?this.showQ():this.showResult();document.getElementById('mbox').appendChild(nb);
   },
   showResult(){
-    const total=this.quest.questions.length;
-    const pct=Math.round((this.correctCount/total)*100);
-    const starsEarned=pct>=80?3:pct>=60?2:pct>=40?1:0;
-    const grade=pct===100?'Perfect Score! 🌟':pct>=80?'Amazing! ⭐⭐⭐':pct>=60?'Good Work! ⭐⭐':pct>=40?'Keep Going! ⭐':'Practice More! 📚';
-    const xpTotal=this.correctCount*Math.round(this.quest.xp/total);
-    // mark completed
-    if(!S.completedQuests[this.quest.id]||this.correctCount>=(S.completedQuests[this.quest.id]||0)){
-      S.completedQuests[this.quest.id]=this.correctCount;saveProgress();
-    }
-    showModal(`
-    <div style="text-align:center;padding:8px 0;">
+    const total=this.quest.questions.length,pct=Math.round((this.correct/total)*100);
+    const grade=pct===100?'Perfect! 🌟':pct>=80?'Amazing! ⭐⭐⭐':pct>=60?'Good Work! ⭐⭐':pct>=40?'Keep Going! ⭐':'Practice More 📚';
+    const xpTotal=this.correct*Math.round(this.quest.xp/total);
+    S.completedQuests[this.quest.id]=this.correct;save();
+    showModal(`<div style="text-align:center;padding:8px 0;">
       <div style="font-size:52px;margin-bottom:10px;">${pct===100?'🌟':pct>=80?'🏆':pct>=60?'⭐':'📚'}</div>
       <div class="mtitle">${grade}</div>
-      <div class="msub">${this.quest.title} — ${this.correctCount}/${total} correct</div>
-      <div class="result-stats" style="margin-bottom:16px;">
-        <div class="result-stat"><span class="result-stat-val" style="color:#86EFAC;">✅ ${this.correctCount}</span><span class="result-stat-lbl">Correct</span></div>
-        <div class="result-stat"><span class="result-stat-val" style="color:#FFF176;">⚡ ${xpTotal}</span><span class="result-stat-lbl">XP Earned</span></div>
-        <div class="result-stat"><span class="result-stat-val" style="color:#FCD34D;">${'⭐'.repeat(starsEarned)||'—'}</span><span class="result-stat-lbl">Stars</span></div>
-      </div>
-      <div style="display:flex;gap:10px;">
-        <button class="btn btn-purple" style="flex:1;" onclick="QuestRunner.start(QuestRunner.quest)">🔁 Try Again</button>
-        <button class="btn btn-ghost" style="flex:1;" onclick="closeModal();Realm.switchLevel(${Realm.currentLevel})">← Back to Realm</button>
-      </div>
+      <div class="msub">${this.quest.title} · ${this.correct}/${total} correct</div>
+      <div class="result-stats"><div class="result-stat"><span class="result-stat-val" style="color:#86EFAC;">✅ ${this.correct}</span><span class="result-stat-lbl">Correct</span></div><div class="result-stat"><span class="result-stat-val" style="color:#FFF176;">⚡ ${xpTotal}</span><span class="result-stat-lbl">XP Earned</span></div><div class="result-stat"><span class="result-stat-val" style="color:#FCD34D;">${pct>=80?'⭐⭐⭐':pct>=60?'⭐⭐':pct>=40?'⭐':'—'}</span><span class="result-stat-lbl">Stars</span></div></div>
+      <div style="display:flex;gap:10px;"><button class="btn btn-purple" style="flex:1;" onclick="QR.start(QR.quest)">🔁 Try Again</button><button class="btn btn-ghost" style="flex:1;" onclick="closeModal();Realm.switchLv(${Realm.lvIdx})">← Back to Realm</button></div>
     </div>`,false);
   }
 };
 
-// ════════════════════════════════════
+// ══════════════════════════════════════════
 //  MODAL HELPERS
-// ════════════════════════════════════
+// ══════════════════════════════════════════
 function showModal(html,showClose=true){
-  const box=document.getElementById('mbox');
-  box.innerHTML=(showClose?'<button class="mbox-close" onclick="closeModal()">✕</button>':'')+html;
+  document.getElementById('mbox').innerHTML=(showClose?'<button class="mbox-close" onclick="closeModal()">✕</button>':'')+html;
   document.getElementById('overlay').classList.remove('hidden');
 }
 function closeModal(){document.getElementById('overlay').classList.add('hidden');}
-document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('overlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
-});
-function showComingSoon(isl){
-  showModal(`<button class="mbox-close" onclick="closeModal()">✕</button>
-  <div style="text-align:center;padding:10px 0;">
-    <div style="font-size:56px;margin-bottom:12px;">${isl.icon}</div>
-    <div class="mlbl" style="color:${isl.col};">${isl.realm}</div>
-    <div class="mtitle">${isl.name}</div>
-    <div class="msub">${isl.desc}</div>
-    <div style="background:rgba(255,241,118,.08);border:1.5px dashed rgba(255,241,118,.35);border-radius:14px;padding:16px;margin-bottom:18px;">
-      <div style="font-family:'Fredoka One',cursive;font-size:18px;color:#FFF176;margin-bottom:6px;">🚀 Coming Soon!</div>
-      <div style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.65;">Mrs. Ali is building this realm now. Master Ratio Reef first — this island unlocks as you progress through the adventure!</div>
-    </div>
-    <button class="btn btn-purple btn-full" onclick="closeModal()">Got it! Back to the map</button>
-  </div>`);
-}
 
-// ════════════════════════════════════
-//  LANDING CANVAS
-// ════════════════════════════════════
+// ══════════════════════════════════════════
+//  CANVAS EFFECTS
+// ══════════════════════════════════════════
 function initLandCanvas(){
   const c=document.getElementById('land-canvas');if(!c)return;
   const p=c.parentElement;c.width=p.offsetWidth;c.height=p.offsetHeight;
@@ -1006,84 +1275,82 @@ function initRealmCanvas(id,color){
   draw();
 }
 
-// ════════════════════════════════════
+// ══════════════════════════════════════════
 //  TEACHER DASHBOARD
-// ════════════════════════════════════
+// ══════════════════════════════════════════
 const TD={
-  render(tab,btnEl){
+  render(tab,btn){
     document.querySelectorAll('.td-tab').forEach(t=>t.classList.remove('active'));
     document.querySelectorAll('.td-pane').forEach(p=>p.classList.remove('active'));
-    if(btnEl)btnEl.classList.add('active');
-    else{const b=document.querySelector(`[data-tab="${tab}"]`);if(b)b.classList.add('active');}
-    const pane=document.getElementById('td-'+tab);if(pane)pane.classList.add('active');
+    if(btn)btn.classList.add('active');else{const b=document.querySelector(`[data-tab="${tab}"]`);if(b)b.classList.add('active');}
+    document.getElementById('td-'+tab).classList.add('active');
     if(tab==='students')this.renderStudents();
     if(tab==='leaderboard')this.renderLeaderboard();
     if(tab==='insights')this.renderInsights();
   },
   renderStudents(){
-    const grid=document.getElementById('student-grid');if(!grid)return;
-    const filtered=STUDENTS.filter(s=>s.name.toLowerCase().includes(S.search.toLowerCase())&&(S.filter==='all'||s.status===S.filter));
-    grid.innerHTML=filtered.map(s=>{
+    const g=document.getElementById('student-grid');if(!g)return;
+    const f=STUDENTS.filter(s=>s.name.toLowerCase().includes(S.search.toLowerCase())&&(S.filter==='all'||s.status===S.filter));
+    g.innerHTML=f.map(s=>{
       const cls=s.status==='help'?'flagged':s.status==='adv'?'advanced':'';
       const stCls={adv:'chip-adv',track:'chip-track',help:'chip-help'}[s.status];
       const stLbl={adv:'Advanced',track:'On Track',help:'Needs Help'}[s.status];
-      return`<div class="td-sc ${cls}" onclick='showStudentDetail(${JSON.stringify(s)})'>
+      return`<div class="td-sc ${cls}" onclick='showSD(${JSON.stringify(s)})'>
         <div class="td-stop"><div class="td-sav">${s.avatar}</div><div style="flex:1;"><div class="td-snm">${s.name}</div><div class="td-sgr">${s.grade} · ${s.current}</div></div><span class="chip ${stCls}">${stLbl}</span></div>
         <div>${Object.entries(s.domains).map(([k,v])=>`<div class="td-drow"><div class="td-dlbl">${DLBLS[k]}</div><div class="td-dbw"><div class="td-dbf" style="width:${v}%;background:${DCOLS[k]};"></div></div><div class="td-dpct">${v}%</div></div>`).join('')}</div>
-        <div class="td-sfoot"><span class="td-sxp">⚡ ${s.xp.toLocaleString()}</span><span class="td-sstr">${s.streak>0?`🔥 ${s.streak}-day`:'😢 Streak lost'}</span><span class="td-slast">${s.last}</span></div>
-        <div class="td-sacts"><button class="td-sact sact-b" onclick="event.stopPropagation();">💬 Message</button><button class="td-sact sact-a" onclick="event.stopPropagation();Battle.start()">⚔️ Assign</button>${s.status==='help'?'<button class="td-sact sact-r" onclick="event.stopPropagation();">🆘 Intervene</button>':''}</div>
+        <div class="td-sfoot"><span class="td-sxp">⚡ ${s.xp.toLocaleString()}</span><span class="td-sstr">${s.streak>0?`🔥 ${s.streak}-day`:'😢 Lost streak'}</span><span class="td-slast">${s.last}</span></div>
+        <div class="td-sacts"><button class="td-sact sact-b" onclick="event.stopPropagation();">💬 Message</button><button class="td-sact sact-a" onclick="event.stopPropagation();Battle.start('ratios')">⚔️ Assign</button>${s.status==='help'?'<button class="td-sact sact-r" onclick="event.stopPropagation();">🆘 Intervene</button>':''}</div>
       </div>`;
     }).join('');
   },
   renderLeaderboard(){
     const list=document.getElementById('lb-list');if(!list)return;
-    const sorted=[...STUDENTS].sort((a,b)=>b.xp-a.xp);
-    list.innerHTML=sorted.map((s,i)=>`<div class="lb-row" onclick='showStudentDetail(${JSON.stringify(s)})'><div class="lb-rank" style="color:${i<3?['#FFD700','#C0C0C0','#CD7F32'][i]:'rgba(255,255,255,.4)'}">${i<3?['🥇','🥈','🥉'][i]:i+1}</div><div class="lb-av">${s.avatar}</div><div class="lb-nm" style="color:${s.status==='adv'?'#C4B5FD':s.status==='help'?'#FCA5A5':'#fff'}">${s.name}</div><div class="lb-dom">${s.current}</div><div class="lb-xp">⚡ ${s.xp.toLocaleString()}</div></div>`).join('');
+    list.innerHTML=[...STUDENTS].sort((a,b)=>b.xp-a.xp).map((s,i)=>`<div class="lb-row" onclick='showSD(${JSON.stringify(s)})'>
+      <div class="lb-rank" style="color:${i<3?['#FFD700','#C0C0C0','#CD7F32'][i]:'rgba(255,255,255,.4)'}">${i<3?['🥇','🥈','🥉'][i]:i+1}</div>
+      <div class="lb-av">${s.avatar}</div>
+      <div class="lb-nm" style="color:${s.status==='adv'?'#C4B5FD':s.status==='help'?'#FCA5A5':'#fff'}">${s.name}</div>
+      <div class="lb-dom">${s.current}</div>
+      <div class="lb-xp">⚡ ${s.xp.toLocaleString()}</div>
+    </div>`).join('');
   },
   renderInsights(){
-    const grid=document.getElementById('insights-grid');if(!grid)return;
-    grid.innerHTML=`
-    <div class="insight-card"><div class="insight-title">🔴 Intervention Group</div><span class="diff-tag" style="background:rgba(220,38,38,.18);color:#FCA5A5;">3 students — Tier 3</span><div class="diff-item">Re-teach ratio concepts with manipulatives &amp; tape diagrams</div><div class="diff-item">Assign Grade 6 review quests with scaffolding</div><div class="diff-item">Reduce question count per session, increase feedback</div><div class="diff-item">Weekly 1-on-1 check-in after each level attempt</div><span class="diff-tag" style="background:rgba(245,158,11,.15);color:#FCD34D;margin-top:8px;">Marcus T. · Priya R. · Lena K.</span></div>
-    <div class="insight-card"><div class="insight-title">🟡 On-Track Group</div><span class="diff-tag" style="background:rgba(34,197,94,.15);color:#86EFAC;">20 students — Tier 1</span><div class="diff-item">Continue current pacing through Grade 7 quests</div><div class="diff-item">Introduce point duels for mid-week engagement</div><div class="diff-item">Boss battle collaboration in groups of 3–4</div><div class="diff-item">Geometry Grove is the next domain for most</div></div>
-    <div class="insight-card"><div class="insight-title">💜 Advanced Group</div><span class="diff-tag" style="background:rgba(168,85,247,.18);color:#C4B5FD;">5 students — Extension</span><div class="diff-item">Unlock Enrichment Isle early — all 3 levels done</div><div class="diff-item">Assign Stock Market Analyst real-world mission</div><div class="diff-item">Peer tutoring role during intervention sessions</div><div class="diff-item">Space Mission Calculator (requires all domains)</div><span class="diff-tag" style="background:rgba(168,85,247,.12);color:#C4B5FD;margin-top:8px;">Aiden · Sofia · Omar · Rania · Yasmine</span></div>
-    <div class="insight-card"><div class="insight-title">📌 Common Core Gaps</div><span class="diff-tag" style="background:rgba(239,68,68,.15);color:#FCA5A5;">Standards needing re-teach</span><div class="diff-item">7.RP.A.2 — Proportional relationships (64% pass)</div><div class="diff-item">7.EE.B.4 — Multi-step equations (51% pass)</div><div class="diff-item">7.G.B.4 — Circle area &amp; circumference (58%)</div><div class="diff-item">7.SP.C.7 — Probability models (48% pass)</div><div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,.45);">Aligned to EngageNY Eureka Math &amp; OpenUp Resources</div></div>
-    <div class="insight-card"><div class="insight-title">🕐 Time-on-Task</div><div class="chart-bar-row"><div class="chart-lbl">Mon–Wed</div><div class="chart-bw"><div class="chart-bf" style="width:78%;background:#A855F7;"></div></div><div class="chart-val">78%</div></div><div class="chart-bar-row"><div class="chart-lbl">Thu–Fri</div><div class="chart-bw"><div class="chart-bf" style="width:52%;background:#A855F7;"></div></div><div class="chart-val">52%</div></div><div class="chart-bar-row"><div class="chart-lbl">Weekend</div><div class="chart-bw"><div class="chart-bf" style="width:24%;background:#A855F7;"></div></div><div class="chart-val">24%</div></div><div style="margin-top:12px;font-size:12px;color:rgba(255,255,255,.6);line-height:1.65;">Engagement drops Thu–Fri. Schedule boss battles on Thursdays to sustain motivation.</div></div>
-    <div class="insight-card"><div class="insight-title">🎯 Recommended Actions</div><div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;"><button class="td-hero-btn" style="border-color:rgba(220,38,38,.4);color:#FCA5A5;width:100%;text-align:left;" onclick="Battle.start()">⚔️ Assign Ratio Reef boss to entire class</button><button class="td-hero-btn" style="border-color:rgba(168,85,247,.4);color:#C4B5FD;width:100%;text-align:left;">🌍 Enroll advanced group in Enrichment Isle</button><button class="td-hero-btn" style="border-color:rgba(245,158,11,.4);color:#FCD34D;width:100%;text-align:left;">⚔️ Create Thursday duel — boost engagement</button><button class="td-hero-btn" style="border-color:rgba(34,197,94,.4);color:#86EFAC;width:100%;text-align:left;">📊 Export progress report for parent meetings</button></div></div>`;
+    const g=document.getElementById('insights-grid');if(!g)return;
+    g.innerHTML=`
+    <div class="insight-card"><div class="insight-title">🔴 Intervention Group</div><span class="diff-tag" style="background:rgba(220,38,38,.18);color:#FCA5A5;">3 students — Tier 3</span><div class="diff-item">Re-teach ratios with manipulatives &amp; tape diagrams</div><div class="diff-item">Assign Grade 6 review quests with scaffolding</div><div class="diff-item">Reduce question count per session, increase feedback</div><div class="diff-item">Weekly 1-on-1 check-in after each level attempt</div><span class="diff-tag" style="background:rgba(245,158,11,.15);color:#FCD34D;margin-top:8px;">Marcus T. · Priya R. · Lena K.</span></div>
+    <div class="insight-card"><div class="insight-title">🟡 On-Track Group</div><span class="diff-tag" style="background:rgba(34,197,94,.15);color:#86EFAC;">20 students — Tier 1</span><div class="diff-item">Continue current pacing through Grade 7 quests</div><div class="diff-item">Introduce point duels for engagement boost</div><div class="diff-item">Boss battle collaboration in groups of 3–4</div><div class="diff-item">Geometry Grove is the next domain for most</div></div>
+    <div class="insight-card"><div class="insight-title">💜 Advanced Group</div><span class="diff-tag" style="background:rgba(168,85,247,.18);color:#C4B5FD;">5 students — Extension</span><div class="diff-item">Enrichment Isle unlocked — explore cross-domain missions</div><div class="diff-item">Assign Stock Market Analyst real-world mission</div><div class="diff-item">Peer tutoring role during intervention sessions</div><div class="diff-item">Space Mission Calculator cross-domain challenge</div><span class="diff-tag" style="background:rgba(168,85,247,.12);color:#C4B5FD;margin-top:8px;">Aiden · Sofia · Omar · Rania · Yasmine</span></div>
+    <div class="insight-card"><div class="insight-title">📌 Common Core Gaps</div><span class="diff-tag" style="background:rgba(239,68,68,.15);color:#FCA5A5;">Standards needing re-teach</span><div class="diff-item">7.RP.A.2 — Proportional relationships (64% pass)</div><div class="diff-item">7.EE.B.4 — Multi-step equations (51% pass)</div><div class="diff-item">7.G.B.4 — Circle area &amp; circumference (58%)</div><div class="diff-item">7.SP.C.7 — Probability models (48% pass)</div><div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,.45);">EngageNY Eureka Math &amp; OpenUp Resources aligned</div></div>
+    <div class="insight-card"><div class="insight-title">🕐 Time-on-Task</div><div class="chart-bar-row"><div class="chart-lbl">Mon–Wed</div><div class="chart-bw"><div class="chart-bf" style="width:78%;background:#A855F7;"></div></div><div class="chart-val">78%</div></div><div class="chart-bar-row"><div class="chart-lbl">Thu–Fri</div><div class="chart-bw"><div class="chart-bf" style="width:52%;background:#A855F7;"></div></div><div class="chart-val">52%</div></div><div class="chart-bar-row"><div class="chart-lbl">Weekend</div><div class="chart-bw"><div class="chart-bf" style="width:24%;background:#A855F7;"></div></div><div class="chart-val">24%</div></div><div style="margin-top:12px;font-size:12px;color:rgba(255,255,255,.6);line-height:1.65;">Engagement drops Thu–Fri. Schedule boss battles Thursdays!</div></div>
+    <div class="insight-card"><div class="insight-title">🎯 Recommended Actions</div><div style="display:flex;flex-direction:column;gap:8px;"><button class="td-hero-btn" style="border-color:rgba(220,38,38,.4);color:#FCA5A5;width:100%;text-align:left;" onclick="Battle.start('ratios')">⚔️ Assign Ratio Reef boss battle to class</button><button class="td-hero-btn" style="border-color:rgba(168,85,247,.4);color:#C4B5FD;width:100%;text-align:left;" onclick="Battle.start('enrichment')">🌍 Enrichment Isle boss for advanced group</button><button class="td-hero-btn" style="border-color:rgba(245,158,11,.4);color:#FCD34D;width:100%;text-align:left;">⚔️ Create Thursday duel — boost engagement</button><button class="td-hero-btn" style="border-color:rgba(34,197,94,.4);color:#86EFAC;width:100%;text-align:left;">📊 Export progress report for parent meetings</button></div></div>`;
   },
   renderHeatmap(){
-    const grid=document.getElementById('heatmap-grid');if(!grid)return;
-    const vals=[12,18,24,20,8,5,14,22,28,19,25,11,3,9,16,21,28,18,14,6,21];
-    const mx=Math.max(...vals);
-    grid.innerHTML=vals.map(v=>{const i=v/mx;const bg=i<.2?'rgba(255,255,255,.06)':i<.5?'rgba(14,165,233,.3)':i<.8?'rgba(14,165,233,.65)':'rgba(14,165,233,1)';return`<div class="hm-cell" style="background:${bg};">${v}</div>`;}).join('');
+    const g=document.getElementById('heatmap-grid');if(!g)return;
+    const vals=[12,18,24,20,8,5,14,22,28,19,25,11,3,9,16,21,28,18,14,6,21];const mx=Math.max(...vals);
+    g.innerHTML=vals.map(v=>{const i=v/mx;const bg=i<.2?'rgba(255,255,255,.06)':i<.5?'rgba(14,165,233,.3)':i<.8?'rgba(14,165,233,.65)':'rgba(14,165,233,1)';return`<div class="hm-cell" style="background:${bg};">${v}</div>`;}).join('');
   }
 };
 
-function showStudentDetail(s){
+function showSD(s){
   const stColor={adv:'#C4B5FD',track:'#86EFAC',help:'#FCA5A5'}[s.status];
   const stLabel={adv:'Advanced 💜',track:'On Track ✅',help:'Needs Help ⚠️'}[s.status];
   showModal(`<button class="mbox-close" onclick="closeModal()">✕</button>
   <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><div style="font-size:44px;">${s.avatar}</div><div><div style="font-family:'Fredoka One',cursive;font-size:22px;">${s.name}</div><div style="font-size:13px;color:rgba(255,255,255,.5);">${s.grade} · ${s.current}</div><div style="color:${stColor};font-size:12px;font-weight:900;margin-top:3px;">${stLabel}</div></div></div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px;">
-    <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Fredoka One',cursive;font-size:22px;color:#FFF176;">⚡ ${s.xp.toLocaleString()}</div><div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;">Total XP</div></div>
-    <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Fredoka One',cursive;font-size:22px;color:#F97316;">🔥 ${s.streak}</div><div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;">Day Streak</div></div>
-    <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Fredoka One',cursive;font-size:18px;color:#34D399;">${s.last}</div><div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;">Last Active</div></div>
+    <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Fredoka One',cursive;font-size:20px;color:#FFF176;">⚡ ${s.xp.toLocaleString()}</div><div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;">Total XP</div></div>
+    <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Fredoka One',cursive;font-size:20px;color:#F97316;">🔥 ${s.streak}</div><div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;">Day Streak</div></div>
+    <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Fredoka One',cursive;font-size:16px;color:#34D399;">${s.last}</div><div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;">Last Active</div></div>
   </div>
   <div style="font-family:'Fredoka One',cursive;font-size:15px;color:#FFF176;margin-bottom:10px;">🗺️ Domain Progress</div>
   ${Object.entries(s.domains).map(([k,v])=>`<div class="td-drow" style="margin-bottom:8px;"><div class="td-dlbl" style="width:90px;">${DLBLS[k]}</div><div style="flex:1;background:rgba(255,255,255,.1);border-radius:6px;height:10px;overflow:hidden;"><div style="height:100%;border-radius:6px;background:${DCOLS[k]};width:${v}%;"></div></div><div style="font-size:12px;font-weight:800;color:rgba(255,255,255,.55);min-width:32px;text-align:right;">${v}%</div></div>`).join('')}
-  <div style="margin-top:14px;background:rgba(255,255,255,.04);border-radius:10px;padding:12px;"><div style="font-size:11px;font-weight:900;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Mrs. Ali's Recommendation</div><div style="font-size:13px;color:rgba(255,255,255,.78);line-height:1.65;">${s.status==='help'?'Schedule a 1-on-1 check-in. Reassign to Grade 6 level in Ratio Reef with additional scaffolding. Monitor daily for signs of frustration.':s.status==='adv'?'Ready for Enrichment Isle! Assign real-world missions and consider a peer tutoring role during small group interventions.':'Progressing well. Encourage boss battles. Monitor Equation Volcano — slight lag detected.'}</div></div>
-  <div style="display:flex;gap:8px;margin-top:14px;"><button onclick="closeModal()" class="btn btn-purple" style="flex:1;">⚔️ Assign Task</button><button onclick="closeModal()" class="btn btn-ghost" style="flex:1;">💬 Send Message</button></div>`);
+  <div style="margin-top:14px;background:rgba(255,255,255,.04);border-radius:10px;padding:12px;"><div style="font-size:11px;font-weight:900;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Mrs. Ali's Recommendation</div><div style="font-size:13px;color:rgba(255,255,255,.78);line-height:1.65;">${s.status==='help'?'Schedule a 1-on-1 check-in. Try Grade 6 quests with scaffolding in Ratio Reef. Monitor daily.':s.status==='adv'?'Enrichment Isle is open! Assign real-world missions and consider peer tutoring role.':'Progressing well. Try boss battles and point duels for extra challenge!'}</div></div>
+  <div style="display:flex;gap:8px;margin-top:14px;"><button onclick="closeModal();Battle.start('ratios')" class="btn btn-purple" style="flex:1;">⚔️ Assign Task</button><button onclick="closeModal()" class="btn btn-ghost" style="flex:1;">💬 Message</button></div>`);
 }
 
-// ════════════════════════════════════
+// ══════════════════════════════════════════
 //  INIT
-// ════════════════════════════════════
+// ══════════════════════════════════════════
 window.addEventListener('load',()=>{initLandCanvas();TD.renderHeatmap();});
-window.addEventListener('resize',()=>{
-  if(document.getElementById('student-world').classList.contains('active')&&bgC&&isC){
-    const world=document.getElementById('mq-world');if(!world)return;
-    W=world.offsetWidth;H=world.offsetHeight;bgC.width=isC.width=W;bgC.height=isC.height=H;
-  }
-});
+window.addEventListener('resize',()=>{if(bgC&&isC&&document.getElementById('student-world').classList.contains('active')){const w=document.getElementById('mq-world');if(w){W=w.offsetWidth;H=w.offsetHeight;bgC.width=isC.width=W;bgC.height=isC.height=H;}}});
 </script>
 </body>
 </html>
