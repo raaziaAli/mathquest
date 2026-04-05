@@ -1,23 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MathQuest — Mrs. Ali's Classroom</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MathQuest — Mrs. Ali's Classroom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:#060D1F;color:#fff;overflow-x:hidden;min-height:100vh;}
+:root{--gold:#FFF176;--purple:#7C3AED;--teal:#0D9488;--coral:#E11D48;--blue:#0EA5E9;--green:#22C55E;--amber:#F59E0B;--pink:#EC4899;--dark:#060D1F;--dark2:#0F1A30;--dark3:#0C1A3A;--border:rgba(255,255,255,0.12);--borderH:rgba(255,255,255,0.28);--muted:rgba(255,255,255,0.55);--faint:rgba(255,255,255,0.35);--r:16px;--rs:10px;--rx:22px;}
+.screen{display:none;animation:fadeIn .3s ease;}.screen.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+/* NAV */
+.mq-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(6,13,31,0.97);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;gap:10px;flex-wrap:wrap;}
+.mq-brand-sub{font-family:'Fredoka One',cursive;font-size:10px;color:rgba(255,241,118,0.65);letter-spacing:2px;text-transform:uppercase;}
+.mq-brand-main{font-family:'Fredoka One',cursive;font-size:22px;color:var(--gold);line-height:1.1;}
+.mq-brand-main span{color:#fff;}
+.mq-nr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.mq-pill{background:rgba(255,255,255,0.07);border:1px solid var(--border);border-radius:10px;padding:6px 13px;font-size:13px;font-weight:800;color:rgba(255,255,255,0.7);cursor:pointer;transition:all .15s;white-space:nowrap;font-family:'Nunito',sans-serif;}
+.mq-pill:hover,.mq-pill.active{background:rgba(255,255,255,0.14);color:#fff;border-color:var(--borderH);}
+.mq-pill.gold{border-color:var(--gold);color:var(--gold);font-family:'Fredoka One',cursive;font-size:15px;}
+.mq-pill.fire{border-color:#F97316;color:#FED7AA;background:rgba(249,115,22,0.12);}
+.mq-av{width:38px;height:38px;border-radius:50%;background:var(--purple);border:2.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;flex-shrink:0;}
+.mq-back{background:rgba(255,255,255,0.07);border:1px solid var(--border);border-radius:10px;padding:7px 14px;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:rgba(255,255,255,0.7);cursor:pointer;}
+.mq-back:hover{background:rgba(255,255,255,0.14);color:#fff;}
+/* BTN */
+.btn{font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;border:none;border-radius:var(--rs);padding:11px 20px;cursor:pointer;transition:all .18s;text-align:center;display:inline-block;}
+.btn:hover{transform:translateY(-2px);}
+.btn-purple{background:var(--purple);color:#fff;}.btn-purple:hover{background:#6D28D9;}
+.btn-gold{background:var(--gold);color:#78350F;}.btn-gold:hover{background:#FDE047;}
+.btn-red{background:#DC2626;color:#fff;}.btn-red:hover{background:#B91C1C;}
+.btn-green{background:#16A34A;color:#fff;}
+.btn-ghost{background:rgba(255,255,255,0.08);border:1px solid var(--border);color:rgba(255,255,255,0.8);}
+.btn-ghost:hover{background:rgba(255,255,255,0.15);}
+.btn-full{width:100%;}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.hidden{display:none;}
+.modal-box{background:#0F0A2E;border:2px solid var(--border);border-radius:var(--rx);padding:28px;width:100%;max-width:440px;color:#fff;position:relative;max-height:88vh;overflow-y:auto;}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1;}
+.modal-lbl{font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.modal-title{font-family:'Fredoka One',cursive;font-size:24px;margin-bottom:6px;}
+.modal-sub{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:18px;}
+/* CHIPS */
+.chip{font-size:11px;font-weight:900;padding:3px 10px;border-radius:8px;white-space:nowrap;}
+.chip-adv{background:rgba(168,85,247,0.2);color:#C4B5FD;}
+.chip-track{background:rgba(34,197,94,0.18);color:#86EFAC;}
+.chip-help{background:rgba(220,38,38,0.2);color:#FCA5A5;}
+.chip-gold{background:rgba(255,241,118,0.15);color:var(--gold);}
+.chip-lock{background:rgba(255,255,255,0.08);color:var(--muted);}
+/* XP BAR */
+.xp-bar-wrap{background:rgba(255,255,255,0.1);border-radius:20px;height:10px;overflow:hidden;}
+.xp-bar-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--purple),#A855F7);transition:width .8s ease;}
+/* ALERTS */
+.alert{border-radius:var(--rs);padding:13px 16px;display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;}
+.alert-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.alert-title{font-weight:900;font-size:13px;margin-bottom:3px;}
+.alert-body{font-size:12px;line-height:1.55;}
+.alert-danger{background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.28);}
+.alert-danger .alert-title{color:#FCA5A5;}.alert-danger .alert-body{color:rgba(252,165,165,0.75);}
+.alert-success{background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.25);}
+.alert-success .alert-title{color:#86EFAC;}.alert-success .alert-body{color:rgba(134,239,172,0.75);}
+.alert-warn{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);}
+.alert-warn .alert-title{color:#FCD34D;}.alert-warn .alert-body{color:rgba(252,211,77,0.75);}
+/* Q BOX */
+.q-box{border-radius:14px;padding:18px;margin-bottom:16px;background:rgba(124,58,237,0.15);border:1.5px solid rgba(124,58,237,0.35);}
+.q-text{font-weight:900;font-size:17px;line-height:1.55;margin-bottom:16px;}
+.q-answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.q-ans{background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.15);border-radius:11px;padding:14px 10px;color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;cursor:pointer;transition:all .15s;text-align:center;}
+.q-ans:hover:not(:disabled){background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.4);}
+.q-ans.correct{background:#14532D;border-color:#22C55E;color:#86EFAC;}
+.q-ans.wrong{background:#450A0A;border-color:#EF4444;color:#FCA5A5;}
+.xp-pop{text-align:center;font-family:'Fredoka One',cursive;font-size:28px;color:var(--gold);margin-top:14px;opacity:0;transition:opacity .4s;}
+.xp-pop.show{opacity:1;}
+/* LANDING */
+#landing{position:relative;width:100%;min-height:700px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
+#land-canvas{position:absolute;inset:0;width:100%;height:100%;}
+.land-inner{position:relative;z-index:10;text-align:center;padding:40px 20px;}
+.land-eyebrow{font-size:11px;font-weight:900;letter-spacing:2.5px;color:rgba(255,241,118,0.75);text-transform:uppercase;margin-bottom:10px;}
+.land-title{font-family:'Fredoka One',cursive;font-size:52px;color:var(--gold);text-shadow:3px 5px 0 rgba(0,0,0,0.55);margin-bottom:6px;line-height:1;}
+.land-title span{color:#fff;}
+.land-sub{font-size:15px;color:rgba(255,255,255,0.68);margin-bottom:36px;line-height:1.7;max-width:440px;margin-left:auto;margin-right:auto;}
+.land-btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+.land-btn{display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px 40px;border-radius:22px;border:none;cursor:pointer;transition:transform .22s,box-shadow .22s;min-width:170px;box-shadow:0 4px 20px rgba(0,0,0,0.4);}
+.land-btn:hover{transform:translateY(-6px);box-shadow:0 14px 40px rgba(0,0,0,0.5);}
+.land-btn-s{background:linear-gradient(145deg,#7C3AED,#4C1D95);border:2px solid rgba(167,139,250,0.35);}
+.land-btn-t{background:linear-gradient(145deg,#065F46,#047857);border:2px solid rgba(52,211,153,0.35);}
+.land-btn-icon{font-size:44px;}
+.land-btn-label{font-family:'Fredoka One',cursive;font-size:24px;color:#fff;}
+.land-btn-sub{font-size:12px;color:rgba(255,255,255,0.6);font-weight:700;}
+.land-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
+.land-pill{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:20px;padding:7px 14px;font-size:12px;font-weight:800;color:rgba(255,255,255,0.7);}
+.coming-soon-banner{margin-top:28px;background:rgba(255,241,118,0.08);border:1px dashed rgba(255,241,118,0.35);border-radius:14px;padding:14px 22px;display:inline-block;font-size:13px;color:rgba(255,241,118,0.85);font-weight:800;}
+/* WORLD MAP */
+#mq-world{width:100%;height:620px;position:relative;overflow:hidden;}
+#bgC,#isC{position:absolute;top:0;left:0;width:100%;height:100%;}
+.mq-player{position:absolute;text-align:center;pointer-events:none;z-index:15;}
+.mq-player-emoji{font-size:26px;animation:bob 2s ease-in-out infinite;}
+.mq-player-name{font-family:'Fredoka One',cursive;font-size:11px;color:var(--gold);text-shadow:1px 1px 0 #000;margin-top:1px;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+.mq-tooltip{position:absolute;width:234px;background:rgba(8,5,30,0.97);border:2px solid rgba(255,255,255,0.16);border-radius:18px;padding:16px 18px;color:#fff;z-index:30;pointer-events:none;transform:translateX(-50%);opacity:0;transition:opacity .18s;}
+.mq-tooltip.show{opacity:1;}
+.tt-realm{font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px;}
+.tt-name{font-family:'Fredoka One',cursive;font-size:21px;margin-bottom:5px;}
+.tt-desc{font-size:12px;color:rgba(255,255,255,0.68);line-height:1.55;margin-bottom:10px;}
+.tt-lvs{display:flex;gap:5px;margin-bottom:9px;}
+.tt-lv{font-size:11px;font-weight:800;padding:3px 9px;border-radius:8px;}
+.lv-done{background:#16A34A;color:#fff;}.lv-curr{background:#7C3AED;color:#fff;}.lv-lock{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);}
+.tt-bw{background:rgba(255,255,255,0.12);border-radius:8px;height:8px;overflow:hidden;margin-bottom:5px;}
+.tt-bf{height:100%;border-radius:8px;}
+.tt-xplbl{font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:11px;}
+.tt-enter{display:block;width:100%;border:none;border-radius:10px;padding:10px;color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;cursor:pointer;pointer-events:all;transition:filter .15s;}
+.tt-enter:hover{filter:brightness(1.15);}
+/* BOSS BAR */
+.boss-bar{position:absolute;bottom:0;left:0;right:0;background:rgba(5,0,20,0.94);border-top:2px solid #991B1B;padding:10px 20px;display:flex;align-items:center;gap:14px;z-index:25;}
+.boss-icon-lg{font-size:32px;flex-shrink:0;}
+.boss-info{flex:1;}
+.boss-lbl{font-size:10px;font-weight:900;color:#F87171;letter-spacing:1.5px;text-transform:uppercase;}
+.boss-name{font-family:'Fredoka One',cursive;font-size:17px;}
+.boss-hw{background:rgba(255,255,255,0.12);border-radius:8px;height:9px;overflow:hidden;margin-top:4px;}
+.boss-hf{height:100%;background:#DC2626;border-radius:8px;}
+@keyframes bossHp{from{width:68%;}to{width:55%;}}
+.boss-anim{animation:bossHp 4s ease-in-out infinite alternate;}
+/* DUEL */
+.duel-badge{position:absolute;top:12px;right:14px;background:rgba(5,0,20,0.93);border:2px solid var(--amber);border-radius:14px;padding:10px 14px;z-index:25;text-align:center;}
+.duel-lbl{font-size:10px;font-weight:900;color:#FCD34D;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.duel-fighters{display:flex;align-items:center;gap:8px;}
+.duel-f{text-align:center;}
+.duel-em{font-size:22px;}
+.duel-n{font-size:10px;font-weight:800;}
+.duel-sc{font-family:'Fredoka One',cursive;font-size:16px;color:#FCD34D;}
+.duel-vs{font-family:'Fredoka One',cursive;color:#F97316;font-size:14px;}
+.duel-join{display:block;width:100%;margin-top:7px;background:var(--amber);border:none;border-radius:8px;padding:6px;color:#78350F;font-weight:900;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif;}
+/* TEACHER */
+.td-wrap{padding:20px;}
+.td-hero{background:linear-gradient(135deg,#065F46,#047857 60%,#059669);border-radius:18px;padding:22px 24px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.td-hero h2{font-family:'Fredoka One',cursive;font-size:26px;color:#A7F3D0;margin-bottom:2px;}
+.td-hero p{font-size:13px;color:rgba(255,255,255,0.72);}
+.td-hero-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.td-hero-btn{background:rgba(0,0,0,0.25);border:1.5px solid rgba(255,255,255,0.28);border-radius:10px;padding:9px 16px;color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;cursor:pointer;white-space:nowrap;transition:background .15s;}
+.td-hero-btn:hover{background:rgba(0,0,0,0.42);}
+.td-hero-btn.gold{background:var(--amber);border-color:var(--amber);color:#78350F;}
+.td-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
+.td-tab{padding:8px 16px;border-radius:10px;border:1.5px solid var(--border);background:rgba(255,255,255,0.04);color:var(--muted);font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;cursor:pointer;transition:all .15s;}
+.td-tab.active{background:rgba(255,255,255,0.14);border-color:var(--borderH);color:#fff;}
+.td-tab-pane{display:none;}.td-tab-pane.active{display:block;}
+.td-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:18px;}
+.td-metric{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:14px;padding:14px 12px;text-align:center;}
+.td-metric-val{font-family:'Fredoka One',cursive;font-size:30px;display:block;line-height:1;}
+.td-metric-lbl{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:4px;}
+.td-stitle{font-family:'Fredoka One',cursive;font-size:18px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.td-sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(278px,1fr));gap:12px;margin-bottom:20px;}
+.td-scard{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:16px;padding:16px;cursor:pointer;transition:all .2s;}
+.td-scard:hover{background:rgba(255,255,255,0.08);border-color:var(--borderH);transform:translateY(-2px);}
+.td-scard.flagged{border-color:rgba(220,38,38,0.45);background:rgba(220,38,38,0.05);}
+.td-scard.advanced{border-color:rgba(168,85,247,0.45);background:rgba(168,85,247,0.05);}
+.td-stop{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.td-sav{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.td-sname{font-weight:900;font-size:15px;}
+.td-sgrade{font-size:11px;color:var(--muted);font-weight:700;}
+.td-drow{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.td-dlbl{font-size:11px;font-weight:800;color:var(--muted);width:72px;flex-shrink:0;}
+.td-dbw{flex:1;background:rgba(255,255,255,0.09);border-radius:6px;height:6px;overflow:hidden;}
+.td-dbf{height:100%;border-radius:6px;}
+.td-dpct{font-size:11px;font-weight:800;color:var(--faint);min-width:28px;text-align:right;}
+.td-sfooter{display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid rgba(255,255,255,0.07);font-size:12px;}
+.td-sxp{font-family:'Fredoka One',cursive;font-size:15px;color:var(--gold);}
+.td-sstreak{color:#F97316;font-weight:800;}
+.td-slast{color:var(--faint);}
+.td-sacts{display:flex;gap:6px;margin-top:10px;}
+.td-sact{flex:1;padding:7px;border-radius:8px;border:none;font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;cursor:pointer;text-align:center;transition:filter .15s;}
+.td-sact:hover{filter:brightness(1.2);}
+.td-sact-b{background:rgba(59,130,246,0.18);color:#93C5FD;}
+.td-sact-a{background:rgba(245,158,11,0.18);color:#FCD34D;}
+.td-sact-r{background:rgba(220,38,38,0.18);color:#FCA5A5;}
+.insight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:20px;}
+.insight-card{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:16px;padding:18px;}
+.insight-title{font-family:'Fredoka One',cursive;font-size:16px;color:var(--gold);margin-bottom:12px;}
+.chart-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.chart-lbl{font-size:11px;font-weight:800;color:var(--muted);width:82px;flex-shrink:0;}
+.chart-bw{flex:1;background:rgba(255,255,255,0.08);border-radius:6px;height:14px;overflow:hidden;}
+.chart-bf{height:100%;border-radius:6px;}
+.chart-val{font-size:11px;font-weight:800;color:var(--muted);min-width:32px;text-align:right;}
+.diff-tag{font-size:11px;font-weight:900;padding:3px 10px;border-radius:8px;margin-bottom:7px;display:inline-block;}
+.diff-item{font-size:13px;color:rgba(255,255,255,0.78);margin-bottom:5px;padding-left:14px;position:relative;line-height:1.5;}
+.diff-item::before{content:'•';position:absolute;left:0;color:var(--faint);}
+.hm-wrap{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.hm-dlbl{font-size:10px;text-align:center;color:var(--faint);margin-bottom:4px;font-weight:700;}
+.hm-cell{aspect-ratio:1;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:rgba(255,255,255,0.6);}
+.lb-wrap{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px;}
+.lb-head{background:rgba(0,0,0,0.3);padding:12px 16px;font-family:'Fredoka One',cursive;font-size:17px;color:var(--gold);}
+.lb-row{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.05);transition:background .15s;cursor:pointer;}
+.lb-row:last-child{border-bottom:none;}
+.lb-row:hover{background:rgba(255,255,255,0.05);}
+.lb-rank{font-family:'Fredoka One',cursive;font-size:17px;width:26px;text-align:center;}
+.lb-av{font-size:20px;}
+.lb-name{flex:1;font-weight:800;font-size:14px;}
+.lb-domain{font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:rgba(59,130,246,0.18);color:#93C5FD;}
+.lb-xp{font-family:'Fredoka One',cursive;font-size:16px;color:var(--gold);}
+/* REALM */
+.realm-hero{min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;position:relative;overflow:hidden;}
+.realm-hero-canvas{position:absolute;inset:0;width:100%;height:100%;}
+.realm-hero-inner{position:relative;z-index:5;}
+.realm-eyebrow{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;opacity:.75;}
+.realm-title{font-family:'Fredoka One',cursive;font-size:38px;margin-bottom:6px;text-shadow:2px 3px 0 rgba(0,0,0,0.5);}
+.realm-sub{font-size:14px;color:rgba(255,255,255,0.72);max-width:400px;margin:0 auto 18px;}
+.realm-xp-row{display:flex;align-items:center;gap:10px;justify-content:center;}
+.realm-xp-lbl{font-size:13px;font-weight:800;white-space:nowrap;}
+.realm-content{padding:20px;}
+.level-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.level-tab{padding:9px 18px;border-radius:10px;border:2px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.6);font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;}
+.level-tab.active{color:#fff;}
+.level-tab.done{border-color:rgba(34,197,94,0.5);color:#86EFAC;}
+.level-tab.locked{opacity:.45;cursor:not-allowed;}
+.quest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px;}
+.quest-card{background:rgba(255,255,255,0.04);border:1.5px solid var(--border);border-radius:16px;padding:18px;cursor:pointer;transition:all .2s;position:relative;}
+.quest-card:hover{transform:translateY(-3px);border-color:var(--borderH);background:rgba(255,255,255,0.08);}
+.quest-card.locked{opacity:.45;cursor:not-allowed;}
+.quest-card.locked:hover{transform:none;}
+.quest-card.completed{border-color:rgba(34,197,94,0.4);}
+.quest-number{font-family:'Fredoka One',cursive;font-size:11px;color:var(--muted);margin-bottom:6px;}
+.quest-title{font-family:'Fredoka One',cursive;font-size:19px;margin-bottom:5px;}
+.quest-sub{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:12px;}
+.quest-footer{display:flex;align-items:center;justify-content:space-between;}
+.quest-xp{font-family:'Fredoka One',cursive;font-size:15px;color:var(--gold);}
+.quest-stars{color:#FCD34D;font-size:14px;letter-spacing:2px;}
+.realm-boss-card{background:linear-gradient(135deg,#1E1B4B,#3B0764);border:2px solid rgba(168,85,247,0.4);border-radius:18px;padding:22px;display:flex;align-items:center;gap:18px;margin-bottom:24px;flex-wrap:wrap;cursor:pointer;transition:border-color .2s;}
+.realm-boss-card:hover{border-color:rgba(168,85,247,0.7);}
+.realm-boss-icon{font-size:64px;flex-shrink:0;}
+.realm-boss-info{flex:1;}
+.realm-boss-lbl{font-size:10px;font-weight:900;color:#F87171;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.realm-boss-name{font-family:'Fredoka One',cursive;font-size:28px;margin-bottom:4px;}
+.realm-boss-desc{font-size:13px;color:rgba(255,255,255,0.68);margin-bottom:14px;line-height:1.5;}
+.realm-boss-hw{background:rgba(255,255,255,0.12);border-radius:10px;height:12px;overflow:hidden;margin-bottom:6px;}
+.realm-boss-hf{height:100%;background:linear-gradient(90deg,#DC2626,#F97316);border-radius:10px;width:72%;animation:bossHp 4s ease-in-out infinite alternate;}
+.realm-boss-meta{display:flex;gap:16px;font-size:12px;color:rgba(255,255,255,0.55);font-weight:800;}
+.cs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px;}
+.cs-card{background:rgba(255,255,255,0.03);border:1.5px dashed rgba(255,255,255,0.14);border-radius:16px;padding:20px;text-align:center;opacity:.65;}
+.cs-icon{font-size:36px;margin-bottom:8px;}
+.cs-name{font-family:'Fredoka One',cursive;font-size:17px;margin-bottom:4px;color:rgba(255,255,255,0.75);}
+.cs-tag{font-size:11px;font-weight:900;padding:3px 10px;border-radius:8px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5);display:inline-block;margin-top:4px;}
+.coming-soon-banner-sm{display:block;text-align:center;background:rgba(255,241,118,0.08);border:1px dashed rgba(255,241,118,0.35);border-radius:14px;padding:14px 22px;font-size:13px;color:rgba(255,241,118,0.85);font-weight:800;margin-bottom:20px;}
+.search-input{background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:10px;padding:8px 14px;color:#fff;font-family:'Nunito',sans-serif;font-size:13px;outline:none;}
+.search-input::placeholder{color:var(--faint);}
+.search-input:focus{border-color:var(--borderH);background:rgba(255,255,255,0.09);}
+.filter-select{background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:10px;padding:8px 12px;color:#fff;font-family:'Nunito',sans-serif;font-size:12px;cursor:pointer;outline:none;}
+.filter-select option{background:#0F1A30;}
+.mb18{margin-bottom:18px;}
+</style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════════
-     LANDING SCREEN
-════════════════════════════════════════ -->
+<!-- LANDING -->
 <div id="landing" class="screen active">
   <canvas id="land-canvas"></canvas>
   <div class="land-inner">
     <div class="land-eyebrow">Mrs. Ali's Classroom</div>
     <div class="land-title">Math<span>Quest</span></div>
     <div class="land-sub">An epic adventure through 6 mathematical realms. Level up, slay bosses, and master middle school math — one island at a time.</div>
-
     <div class="land-btns">
       <button class="land-btn land-btn-s" onclick="App.showStudent()">
         <span class="land-btn-icon">🧙</span>
@@ -30,62 +273,39 @@
         <span class="land-btn-sub">Dashboard &amp; insights</span>
       </button>
     </div>
-
     <div class="land-pills">
-      <div class="land-pill">⚡ XP &amp; Levels</div>
-      <div class="land-pill">🐉 Boss Battles</div>
-      <div class="land-pill">⚔️ Live Duels</div>
-      <div class="land-pill">🗺️ 6 Realms</div>
-      <div class="land-pill">📊 Teacher Insights</div>
-      <div class="land-pill">🌍 Enrichment Missions</div>
+      <span class="land-pill">⚡ XP &amp; Levels</span><span class="land-pill">🐉 Boss Battles</span>
+      <span class="land-pill">⚔️ Live Duels</span><span class="land-pill">🗺️ 6 Realms</span>
+      <span class="land-pill">📊 Teacher Insights</span><span class="land-pill">🌍 Enrichment</span>
     </div>
-
-    <div class="coming-soon-banner">
-      🚀 <strong>Ratio Reef is LIVE!</strong> &nbsp;·&nbsp; Number Peaks, Equation Volcano &amp; more realms unlocking soon!
-    </div>
+    <div class="coming-soon-banner">🚀 <strong>Ratio Reef is LIVE!</strong> &nbsp;·&nbsp; Number Peaks, Equation Volcano &amp; more realms unlocking soon!</div>
   </div>
 </div>
 
-
-<!-- ════════════════════════════════════════
-     STUDENT WORLD MAP
-════════════════════════════════════════ -->
+<!-- STUDENT WORLD -->
 <div id="student-world" class="screen">
   <nav class="mq-nav">
-    <div>
-      <div class="mq-brand-sub">Mrs. Ali's Classroom</div>
-      <div class="mq-brand-main">Math<span>Quest</span></div>
-    </div>
-    <div class="mq-nav-right">
+    <div><div class="mq-brand-sub">Mrs. Ali's Classroom</div><div class="mq-brand-main">Math<span>Quest</span></div></div>
+    <div class="mq-nr">
       <span class="mq-pill fire hud-streak">🔥 5-day streak</span>
       <span class="mq-pill gold hud-xp">⚡ 1,240 XP</span>
       <span class="mq-pill">Lvl 12</span>
-      <div class="mq-av-btn">🧙</div>
-      <button class="mq-back-btn" onclick="App.showLanding()">← Exit</button>
+      <div class="mq-av">🧙</div>
+      <button class="mq-back" onclick="App.showLanding()">← Exit</button>
     </div>
   </nav>
-
   <div id="mq-world">
-    <canvas id="bgC"></canvas>
-    <canvas id="isC"></canvas>
-
-    <div class="mq-player" id="mq-player">
-      <div class="mq-player-emoji">🧙</div>
-      <div class="mq-player-name">You</div>
-    </div>
-
-    <!-- Island tooltip -->
+    <canvas id="bgC"></canvas><canvas id="isC"></canvas>
+    <div class="mq-player" id="mq-player"><div class="mq-player-emoji">🧙</div><div class="mq-player-name">You</div></div>
     <div class="mq-tooltip" id="mq-tt">
       <div class="tt-realm" id="tt-realm"></div>
       <div class="tt-name" id="tt-name"></div>
       <div class="tt-desc" id="tt-desc"></div>
       <div class="tt-lvs" id="tt-lvs"></div>
-      <div class="tt-bar-wrap"><div class="tt-bar-fill" id="tt-bar-fill"></div></div>
-      <div class="tt-xp-lbl" id="tt-xp-lbl"></div>
-      <button class="tt-enter-btn" id="tt-enter-btn">Enter Realm →</button>
+      <div class="tt-bw"><div class="tt-bf" id="tt-bf"></div></div>
+      <div class="tt-xplbl" id="tt-xplbl"></div>
+      <button class="tt-enter" id="tt-enter">Enter Realm →</button>
     </div>
-
-    <!-- Live Duel badge -->
     <div class="duel-badge">
       <div class="duel-lbl">⚔️ Live Duel</div>
       <div class="duel-fighters">
@@ -93,65 +313,47 @@
         <div class="duel-vs">VS</div>
         <div class="duel-f"><div class="duel-em">🦊</div><div class="duel-n">Marcus</div><div class="duel-sc">295</div></div>
       </div>
-      <button class="duel-join-btn" onclick="Modal.open('boss')">Join Battle!</button>
+      <button class="duel-join" onclick="Modal.open('boss')">Join Battle!</button>
     </div>
-
-    <!-- Boss bar -->
     <div class="boss-bar">
       <div class="boss-icon-lg">🐉</div>
       <div class="boss-info">
         <div class="boss-lbl">Chapter Boss — Ratio Reef</div>
         <div class="boss-name">The Ratio Dragon</div>
-        <div class="boss-hp-wrap"><div class="boss-hp-fill boss-hp-animate" style="width:68%;"></div></div>
+        <div class="boss-hw"><div class="boss-hf boss-anim" style="width:68%;"></div></div>
       </div>
       <button class="btn btn-red" onclick="Modal.open('boss')">⚔️ Challenge!</button>
     </div>
   </div>
 </div>
 
-
-<!-- ════════════════════════════════════════
-     REALM INTERIOR (dynamic)
-════════════════════════════════════════ -->
+<!-- REALM (dynamic) -->
 <div id="realm-screen" class="screen"></div>
 
-
-<!-- ════════════════════════════════════════
-     TEACHER DASHBOARD
-════════════════════════════════════════ -->
+<!-- TEACHER -->
 <div id="teacher-screen" class="screen">
   <nav class="mq-nav">
-    <div>
-      <div class="mq-brand-sub">Mrs. Ali's Classroom</div>
-      <div class="mq-brand-main">Math<span>Quest</span></div>
-    </div>
-    <div class="mq-nav-right">
-      <div class="td-tabs">
-        <button class="td-tab active" data-tab="overview" onclick="TeacherDash.render('overview')">Overview</button>
-        <button class="td-tab" data-tab="students" onclick="TeacherDash.render('students')">Students</button>
-        <button class="td-tab" data-tab="insights" onclick="TeacherDash.render('insights')">Insights</button>
-        <button class="td-tab" data-tab="leaderboard" onclick="TeacherDash.render('leaderboard')">Leaderboard</button>
+    <div><div class="mq-brand-sub">Mrs. Ali's Classroom</div><div class="mq-brand-main">Math<span>Quest</span></div></div>
+    <div class="mq-nr">
+      <div class="td-tabs" style="margin-bottom:0;">
+        <button class="td-tab active" data-tab="overview" onclick="TD.render('overview',this)">Overview</button>
+        <button class="td-tab" data-tab="students" onclick="TD.render('students',this)">Students</button>
+        <button class="td-tab" data-tab="insights" onclick="TD.render('insights',this)">Insights</button>
+        <button class="td-tab" data-tab="leaderboard" onclick="TD.render('leaderboard',this)">Leaderboard</button>
       </div>
-      <button class="mq-back-btn" onclick="App.showLanding()">← Exit</button>
+      <button class="mq-back" onclick="App.showLanding()">← Exit</button>
     </div>
   </nav>
-
   <div class="td-wrap">
-    <!-- Hero -->
     <div class="td-hero">
-      <div class="td-hero-left">
-        <h2>📊 Good morning, Mrs. Ali!</h2>
-        <p>Period 3 · Grade 7 · MathQuest · Sunday, April 5, 2026</p>
-      </div>
+      <div><h2>📊 Good morning, Mrs. Ali!</h2><p>Period 3 · Grade 7 · MathQuest · April 2026</p></div>
       <div class="td-hero-actions">
         <button class="td-hero-btn" onclick="Modal.open('assign-boss')">⚔️ Assign Boss Battle</button>
         <button class="td-hero-btn" onclick="Modal.open('create-duel')">⚡ Create Duel</button>
         <button class="td-hero-btn gold">📥 Download Report</button>
       </div>
     </div>
-
-    <!-- OVERVIEW TAB -->
-    <div id="td-pane-overview" class="td-tab-pane active">
+    <div id="td-overview" class="td-tab-pane active">
       <div class="td-metrics">
         <div class="td-metric"><span class="td-metric-val" style="color:#A78BFA;">28</span><span class="td-metric-lbl">Students</span></div>
         <div class="td-metric"><span class="td-metric-val" style="color:#34D399;">23</span><span class="td-metric-lbl">Active Today</span></div>
@@ -160,82 +362,465 @@
         <div class="td-metric"><span class="td-metric-val" style="color:#FCD34D;">1,430</span><span class="td-metric-lbl">Avg XP</span></div>
         <div class="td-metric"><span class="td-metric-val" style="color:#6EE7B7;">82%</span><span class="td-metric-lbl">Mastery</span></div>
       </div>
-
       <div class="alert alert-danger"><div class="alert-icon">⚠️</div><div><div class="alert-title">3 students struggling with Ratio Reef</div><div class="alert-body">Marcus T., Priya R., and Lena K. have attempted Grade 6 ratios more than 5 times without mastery. Suggest small-group intervention or level reassignment.</div></div></div>
       <div class="alert alert-success"><div class="alert-icon">🌟</div><div><div class="alert-title">5 students ready for Enrichment Isle</div><div class="alert-body">Aiden, Sofia, Rania, Omar, and Yasmine have completed all 3 levels in Number Peaks. Consider assigning the Stock Market Analyst mission.</div></div></div>
       <div class="alert alert-warn"><div class="alert-icon">🔥</div><div><div class="alert-title">Equation Volcano — class-wide gap detected</div><div class="alert-body">18 of 28 students scored below 60% on Grade 7 multi-step equations. Consider a whole-class re-teach before the Chapter Boss unlocks.</div></div></div>
-
-      <div class="td-section-title">🗺️ Domain Mastery — Class Average</div>
-      <div class="insight-card mb-18">
+      <div class="td-stitle">🗺️ Domain Mastery — Class Average</div>
+      <div class="insight-card mb18">
         <div class="chart-bar-row"><div class="chart-lbl">Ratio Reef</div><div class="chart-bw"><div class="chart-bf" style="width:62%;background:#0EA5E9;"></div></div><div class="chart-val">62%</div></div>
         <div class="chart-bar-row"><div class="chart-lbl">Number Peaks</div><div class="chart-bw"><div class="chart-bf" style="width:78%;background:#A855F7;"></div></div><div class="chart-val">78%</div></div>
         <div class="chart-bar-row"><div class="chart-lbl">Eqn Volcano</div><div class="chart-bw"><div class="chart-bf" style="width:41%;background:#EF4444;"></div></div><div class="chart-val">41%</div></div>
         <div class="chart-bar-row"><div class="chart-lbl">Geo Grove</div><div class="chart-bw"><div class="chart-bf" style="width:55%;background:#22C55E;"></div></div><div class="chart-val">55%</div></div>
         <div class="chart-bar-row"><div class="chart-lbl">Data Desert</div><div class="chart-bw"><div class="chart-bf" style="width:33%;background:#F59E0B;"></div></div><div class="chart-val">33%</div></div>
       </div>
-
-      <div class="td-section-title">📅 Weekly Activity Heatmap</div>
-      <div class="insight-card mb-18">
-        <div class="hm-wrap" style="margin-bottom:4px;">
-          <div class="hm-day-label">Mon</div><div class="hm-day-label">Tue</div><div class="hm-day-label">Wed</div>
-          <div class="hm-day-label">Thu</div><div class="hm-day-label">Fri</div><div class="hm-day-label">Sat</div><div class="hm-day-label">Sun</div>
-        </div>
+      <div class="td-stitle">📅 Weekly Activity Heatmap</div>
+      <div class="insight-card mb18">
+        <div class="hm-wrap" style="margin-bottom:4px;"><div class="hm-dlbl">Mon</div><div class="hm-dlbl">Tue</div><div class="hm-dlbl">Wed</div><div class="hm-dlbl">Thu</div><div class="hm-dlbl">Fri</div><div class="hm-dlbl">Sat</div><div class="hm-dlbl">Sun</div></div>
         <div class="hm-wrap" id="heatmap-grid"></div>
-        <div style="display:flex;gap:6px;align-items:center;margin-top:10px;">
-          <span style="font-size:11px;color:rgba(255,255,255,0.4);">Less</span>
-          <div style="width:12px;height:12px;border-radius:3px;background:rgba(255,255,255,0.07);"></div>
-          <div style="width:12px;height:12px;border-radius:3px;background:rgba(14,165,233,0.3);"></div>
-          <div style="width:12px;height:12px;border-radius:3px;background:rgba(14,165,233,0.65);"></div>
-          <div style="width:12px;height:12px;border-radius:3px;background:rgba(14,165,233,1);"></div>
-          <span style="font-size:11px;color:rgba(255,255,255,0.4);">More</span>
-        </div>
       </div>
     </div>
-
-    <!-- STUDENTS TAB -->
-    <div id="td-pane-students" class="td-tab-pane">
-      <div class="td-section-title">👥 Student Progress <span class="chip chip-gold" style="font-size:12px;margin-left:4px;">28 students</span></div>
+    <div id="td-students" class="td-tab-pane">
+      <div class="td-stitle">👥 Student Progress <span class="chip chip-gold" style="font-size:12px;">28 students</span></div>
       <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
-        <input class="search-input" placeholder="🔍 Search students..." style="flex:1;min-width:140px;" oninput="State.studentSearch=this.value;TeacherDash.renderStudents()">
-        <select class="filter-select" onchange="State.studentFilter=this.value;TeacherDash.renderStudents()">
-          <option value="all">All students</option>
-          <option value="help">Needs help</option>
-          <option value="track">On track</option>
-          <option value="adv">Advanced</option>
+        <input class="search-input" placeholder="🔍 Search students..." style="flex:1;min-width:140px;" oninput="S.search=this.value;TD.renderStudents()">
+        <select class="filter-select" onchange="S.filter=this.value;TD.renderStudents()">
+          <option value="all">All students</option><option value="help">Needs help</option><option value="track">On track</option><option value="adv">Advanced</option>
         </select>
       </div>
-      <div class="td-student-grid" id="student-grid"></div>
+      <div class="td-sgrid" id="student-grid"></div>
     </div>
-
-    <!-- INSIGHTS TAB -->
-    <div id="td-pane-insights" class="td-tab-pane">
-      <div class="td-section-title">💡 Differentiation Insights</div>
-      <div class="insight-grid" id="insights-grid"></div>
-    </div>
-
-    <!-- LEADERBOARD TAB -->
-    <div id="td-pane-leaderboard" class="td-tab-pane">
-      <div class="td-section-title">🏆 Class Leaderboard</div>
-      <div class="lb-wrap"><div class="lb-head">Top Adventurers — Mrs. Ali's Class</div><div id="lb-list"></div></div>
-    </div>
+    <div id="td-insights" class="td-tab-pane"><div class="td-stitle">💡 Differentiation Insights</div><div class="insight-grid" id="insights-grid"></div></div>
+    <div id="td-leaderboard" class="td-tab-pane"><div class="td-stitle">🏆 Class Leaderboard</div><div class="lb-wrap"><div class="lb-head">Top Adventurers — Mrs. Ali's Class</div><div id="lb-list"></div></div></div>
   </div>
 </div>
 
-
-<!-- ════════════════════════════════════════
-     GLOBAL MODAL
-════════════════════════════════════════ -->
+<!-- MODAL -->
 <div class="modal-overlay hidden" id="modal-overlay">
   <div class="modal-box" id="modal-box"></div>
 </div>
 
+<script>
+// ── DATA ──
+const ISLANDS=[
+  {id:'ratios',name:'Ratio Reef',realm:'The Proportion Archipelago',desc:'Master rates, unit rates & proportional relationships on coral shores.',col:'#0EA5E9',dark:'#0C4A6E',lvs:['done','curr','lock'],xp:62,xplbl:'620 / 1,000 XP',icon:'📐',x:.20,y:.35,rx:.12,ry:.065,live:true},
+  {id:'numbers',name:'Number Peaks',realm:'The Numerical Highlands',desc:'Conquer fractions, decimals, scientific notation & rational numbers.',col:'#A855F7',dark:'#3B0764',lvs:['done','done','curr'],xp:85,xplbl:'850 / 1,000 XP',icon:'🔢',x:.70,y:.22,rx:.11,ry:.060,live:false},
+  {id:'expressions',name:'Equation Volcano',realm:'The Algebraic Badlands',desc:'Survive eruptions of variables & inequalities, solve equations under pressure.',col:'#EF4444',dark:'#450A0A',lvs:['done','curr','lock'],xp:40,xplbl:'400 / 1,000 XP',icon:'🧮',x:.78,y:.60,rx:.11,ry:.060,live:false},
+  {id:'geometry',name:'Geometry Grove',realm:'The Sacred Forest',desc:'Discover area, circles, angles & transformations in ancient woodland.',col:'#22C55E',dark:'#14532D',lvs:['done','curr','lock'],xp:30,xplbl:'300 / 1,000 XP',icon:'📏',x:.33,y:.68,rx:.115,ry:.062,live:false},
+  {id:'stats',name:'Data Desert',realm:'The Probability Wastes',desc:'Chart distributions, probability & sampling across shimmering dunes.',col:'#F59E0B',dark:'#451A03',lvs:['curr','lock','lock'],xp:20,xplbl:'200 / 1,000 XP',icon:'📊',x:.57,y:.75,rx:.10,ry:.055,live:false},
+  {id:'enrichment',name:'Enrichment Isle',realm:'The Real World Reach',desc:'Apply every power to engineering, finance, ecology & space missions.',col:'#EC4899',dark:'#500724',lvs:['lock','lock','lock'],xp:5,xplbl:'Unlocks at mastery',icon:'🌍',x:.14,y:.70,rx:.085,ry:.050,live:false}
+];
+const PATHS=[[0,1],[0,3],[1,2],[2,4],[3,4],[3,5]];
+const CLOUDS=[{ox:.04,oy:.06,w:140,spd:.18,t:0},{ox:.40,oy:.04,w:110,spd:.14,t:500},{ox:.72,oy:.08,w:130,spd:.20,t:200},{ox:.55,oy:.02,w:90,spd:.12,t:800},{ox:.20,oy:.13,w:100,spd:.16,t:300}];
+const BIRDS=Array.from({length:10},(_,i)=>({ox:Math.random(),oy:.04+Math.random()*.15,spd:.22+Math.random()*.18,t:i*90,amp:2+Math.random()*3,freq:.06+Math.random()*.04}));
 
-<!-- ════════════════════════════════════════
-     SCRIPTS
-════════════════════════════════════════ -->
-<script src="js/data.js"></script>
-<script src="js/world.js"></script>
-<script src="js/app.js"></script>
+const RATIO_REEF={
+  id:'ratios',name:'Ratio Reef',realm:'The Proportion Archipelago',color:'#0EA5E9',dark:'#0C4A6E',
+  boss:{icon:'🐉',name:'The Ratio Dragon',desc:'A fearsome dragon that devours all who cannot reason with rates and proportions. Prove your mastery to deal damage!',hp:72,fighters:14},
+  levels:[
+    {grade:6,label:'Grade 6',status:'done',standard:'6.RP.A — Understand ratio concepts',quests:[
+      {id:'r6q1',title:'What IS a Ratio?',sub:'Understand part-to-part and part-to-whole ratios using real objects.',xp:50,stars:3,status:'done',questions:[
+        {q:'A fruit bowl has 4 apples and 6 oranges. What is the ratio of apples to total fruit?',opts:['4:6','4:10','6:4','10:4'],ans:1,explain:'Total fruit = 4+6 = 10. Apples to total = 4:10 (or 2:5).'},
+        {q:'A class has 12 boys and 15 girls. What is the ratio of girls to boys?',opts:['12:15','15:12','15:27','12:27'],ans:1,explain:'Girls to boys means girls first: 15:12, which simplifies to 5:4.'},
+        {q:'Write 3:7 as a fraction.',opts:['7/3','3/10','3/7','7/10'],ans:2,explain:'A ratio a:b can be written as the fraction a/b, so 3:7 = 3/7.'},
+      ]},
+      {id:'r6q2',title:'Unit Rate Quest',sub:'Find unit rates to compare prices, speeds, and more.',xp:60,stars:3,status:'done',questions:[
+        {q:'A car travels 150 miles in 3 hours. What is its unit rate?',opts:['45 mph','50 mph','53 mph','60 mph'],ans:1,explain:'Unit rate = 150 ÷ 3 = 50 miles per hour.'},
+        {q:'3 notebooks cost $7.50. What is the cost per notebook?',opts:['$2.00','$2.25','$2.50','$3.00'],ans:2,explain:'Cost per notebook = $7.50 ÷ 3 = $2.50.'},
+        {q:'Which is the better deal? A: 5 pens for $3.75 or B: 8 pens for $5.60?',opts:['A — $0.75 each','B — $0.70 each','They are equal','Not enough info'],ans:1,explain:'A = $3.75÷5 = $0.75 each. B = $5.60÷8 = $0.70 each. B is better!'},
+      ]},
+      {id:'r6q3',title:'Equivalent Ratios',sub:'Use ratio tables and double number lines.',xp:65,stars:2,status:'curr',questions:[
+        {q:'Are 2:5 and 6:15 equivalent ratios?',opts:['Yes','No','Cannot determine','Only if simplified'],ans:0,explain:'6:15 = 6÷3 : 15÷3 = 2:5. Yes, they are equivalent!'},
+        {q:'Complete the ratio table: 3:4 = ?:20',opts:['12','15','16','18'],ans:1,explain:'20 ÷ 4 = 5. Multiply both by 5: 3×5 = 15. Answer: 15:20.'},
+        {q:'A recipe uses 2 cups flour for every 3 cups sugar. For 9 cups sugar, how much flour?',opts:['4 cups','5 cups','6 cups','8 cups'],ans:2,explain:'9 ÷ 3 = 3 (scale factor). 2 × 3 = 6 cups of flour.'},
+      ]},
+    ]},
+    {grade:7,label:'Grade 7',status:'curr',standard:'7.RP.A — Analyze proportional relationships',quests:[
+      {id:'r7q1',title:'Proportional Relationships',sub:'Identify proportional relationships in tables, graphs, and equations.',xp:75,stars:3,status:'done',questions:[
+        {q:'Is the table proportional? x: 2,4,6 | y: 6,12,18',opts:['Yes — ratio is 3:1','No — not constant','Yes — ratio is 1:3','Cannot determine'],ans:0,explain:'y/x = 6/2 = 12/4 = 18/6 = 3. Constant ratio → proportional.'},
+        {q:'A graph of a proportional relationship always passes through:',opts:['(1,1)','The x-axis','The origin (0,0)','Any two points'],ans:2,explain:'Proportional relationships always pass through the origin (0,0).'},
+        {q:'The equation y = 4.5x represents a proportional relationship. What is the constant of proportionality?',opts:['x','y','4.5','0'],ans:2,explain:'In y = kx, the constant of proportionality k = 4.5.'},
+      ]},
+      {id:'r7q2',title:'Percent Problems',sub:'Solve real-world percent problems including tax, tip, and discounts.',xp:80,stars:2,status:'curr',questions:[
+        {q:'A shirt costs $40. It is on sale for 25% off. What is the sale price?',opts:['$10','$28','$30','$32'],ans:2,explain:'25% of $40 = $10. Sale price = $40 − $10 = $30.'},
+        {q:'A meal costs $56. With 15% tip, what is the total?',opts:['$8.40','$62.40','$64.40','$71.00'],ans:2,explain:'Tip = 15% × $56 = $8.40. Total = $56 + $8.40 = $64.40.'},
+        {q:'A store buys an item for $80 and sells it for $120. What is the percent markup?',opts:['33%','40%','50%','67%'],ans:2,explain:'Markup = ($120−$80)/$80 = $40/$80 = 0.50 = 50%.'},
+      ]},
+      {id:'r7q3',title:'Scale & Proportion',sub:'Use proportional reasoning to solve scale drawing and map problems.',xp:85,stars:0,status:'lock',questions:[
+        {q:'A map has scale 1 inch = 50 miles. Two cities are 3.5 inches apart. How far?',opts:['53.5 miles','150 miles','175 miles','200 miles'],ans:2,explain:'3.5 × 50 = 175 miles.'},
+        {q:'A model car is 1:24 scale. The real car is 168 inches long. How long is the model?',opts:['5 inches','6 inches','7 inches','8 inches'],ans:2,explain:'168 ÷ 24 = 7 inches.'},
+        {q:'If 5 workers finish a job in 12 days, how many days for 3 workers (same rate)?',opts:['7.2 days','15 days','20 days','25 days'],ans:2,explain:'5 × 12 = 60 worker-days. 60 ÷ 3 = 20 days.'},
+      ]},
+    ]},
+    {grade:8,label:'Grade 8',status:'lock',standard:'8.EE.B — Proportional linear relationships',quests:[
+      {id:'r8q1',title:'Slope as Rate of Change',sub:'Connect proportional relationships to slope and linear equations.',xp:100,stars:0,status:'lock',questions:[
+        {q:'A line passes through (0,0) and (4,10). What is the slope?',opts:['0.4','2','2.5','4'],ans:2,explain:'slope = rise/run = 10/4 = 2.5'},
+        {q:'The slope of a proportional relationship equals:',opts:['The y-intercept','The x-intercept','The constant of proportionality','The origin'],ans:2,explain:'For y=kx, slope = k = constant of proportionality.'},
+        {q:'A line has slope 3/4. For every 8 units right, how many units up?',opts:['4','5','6','8'],ans:2,explain:'(3/4) × 8 = 6 units up.'},
+      ]},
+    ]},
+  ]
+};
 
+const STUDENTS=[
+  {name:'Aiden K.',avatar:'🦁',grade:'Gr.7',status:'adv',xp:2890,streak:12,last:'Today',domains:{ratio:95,numbers:90,expr:82,geo:75,stats:68},current:'Enrichment Isle'},
+  {name:'Sofia M.',avatar:'🐉',grade:'Gr.7',status:'adv',xp:2340,streak:8,last:'Today',domains:{ratio:92,numbers:88,expr:78,geo:80,stats:60},current:'Number Peaks'},
+  {name:'Zara P.',avatar:'🧙',grade:'Gr.7',status:'track',xp:1240,streak:5,last:'Today',domains:{ratio:62,numbers:85,expr:40,geo:30,stats:20},current:'Ratio Reef'},
+  {name:'Omar B.',avatar:'🦊',grade:'Gr.7',status:'adv',xp:2100,streak:9,last:'Today',domains:{ratio:88,numbers:91,expr:74,geo:70,stats:55},current:'Geo Grove'},
+  {name:'Rania S.',avatar:'🐺',grade:'Gr.7',status:'adv',xp:2050,streak:7,last:'Yesterday',domains:{ratio:85,numbers:82,expr:70,geo:65,stats:50},current:'Number Peaks'},
+  {name:'Marcus T.',avatar:'🦅',grade:'Gr.7',status:'help',xp:980,streak:1,last:'3 days ago',domains:{ratio:28,numbers:45,expr:22,geo:18,stats:10},current:'Ratio Reef'},
+  {name:'Priya R.',avatar:'🐸',grade:'Gr.7',status:'help',xp:1100,streak:2,last:'Yesterday',domains:{ratio:35,numbers:55,expr:30,geo:25,stats:15},current:'Ratio Reef'},
+  {name:'Lena K.',avatar:'🦋',grade:'Gr.7',status:'help',xp:890,streak:0,last:'4 days ago',domains:{ratio:22,numbers:38,expr:18,geo:15,stats:8},current:'Ratio Reef'},
+  {name:'Yasmine A.',avatar:'🦩',grade:'Gr.7',status:'adv',xp:1980,streak:6,last:'Today',domains:{ratio:80,numbers:85,expr:72,geo:68,stats:52},current:'Data Desert'},
+  {name:'Jake M.',avatar:'🐯',grade:'Gr.7',status:'track',xp:1350,streak:4,last:'Today',domains:{ratio:60,numbers:70,expr:50,geo:45,stats:30},current:'Eqn Volcano'},
+  {name:'Hana L.',avatar:'🦄',grade:'Gr.7',status:'track',xp:1420,streak:5,last:'Today',domains:{ratio:65,numbers:72,expr:55,geo:48,stats:35},current:'Geo Grove'},
+  {name:'Khalid R.',avatar:'🐻',grade:'Gr.7',status:'track',xp:1280,streak:3,last:'Today',domains:{ratio:58,numbers:68,expr:45,geo:40,stats:28},current:'Ratio Reef'},
+];
+const DCOLS={ratio:'#0EA5E9',numbers:'#A855F7',expr:'#EF4444',geo:'#22C55E',stats:'#F59E0B'};
+const DLBLS={ratio:'Ratios',numbers:'Numbers',expr:'Expressions',geo:'Geometry',stats:'Stats'};
+
+// ── STATE ──
+const S={xp:1240,streak:5,level:12,currentQ:0,currentQuest:null,answered:false,search:'',filter:'all'};
+
+// ── WORLD MAP ──
+let bgC,isC,bx,ix,W,H,time=0,hovered=null,raf=null;
+
+function gp(isl){return{x:isl.x*W,y:isl.y*H,rx:isl.rx*W,ry:isl.ry*H};}
+
+function initWorld(){
+  const world=document.getElementById('mq-world');
+  if(!world)return;
+  W=world.offsetWidth;H=world.offsetHeight;
+  bgC=document.getElementById('bgC');isC=document.getElementById('isC');
+  if(!bgC||!isC)return;
+  bgC.width=isC.width=W;bgC.height=isC.height=H;
+  bx=bgC.getContext('2d');ix=isC.getContext('2d');
+  isC.onmousemove=onMv;isC.onclick=onCk;
+  isC.onmouseleave=()=>{hovered=null;hideTT();isC.style.cursor='default';};
+  if(raf)cancelAnimationFrame(raf);
+  loopWorld();
+}
+
+function loopWorld(){time++;drawBg();drawIslands();raf=requestAnimationFrame(loopWorld);}
+function stopWorld(){if(raf)cancelAnimationFrame(raf);raf=null;}
+
+function drawBg(){
+  const c=bx;
+  const sg=c.createLinearGradient(0,0,0,H*.62);
+  sg.addColorStop(0,'#060D1F');sg.addColorStop(.5,'#0C1A3A');sg.addColorStop(1,'#0E4A7A');
+  c.fillStyle=sg;c.fillRect(0,0,W,H);
+  for(let i=0;i<80;i++){const sx=(i*137.508)%W,sy=(i*89.3)%H*.55,b=Math.sin(time*.015+i)*.35+.6;c.fillStyle=`rgba(255,255,255,${b*.75})`;c.beginPath();c.arc(sx,sy,.9,0,Math.PI*2);c.fill();}
+  const mx=W*.85,my=H*.11;c.fillStyle='#FEF9C3';c.beginPath();c.arc(mx,my,20,0,Math.PI*2);c.fill();
+  for(let r=28;r<=65;r+=18){c.strokeStyle=`rgba(254,249,195,.08)`;c.lineWidth=r*.22;c.beginPath();c.arc(mx,my,r,0,Math.PI*2);c.stroke();}
+  CLOUDS.forEach(cl=>{
+    const cx=((cl.ox*W+cl.t*cl.spd)%(W+cl.w+100))-cl.w*.3,cy=cl.oy*H;
+    c.fillStyle='rgba(255,255,255,.82)';
+    [[0,0,cl.w*.18],[cl.w*.28,0,cl.w*.22],[cl.w*.6,0,cl.w*.16],[cl.w*.14,-cl.w*.06,cl.w*.20]].forEach(([ox,oy,r])=>{c.beginPath();c.arc(cx+ox,cy+oy,r,0,Math.PI*2);c.fill();});
+    cl.t++;
+  });
+  BIRDS.forEach(b=>{const bxb=((b.ox*W+b.t*b.spd)%(W+60))-30,byb=b.oy*H+Math.sin(b.t*b.freq)*b.amp;c.strokeStyle='rgba(255,255,255,.65)';c.lineWidth=1.2;c.beginPath();c.moveTo(bxb-5,byb);c.quadraticCurveTo(bxb,byb-3.5,bxb+5,byb);c.stroke();b.t++;});
+  const wy0=H*.56,wg=c.createLinearGradient(0,wy0,0,H);
+  wg.addColorStop(0,'#0E6EA6');wg.addColorStop(.4,'#064E6E');wg.addColorStop(1,'#021527');
+  c.fillStyle=wg;c.fillRect(0,wy0,W,H-wy0);
+  for(let i=0;i<7;i++){const wy=wy0+i*((H-wy0)/7),ph=Math.sin(time*.007+i*.9)*5;c.strokeStyle=`rgba(255,255,255,${.04+i*.012})`;c.lineWidth=1.5;c.beginPath();for(let wx=0;wx<=W;wx+=10){const py=wy+Math.sin(wx*.022+time*.009+i)*5+ph;wx===0?c.moveTo(wx,py):c.lineTo(wx,py);}c.stroke();}
+}
+
+function drawIslands(){
+  const c=ix;c.clearRect(0,0,W,H);
+  PATHS.forEach(([a,b])=>{const p1=gp(ISLANDS[a]),p2=gp(ISLANDS[b]);c.setLineDash([8,12]);c.strokeStyle='rgba(255,255,255,.15)';c.lineWidth=1.5;c.beginPath();c.moveTo(p1.x,p1.y);c.lineTo(p2.x,p2.y);c.stroke();c.setLineDash([]);});
+  const bt=(time*.003)%1,p1=gp(ISLANDS[0]),p2=gp(ISLANDS[1]);
+  c.font='14px serif';c.textAlign='center';c.fillText('⛵',p1.x+bt*(p2.x-p1.x),p1.y+bt*(p2.y-p1.y)+Math.sin(time*.05)*3);
+  ISLANDS.forEach((isl,idx)=>{
+    const {x,y,rx,ry}=gp(isl),isH=isl===hovered,pulse=1+Math.sin(time*.025+idx*.9)*.04;
+    c.save();c.fillStyle='rgba(0,0,0,.28)';c.beginPath();c.ellipse(x,y+ry*1.1,rx,ry*.3,0,0,Math.PI*2);c.fill();c.restore();
+    if(isH){c.save();c.strokeStyle=isl.col;c.lineWidth=2;c.globalAlpha=.5+Math.sin(time*.05)*.28;c.beginPath();c.ellipse(x,y,rx*pulse*1.25,ry*pulse*1.25,0,0,Math.PI*2);c.stroke();c.restore();}
+    c.save();
+    const ig=c.createRadialGradient(x-rx*.25,y-ry*.25,ry*.1,x,y,rx*pulse);
+    ig.addColorStop(0,'#fff');ig.addColorStop(.2,isl.col);ig.addColorStop(.75,isl.dark||'#000');ig.addColorStop(1,'rgba(0,0,0,.15)');
+    c.fillStyle=ig;c.beginPath();
+    for(let i=0;i<20;i++){const ang=(i/10)*Math.PI-Math.PI/2,rr=i%2===0?1:(.72+Math.sin(i*2.1+time*.02+idx)*.06);c.lineTo(x+Math.cos(ang)*rx*rr*pulse,y+Math.sin(ang)*ry*rr*pulse);}
+    c.closePath();c.fill();c.restore();
+    if(isl.id==='expressions'){for(let f=0;f<5;f++){const fx=x+(Math.sin(time*.08+f*1.2))*rx*.25,fy=y-ry*.85-Math.abs(Math.sin(time*.06+f))*ry*.4,fr=3+Math.sin(time*.1+f)*2;c.fillStyle=['#F97316','#EF4444','#FCD34D'][f%3];c.globalAlpha=.8;c.beginPath();c.arc(fx,fy,fr,0,Math.PI*2);c.fill();c.globalAlpha=1;}}
+    if(!isl.live){c.fillStyle='rgba(0,0,0,.5)';c.beginPath();c.ellipse(x,y,rx*pulse,ry*pulse,0,0,Math.PI*2);c.fill();}
+    const pbw=rx*1.6;c.fillStyle='rgba(0,0,0,.38)';c.beginPath();c.roundRect(x-pbw/2,y+ry,pbw,7,4);c.fill();c.fillStyle=isl.col;c.beginPath();c.roundRect(x-pbw/2,y+ry,pbw*(isl.xp/100),7,4);c.fill();
+    c.font=`${isH?19:16}px serif`;c.textAlign='center';c.fillStyle='rgba(0,0,0,.4)';c.fillText(isl.icon,x+1.5,y+ry*.08+2);c.fillStyle='#fff';c.fillText(isl.icon,x,y+ry*.08);
+    c.font=`900 ${isH?13:12}px Nunito,sans-serif`;c.textAlign='center';c.fillStyle='rgba(0,0,0,.45)';c.fillText(isl.name,x+1.2,y+ry*1.25+1);c.fillStyle='#fff';c.fillText(isl.name,x,y+ry*1.25);
+    if(!isl.live){c.font='900 11px Nunito,sans-serif';c.fillStyle='rgba(255,255,255,.55)';c.fillText('Coming Soon',x,y+ry*.5);}
+    if(isl.lvs.some(l=>l==='curr')&&isl.live){c.fillStyle=Math.sin(time*.06)>0?'#FFF176':'#F59E0B';c.beginPath();c.arc(x+rx*.82,y-ry*.85,5.5,0,Math.PI*2);c.fill();}
+  });
+  const pp=document.getElementById('mq-player');if(pp){pp.style.left=(W*.475-14)+'px';pp.style.top=(H*.465-28)+'px';}
+}
+
+function onMv(e){
+  const r=isC.getBoundingClientRect(),mx=(e.clientX-r.left)*(W/r.width),my=(e.clientY-r.top)*(H/r.height);
+  let found=null;
+  for(const isl of ISLANDS){const{x,y,rx,ry}=gp(isl),dx=(mx-x)/rx,dy=(my-y)/ry;if(dx*dx+dy*dy<1.3){found=isl;break;}}
+  if(found!==hovered){hovered=found;if(found)showTT(found,e.clientX,e.clientY);else hideTT();}
+  else if(found)moveTT(e.clientX,e.clientY);
+  isC.style.cursor=hovered?'pointer':'default';
+}
+function onCk(){if(!hovered)return;if(hovered.live)Realm.render('ratios');else Modal.open('coming-soon',hovered);}
+
+function showTT(isl,cx,cy){
+  const tt=document.getElementById('mq-tt');
+  document.getElementById('tt-realm').textContent=isl.realm;
+  document.getElementById('tt-realm').style.color=isl.col;
+  document.getElementById('tt-name').textContent=isl.icon+' '+isl.name;
+  document.getElementById('tt-desc').textContent=isl.desc;
+  const lv=document.getElementById('tt-lvs');lv.innerHTML='';
+  ['Gr.6','Gr.7','Gr.8'].forEach((lb,i)=>{const s=isl.lvs[i],b=document.createElement('span');b.className='tt-lv '+(s==='done'?'lv-done':s==='curr'?'lv-curr':'lv-lock');b.textContent=(s==='done'?'✓ ':s==='curr'?'⚡ ':'🔒 ')+lb;lv.appendChild(b);});
+  document.getElementById('tt-bf').style.cssText=`width:${isl.xp}%;background:${isl.col};`;
+  document.getElementById('tt-xplbl').textContent=isl.xplbl;
+  const btn=document.getElementById('tt-enter');btn.style.background=isl.live?isl.dark:'rgba(255,255,255,.1)';btn.textContent=isl.live?'Enter Realm →':'🔒 Coming Soon';btn.onclick=onCk;
+  moveTT(cx,cy);tt.classList.add('show');
+}
+function moveTT(cx,cy){
+  const tt=document.getElementById('mq-tt'),wr=document.getElementById('mq-world').getBoundingClientRect();
+  let lx=cx-wr.left,ty=cy-wr.top-20;
+  if(lx<117)lx=117;if(lx>wr.width-117)lx=wr.width-117;if(ty<8)ty=cy-wr.top+35;
+  tt.style.left=lx+'px';tt.style.top=ty+'px';
+}
+function hideTT(){document.getElementById('mq-tt').classList.remove('show');}
+
+// ── LANDING CANVAS ──
+function initLandCanvas(){
+  const c=document.getElementById('land-canvas');if(!c)return;
+  const p=c.parentElement;c.width=p.offsetWidth;c.height=p.offsetHeight;
+  const ctx=c.getContext('2d');let t=0;
+  function draw(){
+    t++;ctx.clearRect(0,0,c.width,c.height);
+    const g=ctx.createLinearGradient(0,0,0,c.height);
+    g.addColorStop(0,'#060D1F');g.addColorStop(.5,'#0C1A3A');g.addColorStop(1,'#1E3A6E');
+    ctx.fillStyle=g;ctx.fillRect(0,0,c.width,c.height);
+    for(let i=0;i<120;i++){const sx=(i*137.5)%c.width,sy=(i*97.3)%c.height*.85,b=Math.sin(t*.012+i)*.4+.6;ctx.fillStyle=`rgba(255,255,255,${b*.8})`;ctx.beginPath();ctx.arc(sx,sy,.9,0,Math.PI*2);ctx.fill();}
+    const mx=c.width*.82,my=c.height*.13;ctx.fillStyle='#FEF9C3';ctx.beginPath();ctx.arc(mx,my,26,0,Math.PI*2);ctx.fill();
+    [[.15,.55,58,'#0EA5E9'],[.72,.45,48,'#A855F7'],[.45,.75,43,'#22C55E'],[.85,.70,38,'#EF4444'],[.28,.82,36,'#F59E0B'],[.60,.60,34,'#EC4899']].forEach(([xi,yi,r,col],idx)=>{
+      const pulse=1+Math.sin(t*.02+idx*1.1)*.05,ig=ctx.createRadialGradient(xi*c.width-r*.2,yi*c.height-r*.2,r*.1,xi*c.width,yi*c.height,r*1.5*pulse);
+      ig.addColorStop(0,'#fff');ig.addColorStop(.3,col);ig.addColorStop(.8,col+'55');ig.addColorStop(1,'transparent');
+      ctx.fillStyle=ig;ctx.beginPath();ctx.ellipse(xi*c.width,yi*c.height,r*1.4*pulse,r*.7*pulse,0,0,Math.PI*2);ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function initRealmCanvas(id,color){
+  const c=document.getElementById(id);if(!c)return;
+  const p=c.parentElement;c.width=p.offsetWidth;c.height=p.offsetHeight;
+  const ctx=c.getContext('2d');let t=0;
+  function draw(){
+    t++;ctx.clearRect(0,0,c.width,c.height);
+    const g=ctx.createLinearGradient(0,0,c.width,c.height);
+    g.addColorStop(0,color+'33');g.addColorStop(1,'rgba(0,0,0,.5)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,c.width,c.height);
+    for(let i=0;i<40;i++){const sx=(i*137.5)%c.width,sy=(i*89.3)%c.height,b=Math.sin(t*.015+i)*.3+.5;ctx.fillStyle=`rgba(255,255,255,${b*.6})`;ctx.beginPath();ctx.arc(sx,sy,.8,0,Math.PI*2);ctx.fill();}
+    for(let i=0;i<5;i++){const px=c.width*(.1+i*.2),py=c.height*(.5+Math.sin(t*.02+i)*.2),pr=20+Math.sin(t*.03+i*.7)*8,al=Math.floor(30+Math.sin(t*.02+i)*20).toString(16).padStart(2,'0');ctx.fillStyle=color+al;ctx.beginPath();ctx.arc(px,py,pr,0,Math.PI*2);ctx.fill();}
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// ── APP ──
+const App={
+  show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');},
+  showLanding(){stopWorld();this.show('landing');initLandCanvas();},
+  showStudent(){this.show('student-world');setTimeout(()=>initWorld(),80);this.updateHUD();},
+  showTeacher(){this.show('teacher-screen');TD.render('overview');TD.renderHeatmap();},
+  updateHUD(){document.querySelectorAll('.hud-xp').forEach(e=>e.textContent=`⚡ ${S.xp.toLocaleString()} XP`);document.querySelectorAll('.hud-streak').forEach(e=>e.textContent=`🔥 ${S.streak}-day streak`);}
+};
+
+// ── REALM ──
+const Realm={
+  render(id){
+    stopWorld();App.show('realm-screen');
+    const d=RATIO_REEF,screen=document.getElementById('realm-screen');
+    screen.innerHTML=`
+    <nav class="mq-nav">
+      <div><div class="mq-brand-sub">Mrs. Ali's Classroom</div><div class="mq-brand-main">Math<span>Quest</span></div></div>
+      <div class="mq-nr"><span class="mq-pill fire hud-streak">🔥 ${S.streak}-day streak</span><span class="mq-pill gold hud-xp">⚡ ${S.xp.toLocaleString()} XP</span><button class="mq-back" onclick="App.showStudent()">← World Map</button></div>
+    </nav>
+    <div class="realm-hero">
+      <canvas class="realm-hero-canvas" id="realm-hero-canvas"></canvas>
+      <div class="realm-hero-inner">
+        <div class="realm-eyebrow" style="color:${d.color};">${d.realm}</div>
+        <div class="realm-title">${d.boss.icon} ${d.name}</div>
+        <div class="realm-sub">Master ratios, rates, proportional relationships &amp; percent problems — aligned to Common Core 6.RP &amp; 7.RP</div>
+        <div class="realm-xp-row"><span class="realm-xp-lbl">⚡ 620 / 1,000 XP</span><div class="xp-bar-wrap" style="width:180px;"><div class="xp-bar-fill" style="width:62%;"></div></div><span class="realm-xp-lbl">Lvl 2</span></div>
+      </div>
+    </div>
+    <div class="realm-content">
+      <div class="level-tabs" id="level-tabs">
+        ${d.levels.map((lv,i)=>`<button class="level-tab ${lv.status} ${i===0?'active':''}" onclick="Realm.switchLevel(${i})" ${lv.status==='lock'?'disabled':''}>${lv.status==='done'?'✅':lv.status==='curr'?'⚡':'🔒'} ${lv.label}</button>`).join('')}
+      </div>
+      <div id="realm-level-content"></div>
+    </div>`;
+    setTimeout(()=>initRealmCanvas('realm-hero-canvas',d.color),80);
+    this.switchLevel(0);
+  },
+  switchLevel(idx){
+    const d=RATIO_REEF,lv=d.levels[idx];
+    document.querySelectorAll('.level-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+    const el=document.getElementById('realm-level-content');if(!el)return;
+    el.innerHTML=`
+    <div style="margin-bottom:16px;"><span class="chip chip-gold" style="font-size:12px;">${lv.standard}</span></div>
+    ${idx===1?`<div class="realm-boss-card" onclick="Modal.open('boss')">
+      <div class="realm-boss-icon">${d.boss.icon}</div>
+      <div class="realm-boss-info">
+        <div class="realm-boss-lbl">Chapter Boss</div>
+        <div class="realm-boss-name">${d.boss.name}</div>
+        <div class="realm-boss-desc">${d.boss.desc}</div>
+        <div class="realm-boss-hw"><div class="realm-boss-hf" style="width:${d.boss.hp}%;"></div></div>
+        <div class="realm-boss-meta"><span>Boss HP: ${d.boss.hp}%</span><span>${d.boss.fighters} students fighting</span><span>Defeat to unlock Gr.8!</span></div>
+      </div>
+      <button class="btn btn-red" style="flex-shrink:0;">⚔️ Challenge!</button>
+    </div>`:''}
+    <div class="td-stitle">⚔️ Quests — ${lv.label}</div>
+    <div class="quest-grid">
+      ${lv.quests.map((q,qi)=>{
+        const locked=lv.status==='lock'||q.status==='lock';
+        const stars=q.stars>0?'⭐'.repeat(q.stars)+'☆'.repeat(3-q.stars):'☆☆☆';
+        return `<div class="quest-card ${locked?'locked':''} ${q.status==='done'?'completed':''}" onclick="${locked?'':`Realm.startQuest('${q.id}')`}">
+          <div class="quest-number">Quest ${qi+1} ${q.status==='done'?'<span class="chip chip-track">Completed ✅</span>':q.status==='curr'?'<span class="chip chip-gold">In Progress ⚡</span>':locked?'<span class="chip chip-lock">🔒 Locked</span>':''}</div>
+          <div class="quest-title">${q.title}</div>
+          <div class="quest-sub">${q.sub}</div>
+          <div class="quest-footer">
+            <div class="quest-xp">⚡ +${q.xp} XP</div>
+            <div class="quest-stars">${stars}</div>
+            ${locked?'':`<button class="btn btn-purple" style="padding:7px 14px;font-size:12px;" onclick="event.stopPropagation();Realm.startQuest('${q.id}')">${q.status==='done'?'Replay':'Start →'}</button>`}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div class="td-stitle" style="margin-top:8px;">🔒 More Realms — Coming Soon</div>
+    <div class="cs-grid">
+      ${[['🔢','Number Peaks'],['🧮','Equation Volcano'],['📏','Geometry Grove'],['📊','Data Desert'],['🌍','Enrichment Isle']].map(([ico,name])=>`<div class="cs-card"><div class="cs-icon">${ico}</div><div class="cs-name">${name}</div><div class="cs-tag">Coming Soon 🚀</div></div>`).join('')}
+    </div>
+    <div class="coming-soon-banner-sm">🎉 Ratio Reef is just the beginning! Mrs. Ali is unlocking more realms every week. Stay tuned!</div>`;
+  },
+  startQuest(qid){
+    for(const lv of RATIO_REEF.levels){const q=lv.quests.find(q=>q.id===qid);if(q){Modal.open('quest',q);return;}}
+  }
+};
+
+// ── MODAL ──
+const Modal={
+  open(type,data){
+    const mc=document.getElementById('modal-box');
+    mc.innerHTML=this.render(type,data);
+    document.getElementById('modal-overlay').classList.remove('hidden');
+  },
+  close(){document.getElementById('modal-overlay').classList.add('hidden');},
+  render(type,data){
+    if(type==='coming-soon')return`<button class="modal-close" onclick="Modal.close()">✕</button><div style="text-align:center;padding:10px 0;"><div style="font-size:56px;margin-bottom:12px;">${data.icon}</div><div class="modal-lbl" style="color:${data.col};">${data.realm}</div><div class="modal-title">${data.name}</div><div class="modal-sub">${data.desc}</div><div style="background:rgba(255,241,118,.08);border:1.5px dashed rgba(255,241,118,.35);border-radius:14px;padding:16px 20px;margin-bottom:18px;"><div style="font-family:'Fredoka One',cursive;font-size:18px;color:#FFF176;margin-bottom:6px;">🚀 Coming Soon!</div><div style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.65;">Mrs. Ali is building this realm now. Complete Ratio Reef first — it unlocks as you progress!</div></div><button class="btn btn-purple btn-full" onclick="Modal.close()">Got it! Back to the map</button></div>`;
+    if(type==='boss')return this.bossQ();
+    if(type==='assign-boss')return this.assignBoss();
+    if(type==='create-duel')return this.createDuel();
+    if(type==='student-detail')return this.studentDetail(data);
+    if(type==='quest')return this.questQ(data,0);
+    return '';
+  },
+  bossQ(){
+    const qs=[{q:'If 4 bags of rice cost $9.20, how much do 7 bags cost?',opts:['$14.40','$15.75','$16.10','$18.00'],ans:2,explain:'Unit rate: $9.20 ÷ 4 = $2.30 each. 7 × $2.30 = $16.10.'},
+               {q:'A map scale is 1 inch = 40 miles. Two cities are 3.5 inches apart on the map. How far in real life?',opts:['43.5 miles','120 miles','140 miles','160 miles'],ans:2,explain:'3.5 × 40 = 140 miles.'}];
+    const q=qs[Math.floor(Math.random()*qs.length)];
+    return`<button class="modal-close" onclick="Modal.close()">✕</button><div class="modal-lbl" style="color:#F87171;">🐉 BOSS BATTLE — RATIO REEF</div><div class="modal-title">Attack the Ratio Dragon!</div><div class="modal-sub">Every correct answer deals damage. Wrong answers give the boss a shield!</div><div class="q-box"><div class="q-text">${q.q}</div><div class="q-answers">${q.opts.map((o,i)=>`<button class="q-ans" onclick="Modal.answerBoss(this,${i===q.ans},'${q.explain.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div></div><div class="xp-pop" id="modal-xp-pop">+75 XP Earned! 🎉</div>`;
+  },
+  answerBoss(btn,correct,explain){
+    document.querySelectorAll('.q-ans').forEach(b=>b.disabled=true);
+    if(correct){btn.classList.add('correct');document.getElementById('modal-xp-pop').classList.add('show');S.xp+=75;App.updateHUD();}
+    else{btn.classList.add('wrong');document.querySelectorAll('.q-ans').forEach(b=>{if(b.onclick&&b.onclick.toString().includes('true'))b.classList.add('correct');});}
+    const d=document.createElement('div');d.style.cssText='margin-top:12px;background:rgba(255,255,255,.06);border-radius:10px;padding:12px;font-size:13px;color:rgba(255,255,255,.8);line-height:1.65;';d.innerHTML='💡 '+explain;document.querySelector('.q-box').appendChild(d);
+  },
+  assignBoss(){
+    return`<button class="modal-close" onclick="Modal.close()">✕</button><div class="modal-title">⚔️ Assign Boss Battle</div><div class="modal-sub">Choose a domain boss for your class to battle together!</div><div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">${[['🐉','Ratio Dragon','Ratio Reef','#0EA5E9'],['👾','Equation Beast','Eqn Volcano','#EF4444'],['🗿','Geometry Golem','Geo Grove','#22C55E'],['👻','Stats Specter','Data Desert','#F59E0B']].map(([ico,name,realm,col])=>`<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;" onclick="Modal.close()"><span style="font-size:28px;">${ico}</span><div style="flex:1;"><div style="font-weight:900;font-size:14px;">${name}</div><div style="font-size:12px;color:rgba(255,255,255,.5);">${realm}</div></div><span style="font-size:11px;font-weight:800;padding:4px 12px;border-radius:8px;background:${col}22;color:${col};">Assign →</span></div>`).join('')}</div><button class="btn btn-purple btn-full" onclick="Modal.close()">Confirm Assignment</button>`;
+  },
+  createDuel(){
+    return`<button class="modal-close" onclick="Modal.close()">✕</button><div class="modal-title">⚔️ Create a Point Duel</div><div class="modal-sub">Pair two students for a live head-to-head math battle.</div><div style="font-size:12px;font-weight:800;color:rgba(255,255,255,.5);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;">Select Domain</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;">${[['Ratio Reef','#0EA5E9'],['Eqn Volcano','#EF4444'],['Geo Grove','#22C55E'],['Data Desert','#F59E0B'],['Number Peaks','#A855F7']].map(([n,col])=>`<div style="padding:6px 12px;border-radius:8px;border:1.5px solid ${col};color:${col};font-size:12px;font-weight:800;cursor:pointer;">${n}</div>`).join('')}</div><div style="font-size:12px;font-weight:800;color:rgba(255,255,255,.5);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;">Pair Students</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;">${STUDENTS.slice(0,6).map(s=>`<div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:8px 10px;display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px;font-weight:800;">${s.avatar} ${s.name.split(' ')[0]}</div>`).join('')}</div><button class="btn btn-gold btn-full" onclick="Modal.close()">🏁 Start Duel!</button>`;
+  },
+  studentDetail(s){
+    const stColor={adv:'#C4B5FD',track:'#86EFAC',help:'#FCA5A5'}[s.status];
+    const stLabel={adv:'Advanced 💜',track:'On Track ✅',help:'Needs Help ⚠️'}[s.status];
+    return`<button class="modal-close" onclick="Modal.close()">✕</button><div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><div style="font-size:44px;">${s.avatar}</div><div><div style="font-family:'Fredoka One',cursive;font-size:22px;">${s.name}</div><div style="font-size:13px;color:rgba(255,255,255,.5);">${s.grade} · ${s.current}</div><div style="color:${stColor};font-size:12px;font-weight:900;margin-top:3px;">${stLabel}</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px;"><div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Fredoka One',cursive;font-size:22px;color:#FFF176;">⚡ ${s.xp.toLocaleString()}</div><div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;">Total XP</div></div><div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Fredoka One',cursive;font-size:22px;color:#F97316;">🔥 ${s.streak}</div><div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;">Day Streak</div></div><div style="background:rgba(255,255,255,.05);border-radius:10px;padding:10px;text-align:center;"><div style="font-family:'Fredoka One',cursive;font-size:18px;color:#34D399;">${s.last}</div><div style="font-size:11px;color:rgba(255,255,255,.5);font-weight:800;">Last Active</div></div></div><div style="font-family:'Fredoka One',cursive;font-size:15px;color:#FFF176;margin-bottom:10px;">🗺️ Domain Progress</div>${Object.entries(s.domains).map(([k,v])=>`<div class="td-drow" style="margin-bottom:8px;"><div class="td-dlbl" style="width:90px;">${DLBLS[k]}</div><div style="flex:1;background:rgba(255,255,255,.1);border-radius:6px;height:10px;overflow:hidden;"><div style="height:100%;border-radius:6px;background:${DCOLS[k]};width:${v}%;"></div></div><div style="font-size:12px;font-weight:800;color:rgba(255,255,255,.55);min-width:32px;text-align:right;">${v}%</div></div>`).join('')}<div style="margin-top:14px;background:rgba(255,255,255,.04);border-radius:10px;padding:12px;"><div style="font-size:11px;font-weight:900;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Mrs. Ali's Recommendation</div><div style="font-size:13px;color:rgba(255,255,255,.78);line-height:1.65;">${s.status==='help'?'Schedule a 1-on-1 check-in. Reassign to Grade 6 level in Ratio Reef with additional scaffolding. Monitor daily for signs of frustration.':s.status==='adv'?'Ready for Enrichment Isle! Assign real-world missions and consider a peer tutoring role during small group interventions.':'Progressing well. Encourage challenge mode and boss battles. Monitor Equation Volcano — slight lag detected.'}</div></div><div style="display:flex;gap:8px;margin-top:14px;"><button onclick="Modal.close()" class="btn btn-purple" style="flex:1;">⚔️ Assign Task</button><button onclick="Modal.close()" class="btn btn-ghost" style="flex:1;">💬 Send Message</button></div>`;
+  },
+  questQ(quest,idx){
+    S.currentQuest=quest;S.currentQ=idx;S.answered=false;
+    const q=quest.questions[idx],total=quest.questions.length;
+    return`<button class="modal-close" onclick="Modal.close()">✕</button><div class="modal-lbl" style="color:#0EA5E9;">📐 RATIO REEF — ${quest.title.toUpperCase()}</div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;"><div class="modal-title" style="margin:0;">${quest.title}</div><div style="font-family:'Fredoka One',cursive;font-size:14px;color:rgba(255,255,255,.5);">Q${idx+1}/${total}</div></div><div style="background:rgba(255,255,255,.06);border-radius:10px;height:6px;overflow:hidden;margin-bottom:18px;"><div style="height:100%;background:#0EA5E9;border-radius:10px;width:${(idx/total)*100}%;transition:width .5s;"></div></div><div class="q-box"><div class="q-text">${q.q}</div><div class="q-answers">${q.opts.map((o,i)=>`<button class="q-ans" onclick="Modal.answerQ(this,${i===q.ans},'${q.explain.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div></div><div class="xp-pop" id="modal-xp-pop"></div>`;
+  },
+  answerQ(btn,correct,explain){
+    if(S.answered)return;S.answered=true;
+    const quest=S.currentQuest;
+    document.querySelectorAll('.q-ans').forEach(b=>b.disabled=true);
+    document.querySelectorAll('.q-ans')[quest.questions[S.currentQ].ans].classList.add('correct');
+    if(!correct)btn.classList.add('wrong');
+    if(correct){S.xp+=Math.round(quest.xp/quest.questions.length);App.updateHUD();}
+    const pop=document.getElementById('modal-xp-pop');
+    pop.textContent=correct?`+${Math.round(quest.xp/quest.questions.length)} XP! 🎉`:'Not quite! Study the hint below.';
+    pop.classList.add('show');pop.style.color=correct?'#FFF176':'#FCA5A5';
+    const ed=document.createElement('div');ed.style.cssText='margin-top:12px;background:rgba(255,255,255,.06);border-radius:10px;padding:12px;font-size:13px;color:rgba(255,255,255,.8);line-height:1.65;';ed.innerHTML='💡 <strong>Explanation:</strong> '+explain;document.querySelector('.q-box').appendChild(ed);
+    const nb=document.createElement('button');const nextIdx=S.currentQ+1;const hasNext=nextIdx<quest.questions.length;nb.className='btn '+(hasNext?'btn-purple':'btn-green')+' btn-full';nb.style.marginTop='14px';nb.textContent=hasNext?'Next Question →':'🏆 Quest Complete!';nb.onclick=()=>{if(hasNext){document.getElementById('modal-box').innerHTML=Modal.questQ(quest,nextIdx);}else{Modal.close();Realm.switchLevel(S.currentQ>=0?0:0);}};document.getElementById('modal-box').appendChild(nb);
+  }
+};
+
+// ── TEACHER DASHBOARD ──
+const TD={
+  render(tab,btnEl){
+    document.querySelectorAll('.td-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.td-tab-pane').forEach(p=>p.classList.remove('active'));
+    if(btnEl)btnEl.classList.add('active');
+    else{const b=document.querySelector(`[data-tab="${tab}"]`);if(b)b.classList.add('active');}
+    const pane=document.getElementById(`td-${tab}`);if(pane)pane.classList.add('active');
+    if(tab==='students')this.renderStudents();
+    if(tab==='leaderboard')this.renderLeaderboard();
+    if(tab==='insights')this.renderInsights();
+  },
+  renderStudents(){
+    const grid=document.getElementById('student-grid');if(!grid)return;
+    const filtered=STUDENTS.filter(s=>s.name.toLowerCase().includes(S.search.toLowerCase())&&(S.filter==='all'||s.status===S.filter));
+    grid.innerHTML=filtered.map(s=>{
+      const cls=s.status==='help'?'flagged':s.status==='adv'?'advanced':'';
+      const stCls={adv:'chip-adv',track:'chip-track',help:'chip-help'}[s.status];
+      const stLbl={adv:'Advanced',track:'On Track',help:'Needs Help'}[s.status];
+      return`<div class="td-scard ${cls}" onclick='Modal.open("student-detail",${JSON.stringify(s)})'>
+        <div class="td-stop"><div class="td-sav">${s.avatar}</div><div style="flex:1;"><div class="td-sname">${s.name}</div><div class="td-sgrade">${s.grade} · ${s.current}</div></div><span class="chip ${stCls}">${stLbl}</span></div>
+        <div>${Object.entries(s.domains).map(([k,v])=>`<div class="td-drow"><div class="td-dlbl">${DLBLS[k]}</div><div class="td-dbw"><div class="td-dbf" style="width:${v}%;background:${DCOLS[k]};"></div></div><div class="td-dpct">${v}%</div></div>`).join('')}</div>
+        <div class="td-sfooter"><span class="td-sxp">⚡ ${s.xp.toLocaleString()}</span><span class="td-sstreak">${s.streak>0?`🔥 ${s.streak}-day`:'😢 Streak lost'}</span><span class="td-slast">${s.last}</span></div>
+        <div class="td-sacts"><button class="td-sact td-sact-b" onclick="event.stopPropagation();">💬 Message</button><button class="td-sact td-sact-a" onclick="event.stopPropagation();Modal.open('assign-boss')">⚔️ Assign</button>${s.status==='help'?'<button class="td-sact td-sact-r" onclick="event.stopPropagation();">🆘 Intervene</button>':''}</div>
+      </div>`;
+    }).join('');
+  },
+  renderLeaderboard(){
+    const list=document.getElementById('lb-list');if(!list)return;
+    const sorted=[...STUDENTS].sort((a,b)=>b.xp-a.xp);
+    list.innerHTML=sorted.map((s,i)=>`<div class="lb-row" onclick='Modal.open("student-detail",${JSON.stringify(s)})'><div class="lb-rank" style="color:${i<3?['#FFD700','#C0C0C0','#CD7F32'][i]:'rgba(255,255,255,.4)'}">${i<3?['🥇','🥈','🥉'][i]:i+1}</div><div class="lb-av">${s.avatar}</div><div class="lb-name" style="color:${s.status==='adv'?'#C4B5FD':s.status==='help'?'#FCA5A5':'#fff'}">${s.name}</div><div class="lb-domain">${s.current}</div><div class="lb-xp">⚡ ${s.xp.toLocaleString()}</div></div>`).join('');
+  },
+  renderInsights(){
+    const grid=document.getElementById('insights-grid');if(!grid)return;
+    grid.innerHTML=`<div class="insight-card"><div class="insight-title">🔴 Intervention Group</div><span class="diff-tag" style="background:rgba(220,38,38,.18);color:#FCA5A5;">3 students — Tier 3 support</span><div class="diff-item">Re-teach ratio concepts with manipulatives &amp; tape diagrams</div><div class="diff-item">Assign Ratio Reef Grade 6 review quests with scaffolding</div><div class="diff-item">Reduce question count per session, increase feedback frequency</div><div class="diff-item">Weekly 1-on-1 check-in after each level attempt</div><span class="diff-tag" style="background:rgba(245,158,11,.15);color:#FCD34D;margin-top:8px;">Marcus T., Priya R., Lena K.</span></div>
+    <div class="insight-card"><div class="insight-title">🟡 On-Track Group</div><span class="diff-tag" style="background:rgba(34,197,94,.15);color:#86EFAC;">20 students — Tier 1 core</span><div class="diff-item">Continue current pacing through Grade 7 quests</div><div class="diff-item">Introduce point duels for mid-week engagement boost</div><div class="diff-item">Boss battle collaboration in groups of 3–4</div><div class="diff-item">Geometry Grove is the next domain unlock for most</div></div>
+    <div class="insight-card"><div class="insight-title">💜 Advanced Group</div><span class="diff-tag" style="background:rgba(168,85,247,.18);color:#C4B5FD;">5 students — Extension track</span><div class="diff-item">Unlock Enrichment Isle early — all 3 levels completed</div><div class="diff-item">Assign Stock Market Analyst real-world mission</div><div class="diff-item">Peer tutoring role during intervention sessions</div><div class="diff-item">Space Mission Calculator (requires all domains)</div><span class="diff-tag" style="background:rgba(168,85,247,.12);color:#C4B5FD;margin-top:8px;">Aiden, Sofia, Omar, Rania, Yasmine</span></div>
+    <div class="insight-card"><div class="insight-title">📌 Common Core Gaps</div><span class="diff-tag" style="background:rgba(239,68,68,.15);color:#FCA5A5;">Standards needing re-teach</span><div class="diff-item">7.RP.A.2 — Proportional relationships (64% pass rate)</div><div class="diff-item">7.EE.B.4 — Multi-step equations (51% pass rate)</div><div class="diff-item">7.G.B.4 — Circle area &amp; circumference (58%)</div><div class="diff-item">7.SP.C.7 — Probability models (48% pass rate)</div><div style="margin-top:10px;font-size:12px;color:rgba(255,255,255,.45);">Aligned to EngageNY Eureka Math &amp; OpenUp Resources</div></div>
+    <div class="insight-card"><div class="insight-title">🕐 Time-on-Task</div><div class="chart-bar-row"><div class="chart-lbl">Mon–Wed</div><div class="chart-bw"><div class="chart-bf" style="width:78%;background:#A855F7;"></div></div><div class="chart-val">78%</div></div><div class="chart-bar-row"><div class="chart-lbl">Thu–Fri</div><div class="chart-bw"><div class="chart-bf" style="width:52%;background:#A855F7;"></div></div><div class="chart-val">52%</div></div><div class="chart-bar-row"><div class="chart-lbl">Weekend</div><div class="chart-bw"><div class="chart-bf" style="width:24%;background:#A855F7;"></div></div><div class="chart-val">24%</div></div><div style="margin-top:12px;font-size:12px;color:rgba(255,255,255,.6);line-height:1.65;">Engagement drops Thu–Fri. Consider scheduling boss battles on Thursdays to sustain motivation.</div></div>
+    <div class="insight-card"><div class="insight-title">🎯 Recommended Actions</div><div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;"><button class="td-hero-btn" style="border-color:rgba(220,38,38,.4);color:#FCA5A5;width:100%;text-align:left;" onclick="Modal.open('assign-boss')">⚔️ Assign Ratio Reef boss to entire class</button><button class="td-hero-btn" style="border-color:rgba(168,85,247,.4);color:#C4B5FD;width:100%;text-align:left;">🌍 Enroll advanced group in Enrichment Isle</button><button class="td-hero-btn" style="border-color:rgba(245,158,11,.4);color:#FCD34D;width:100%;text-align:left;" onclick="Modal.open('create-duel')">⚔️ Create Thursday duel — boost engagement</button><button class="td-hero-btn" style="border-color:rgba(34,197,94,.4);color:#86EFAC;width:100%;text-align:left;">📊 Export progress report for parent meetings</button></div></div>`;
+  },
+  renderHeatmap(){
+    const grid=document.getElementById('heatmap-grid');if(!grid)return;
+    const vals=[12,18,24,20,8,5,14,22,28,19,25,11,3,9,16,21,28,18,14,6,11];
+    const mx=Math.max(...vals);
+    grid.innerHTML=vals.map(v=>{const i=v/mx;const bg=i<.2?'rgba(255,255,255,.06)':i<.5?'rgba(14,165,233,.3)':i<.8?'rgba(14,165,233,.65)':'rgba(14,165,233,1)';return`<div class="hm-cell" style="background:${bg};">${v}</div>`;}).join('');
+  }
+};
+
+// ── INIT ──
+window.addEventListener('load',()=>{
+  initLandCanvas();
+  document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)Modal.close();});
+});
+window.addEventListener('resize',()=>{
+  if(document.getElementById('student-world').classList.contains('active')){
+    const world=document.getElementById('mq-world');
+    if(bgC&&isC&&world){W=world.offsetWidth;H=world.offsetHeight;bgC.width=isC.width=W;bgC.height=isC.height=H;}
+  }
+});
+</script>
 </body>
 </html>
